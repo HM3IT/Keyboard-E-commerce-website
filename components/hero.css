@@ -1,0 +1,71 @@
+/* ===========
+1. global properties
+2. typography
+3. hero section content
+============= */
+
+/* 1. global properties */
+* {
+  padding: 0;
+  margin: 0;
+}
+h4 {
+  font-size: clamp(1rem, 2rem, 2.5rem);
+}
+h5 {
+  font-size: clamp(0.75rem, 2rem, 2.25rem);
+}
+
+.hero-section {
+  display: flex;
+  padding: 0 55px;
+  margin: 0;
+  height: 90dvh;
+  background-size: cover;
+  background-position: top 25% right 0;
+  background-color: rgb(245, 245, 252);
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+/* hero section content */
+
+.hero-section-content {
+  max-width: 383px;
+  min-width: 283px;
+}
+.hero-section h4 {
+  margin-bottom: 0;
+}
+
+.hero-section h5 {
+  margin: 0;
+}
+.hero-section p {
+  margin: 0;
+  margin-top: 10px;
+  color: rgb(209 90 85);
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+.shop-now-btn {
+  background-image: url("Image/button.png");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: 0;
+  font-weight: 700;
+  padding: 14px 80px 14px 65px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.hero-section-img {
+  width: clamp(300px, 512px, 612px);
+  height: clamp(324px, 536px, 636px);
+}
+
+@media only screen and (max-width: 880px) {
+  /* styles for screens 880px wide */
+}

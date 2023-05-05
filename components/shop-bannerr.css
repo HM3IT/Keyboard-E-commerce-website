@@ -1,0 +1,108 @@
+/* ================
+1. Primary Banner styling
+2. banner box styling
+  2.1 primmary banner cover image
+  2.2 additional banner cover image
+3. Typography
+4. shop button
+=================== */
+
+/* 1. Banner container styling */
+
+.banner-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: #fff;
+  align-items: center;
+}
+
+/* 2. banner box styling */
+.banner-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+#primary-banner .banner-box {
+  padding: 0 30px;
+  margin: 10px;
+  width: clamp(20%,44%,45%);
+  /* max-width: 44%; */
+  height: 45dvh;
+}
+#additional-banner .banner-box {
+  padding: 0 50px;
+  margin: 10px;
+  width: 25%;
+  height: 30dvh;
+}
+/* 2.1 primmary banner */
+
+#primary-banner .banner-box1 {
+  background-image: url("Image/Banner/Banner1.jpg");
+}
+#primary-banner .banner-box2 {
+  background-image: url("Image/Banner/Banner2.jpg");
+}
+
+/* 2.1 Additional banner */
+#additional-banner .banner-box1 {
+  background-image: url("Image/Banner/additioanl-banner1.jpg");
+}
+#additional-banner .banner-box2 {
+  background-image: url("Image/Banner/additioanl-banner2.jpg");
+}
+#additional-banner .banner-box3 {
+  background-image: url("Image/Banner/additioanl-banner3.jpg");
+}
+/* 3. Typography */
+/* 3.1 primmary banner */
+#primary-banner .banner-box h4 {
+  letter-spacing: 2px;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 300;
+}
+#primary-banner .banner-box > h2 {
+  font-weight: 800;
+  font-size: 28px;
+}
+#primary-banner .banner-box span {
+  font-size: 14px;
+  font-weight: 500;
+  padding-bottom: 15px;
+}
+/* 3.1 Additional banner */
+
+#additional-banner .banner-box > h2 {
+  color: #fff;
+  font-weight: 900;
+  font-size: 22px;
+}
+#additional-banner .banner-box h3 {
+  color: #ec544e;
+  letter-spacing: 2px;
+  font-size: 15px;
+  font-weight: 800;
+}
+/* 4. shop button */
+
+.btn-white {
+  width: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px 10px;
+  margin: 25px 0;
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.btn-white:hover,
+.banner-box:hover button {
+  background-color: #088178;
+}

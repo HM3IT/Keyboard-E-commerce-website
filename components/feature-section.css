@@ -1,0 +1,55 @@
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.cards {
+  width: 185px;
+  height: 200px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 2px 3px 10px black;
+  margin:20px auto;
+   
+}
+.cards img {
+  margin: 0;
+  padding: 15px 15px;
+  filter: grayscale(0%) contrast(100%);
+}
+.cards img:hover {
+  filter: grayscale(100%) contrast(100%);
+  cursor: pointer;
+}
+.cards h4 {
+  display: inline-block;
+  padding: 9px 8px 6px 8px;
+  line-height: 1;
+  border-radius: 5px;
+  letter-spacing: 1.5px;
+}
+.cards:nth-child(1) h4{
+    background-color: #fddde4;
+}
+.cards:nth-child(2) h4{
+    background-color: #cdebbc;
+}
+.cards:nth-child(3) h4{
+    background-color: #d1e8f2;
+}
+.cards:nth-child(4) h4{
+    background-color: #cdd4f8;
+}
+.cards:nth-child(5) h4{
+    background-color: #f6dbf6;
+}
+.cards:nth-child(6) h4{
+    background-color: #fff2e5;
+}
+
+.feature-section{
+    display: flex;
+    flex-wrap: wrap;
+}
