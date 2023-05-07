@@ -1,17 +1,16 @@
 .slider-container {
-  height: 400px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .swiper {
   margin: 0;
-
   width: 100%;
   height: fit-content;
 }
 .swiper-slide {
-  height: 200px;
+  height: 300px;
 }
 .swiper-slide img {
   width: 100%;

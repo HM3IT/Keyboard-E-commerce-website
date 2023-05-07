@@ -1,18 +1,10 @@
-body{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-*{
-    margin: 0;
-    padding: 0;
-}
 .cards {
   width: 185px;
   height: 200px;
   text-align: center;
   border-radius: 5px;
-  box-shadow: 2px 3px 10px black;
-  margin:20px auto;
-   
+  box-shadow: 2px 3px 5px black;
+  margin: 20px 0;
 }
 .cards img {
   margin: 0;
@@ -23,6 +15,16 @@ body{
   filter: grayscale(100%) contrast(100%);
   cursor: pointer;
 }
+.old-price{
+  text-decoration:line-through;
+  color: gray;
+  font-size: .85rem;
+  font-family: initial;
+}
+.discount-price{
+ padding-left: .35rem;
+
+}
 .cards h4 {
   display: inline-block;
   padding: 9px 8px 6px 8px;
@@ -30,26 +32,51 @@ body{
   border-radius: 5px;
   letter-spacing: 1.5px;
 }
-.cards:nth-child(1) h4{
-    background-color: #fddde4;
+.cards:nth-child(1) h4 {
+  background-color: #fddde4;
 }
-.cards:nth-child(2) h4{
-    background-color: #cdebbc;
+.cards:nth-child(2) h4 {
+  background-color: #cdebbc;
 }
-.cards:nth-child(3) h4{
-    background-color: #d1e8f2;
+.cards:nth-child(3) h4 {
+  background-color: #d1e8f2;
 }
-.cards:nth-child(4) h4{
-    background-color: #cdd4f8;
+.cards:nth-child(4) h4 {
+  background-color: #cdd4f8;
 }
-.cards:nth-child(5) h4{
-    background-color: #f6dbf6;
+.cards:nth-child(5) h4 {
+  background-color: #f6dbf6;
 }
-.cards:nth-child(6) h4{
-    background-color: #fff2e5;
+.cards:nth-child(6) h4 {
+  background-color: #fff2e5;
 }
 
-.feature-section{
-    display: flex;
-    flex-wrap: wrap;
+.feature-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+@media (max-width: 1110px) {
+  .feature-section {
+    justify-content: center;
+    margin: 10px 90px;
+    padding: 20px;
+  }
+  .cards {
+    width: 200px;
+    height: 210px;
+    margin: 10px 15px;
+  }
+}
+@media (max-width: 920px) {
+  .feature-section {
+    justify-content: center;
+    margin: 10px 20px;
+    padding: 20px;
+  }
+  .cards {
+    margin: 10px 5px;
+  }
 }

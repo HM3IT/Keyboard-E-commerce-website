@@ -11,7 +11,7 @@
 
 .banner-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   color: #fff;
   align-items: center;
@@ -24,23 +24,24 @@
   justify-content: center;
   text-align: left;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   border-radius: 10px;
 }
 #primary-banner .banner-box {
+  margin: 20px;
   padding: 0 30px;
-  margin: 10px;
-  width: clamp(20%,44%,45%);
-  /* max-width: 44%; */
-  height: 45dvh;
+  height: 300px;
+  width: 570px;
+  flex-grow: 0.5;
 }
 #additional-banner .banner-box {
+  width: 320px;
+  height: 180px;
+  flex: 1 1 90px;
   padding: 0 50px;
-  margin: 10px;
-  width: 25%;
-  height: 30dvh;
+  margin: 10px 5px;
 }
-/* 2.1 primmary banner */
+/* 2.1 primmary banner  cover image*/
 
 #primary-banner .banner-box1 {
   background-image: url("Image/Banner/Banner1.jpg");
@@ -49,7 +50,7 @@
   background-image: url("Image/Banner/Banner2.jpg");
 }
 
-/* 2.1 Additional banner */
+/* 2.1 Additional banner cover image */
 #additional-banner .banner-box1 {
   background-image: url("Image/Banner/additioanl-banner1.jpg");
 }
@@ -92,10 +93,10 @@
 /* 4. shop button */
 
 .btn-white {
-  width: 100px;
+  width: 150px;
   font-size: 14px;
   font-weight: 600;
-  padding: 5px 10px;
+  padding: 10px 20px;
   margin: 25px 0;
   background-color: transparent;
   border: 1px solid #fff;
@@ -105,4 +106,18 @@
 .btn-white:hover,
 .banner-box:hover button {
   background-color: #088178;
+}
+
+@media (max-width: 920px) {
+  .banner-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+  }
+  #primary-banner .banner-box {
+  }
 }

@@ -5,36 +5,35 @@
 ============= */
 
 /* 1. global properties */
-* {
-  padding: 0;
-  margin: 0;
+.hero-section-content h4 {
+  font-size:  1.5rem;
 }
-h4 {
-  font-size: clamp(1rem, 2rem, 2.5rem);
-}
-h5 {
-  font-size: clamp(0.75rem, 2rem, 2.25rem);
+.hero-section-content h5 {
+  font-size:  2rem;
 }
 
 .hero-section {
+  position: relative;
   display: flex;
-  padding: 0 55px;
+  padding: 0 30px;
   margin: 0;
-  height: 90dvh;
+  /* height: 580px; */
+  height: 100dvh;
   background-size: cover;
   background-position: top 25% right 0;
-  background-color: rgb(245, 245, 252);
+  background-color: #fff;
   flex-wrap: wrap-reverse;
   justify-content: center;
   align-content: center;
   align-items: center;
+  z-index: -1;
 }
 
 /* hero section content */
 
 .hero-section-content {
-  max-width: 383px;
-  min-width: 283px;
+  max-width: 400px;
+  min-width: 300px;
 }
 .hero-section h4 {
   margin-bottom: 0;
@@ -51,7 +50,7 @@ h5 {
   font-size: 0.75rem;
 }
 .shop-now-btn {
-  background-image: url("Image/button.png");
+  background-image: url("Image/Btn/button.png");
   background-color: transparent;
   background-repeat: no-repeat;
   border: 0;
@@ -59,13 +58,39 @@ h5 {
   padding: 14px 80px 14px 65px;
   font-size: 15px;
   cursor: pointer;
+  /* background-position: center;
+  width: 100%;
+  margin: 0 auto; */
 }
 
-.hero-section-img {
-  width: clamp(300px, 512px, 612px);
-  height: clamp(324px, 536px, 636px);
+.hero-section-img img{
+  width:  516px;
+  height:  536px;
 }
 
-@media only screen and (max-width: 880px) {
-  /* styles for screens 880px wide */
+@media (max-width: 920px) {
+  /* styles for screens 799px wide */
+  .hero-section{
+    height: 120dvh;
+  } 
+}
+@media (max-width: 530px) {
+  /* styles for screens 799px wide */
+  .hero-section{
+    height: 65dvh;
+    align-content: flex-end;
+    align-items:stretch;
+    padding: 0;
+  }
+  .hero-section-img, .hero-section-img img{
+    width:  412px;
+    height: 436px;
+  }
+  .hero-section-content h4 {
+    font-size:  .75rem;
+  }
+  .hero-section-content h5 {
+    font-size:  .5rem;
+
+  }
 }
