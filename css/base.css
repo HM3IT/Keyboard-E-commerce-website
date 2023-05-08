@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: aliceblue;
+  font-family: "Franklin Gothic Medium", "Segoe UI", Tahoma, Geneva, Verdana,
+    sans-serif, "Arial Narrow", Arial, sans-serif;
+}
+/* Hide the scrollbar for elements with overflow: scroll */
+::-webkit-scrollbar {
+  display: none;
+}
+a {
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+
+:root {
+  --brand-logo-width: 110px;
+  --brand-logo-height: 70px;
+  --nav-bar-height: 80px;
+  --nav-bar-btn-width: 100px;
+  --nav-bar-btn-height: 55px;
+  --nav-bar-btn-bg-color: #fefefe;
+  --nav-bar-offset-left: -500px;
+  --action-color: #00ccff;
+}

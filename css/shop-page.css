@@ -1,0 +1,10 @@
+.nav-bar-btn {
+    background-color: white;
+}
+.shop-btn{
+    background-color: aqua;
+    border-radius: 20px;
+}
+.shop-btn:hover{
+    background-color: white;
+}

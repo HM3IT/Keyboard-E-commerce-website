@@ -1,0 +1,27 @@
+.slider-container {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiper {
+  margin: 0;
+  width: 100%;
+  height: fit-content;
+}
+.swiper-slide {
+  height: 300px;
+}
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: whitesmoke;
+}
+.swiper-pagination-bullet-active {
+  background-color: whitesmoke;
+}
