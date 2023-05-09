@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/shop-banner.css">
     <link rel="stylesheet" href="css/swiper.css">
-    <link rel="stylesheet" href="css/feature-section.css">
     <link rel="stylesheet" href="css/product-section.css">
     <link rel="stylesheet" href="css/cart-list.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -27,10 +26,9 @@
 
     require COMPONENTS_PATH . 'navbar.html';
     require COMPONENTS_PATH . 'shop-banner.html';
-    require COMPONENTS_PATH . 'swiper.html';
-    require COMPONENTS_PATH . 'feature-section.html';
     require COMPONENTS_PATH . 'product-section.php';
     require COMPONENTS_PATH . 'cart-list.php';
+    require COMPONENTS_PATH . 'swiper.html';
     require COMPONENTS_PATH . 'footer.html';
     ?>
     <script src="scripts/navbar.js"> </script>
