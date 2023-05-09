@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/search-bar.css" />
     <link rel="stylesheet" href="css/shop-banner.css">
     <link rel="stylesheet" href="css/swiper.css">
     <link rel="stylesheet" href="css/product-section.css">
@@ -25,13 +27,16 @@
     define('COMPONENTS_PATH', './pages/');
 
     require COMPONENTS_PATH . 'navbar.html';
-    require COMPONENTS_PATH . 'shop-banner.html';
+    require COMPONENTS_PATH . 'swiper.html';
+    require COMPONENTS_PATH . 'search-bar.php';
     require COMPONENTS_PATH . 'product-section.php';
     require COMPONENTS_PATH . 'cart-list.php';
-    require COMPONENTS_PATH . 'swiper.html';
+    require COMPONENTS_PATH . 'shop-banner.html';
+
     require COMPONENTS_PATH . 'footer.html';
     ?>
     <script src="scripts/navbar.js"> </script>
+    <script src="../scripts/search-bar.js"></script>
     <script src="scripts/product-section.js"> </script>
     <script src="scripts/cart-list.js"></script>
     <script src=""></script>

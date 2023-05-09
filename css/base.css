@@ -1,9 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+* {
+  font-family: "Roboto", sans-serif, Arial, Verdana;
+}
+
 body {
   margin: 0;
   padding: 0;
   background-color: aliceblue;
-  font-family: "Franklin Gothic Medium", "Segoe UI", Tahoma, Geneva, Verdana,
-    sans-serif, "Arial Narrow", Arial, sans-serif;
 }
 /* Hide the scrollbar for elements with overflow: scroll */
 ::-webkit-scrollbar {
