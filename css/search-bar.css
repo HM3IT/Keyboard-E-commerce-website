@@ -11,7 +11,7 @@
 .product-search-bar-container {
   width: 480px;
   max-height: 580px;
-  background-color: grey;
+  background-color: white;
   margin: 10px auto;
   padding: 10px;
   box-shadow: 2px 3px 5px black;
@@ -50,6 +50,7 @@
   background-color: #fff;
   border-radius: 15px;
   box-shadow: 3px 4px 5px black;
+  z-index: 99;
 }
 .product-search-bar-container .matched-item-lists li{
   display: none;

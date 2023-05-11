@@ -1,11 +1,10 @@
 /* ====== Content =========
 1.card-list container styling
 2 cart box styling
-3 product increment & decrement
-4 cart-list footer styling 
-  4.1 cart-list total amount
-  4.2 cart-list close btn
-5.cart-list open btn
+3 cart-list footer styling 
+  3.1 cart-list total amount
+  3.2 cart-list close btn
+  3.3 cart-list open btn
 =====================*/
 
 /* 1.card-list container styling*/
@@ -57,47 +56,14 @@
 .card-list-box-description2 i:hover {
   color: red;
 }
-/* 3 product increment & decrement */
-.product-quantity-wrapper {
-  height: 30px;
-  width: 90px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fefefe;
-  border-radius: 10px;
-}
-.product-quantity-wrapper span {
-  width: 100%;
-  text-align: center;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-.product-quantity-wrapper span::selection {
-  background-color: transparent;
-}
-.product-quantity-wrapper .quantity {
-  border-right: 2px solid rgba(0, 0, 0, 0.2);
-  border-left: 2px solid rgba(0, 0, 0, 0.2);
-}
-.product-quantity-wrapper > .minus,
-.product-quantity-wrapper > .plus {
-  cursor: pointer;
-}
-.product-quantity-wrapper > .minus:hover {
-  color: red;
-}
-.product-quantity-wrapper > .plus:hover {
-  color: rgb(0, 253, 0);
-}
 
-/* 4 cart-list footer styling */
+/* 3 cart-list footer styling */
 .card-list-footer {
   display: flex;
   cursor: pointer;
   height: 100%;
 }
-/* 4.1 cart-list total amount */
+/* 3.1 cart-list total amount */
 .card-list-check-out {
   width: 460px;
   height: 50px;
@@ -125,7 +91,7 @@
   transform: translateX(0%);
 }
 
-/* 4.2 cart-list close btn */
+/* 3.2 cart-list close btn */
 .card-list-close-btn {
   width: 50px;
   height: 50px;
@@ -135,7 +101,7 @@
   cursor: pointer;
 }
 
-/* 4.2 cart-list open btn */
+/* 3.3 cart-list open btn */
 .card-list-open-btn {
   position: fixed;
   bottom: 10px;

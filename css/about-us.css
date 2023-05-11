@@ -1,0 +1,220 @@
+/* ========= content ========= 
+  //////++++++++++++++////////
+  z -index for images
+  ground - 11
+  title - 10
+  girl - 9
+  moutain-both side - 8
+  meadow - 7
+  moutain left1 and right - 6
+  moutain left2 - 5
+  cloud - 4
+    //////++++++++++++++////////
+1. prequisite for about-us page
+2. parallax scroll effect
+  2.1 section banner
+  2.2 about us 
+
+
+===========================*/
+/* 1. prequisite for about-us page */
+
+body {
+  background-color: black;
+}
+.header {
+  position: fixed;
+  width: 100%;
+  justify-content: space-around;
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.webpage-logo {
+  height: 70px;
+  padding: 0 10px;
+  border-radius: 15px;
+  /* background-color: white; */
+}
+.nav-bar-btn {
+  background-color: white;
+}
+.about-btn {
+  background-color: aqua;
+  border-radius: 20px;
+}
+.about-btn:hover {
+  background-color: white;
+}
+.about-us-section {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
+  height: 500px;
+}
+
+/* 2. parallax scroll effect */
+
+.parallax-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: -1;
+  /* 
+  perspective: 1px; */
+}
+#title {
+  position: absolute;
+  font-size: 5rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+.parallax-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  /* height: 100%;
+  background-repeat: no-repeat; */
+}
+
+.parallax-bg-sky {
+  background-image: url("/images/About-us/sky.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.parallax-bg-cloud-left1,
+.parallax-bg-cloud-left2,
+.parallax-bg-cloud-right1,
+.parallax-bg-cloud-right2,
+.parallax-bg-cloud-top {
+  z-index: 4;
+}
+
+.parallax-bg-mountain-left1,
+.parallax-bg-mountain-right1 {
+  z-index: 6;
+}
+.parallax-bg-mountain-left2 {
+  z-index: 5;
+}
+
+.parallax-bg-meadow {
+  z-index: 7;
+}
+
+.parallax-bg-mountain-both-side {
+  z-index: 8;
+}
+
+.parallax-bg-girl {
+  z-index: 9;
+}
+.parallax-bg-ground-left1,
+.parallax-bg-ground-left2 {
+  transform: scale(2);
+  z-index: 11;
+}
+/* 2. about us background */
+/* .about-us-section {
+  position: relative;
+  text-align: justify;
+  padding: 100px;
+
+} */
+.content-section{
+    padding: 50px;
+    text-align: justify;
+}
+.content-section div {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-height: 50dvh;
+  color: white;
+  font-size: 2rem;
+
+}
+#our-team-section {
+  height: 480px;
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+#our-team-section > h2{
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+}
+
+.team-member-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.our-team-section h2 {
+  text-align: center;
+}
+.team-member-card {
+  width: 280px;
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color: white;
+  text-align: center;
+  margin: 0 10px;
+}
+.team-member-card-img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 60%;
+  height: 55%;
+  margin: 10px auto;
+  border-radius: 25px;
+}
+.team-member-card-img.admin {
+  background-image: url("../images/About-us/team-member1.png");
+}
+.team-member-card-img.customer-service {
+  background-image: url("../images/About-us/team-member2.jpg");
+}
+.team-member-card-img.finance {
+  background-image: url("../images/About-us/team-member3.jpg");
+}
+
+.team-member-card-img.business-develop {
+  background-image: url("../images/About-us/team-member4.jpg");
+}
+.team-member-card .role, .team-member-card .name {
+  margin: 0;
+}
+.team-member:nth-child(2){
+    transition-delay: 200ms;
+}
+.team-member:nth-child(3){
+    transition-delay: 400ms;
+}
+.team-member:nth-child(4){
+    transition-delay: 600ms;
+}

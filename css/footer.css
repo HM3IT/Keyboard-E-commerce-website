@@ -1,9 +1,8 @@
 #web-footer {
   display: flex;
   flex-wrap: wrap;
-  height: 350px;
+  /* height: 350px; */
   background-color: black;
-  z-index: -999;
   color: aliceblue;
   justify-content: space-between;
   padding: 0 30px;
@@ -39,9 +38,13 @@
 }
 .footer-copyright{
     height: 50px;
-    line-height: 30px;
+    line-height: 50px;
     width: 100%;
     text-align: center;
+}
+.footer-copyright p{
+  padding: 0;
+  margin: 0;
 }
 footer .webpage-logo{
   filter: grayscale(100%) contrast(0%);

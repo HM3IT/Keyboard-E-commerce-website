@@ -1,0 +1,53 @@
+/* #trend-product-section {
+  width: 100%;
+}
+.trend-product-container {
+  display: flex;
+  width: 85%;
+  margin: 10px auto;
+  padding: 0px 100px;
+  justify-content: flex-start;
+  overflow-x: hidden;
+   box-shadow: 3px 4px 10px black; 
+  position: relative;
+  border-radius: 20px; 
+}
+
+.product-card {
+  flex: 0 0 auto;
+  width: 250px;
+  height: 450px;
+  margin-right: 40px;
+}
+
+
+.pre-btn,
+.next-btn {
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+
+}
+.pre-btn:hover,
+.next-btn:hover{
+ color: blue;
+}
+
+.pre-btn i, .next-btn i{
+  font-size: 4.5rem;
+
+}
+
+.pre-btn {
+  left: 0;
+}
+
+.next-btn {
+  right: 0;
+} */

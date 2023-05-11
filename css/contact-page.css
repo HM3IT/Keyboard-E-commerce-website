@@ -1,0 +1,53 @@
+#contact-section .contact-banner {
+    background-image: url("../images/contact-section.png");
+    height: 300px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+#contact-section .contact-banner h2{
+    font-size: 3em;
+    letter-spacing: 5px;
+}
+#contact-section .contact-banner p{
+    font-size: 2rem;
+}
+.contact-banner p i{
+    color: yellow;
+}
+
+/*  COntact detail */
+.contact-detail {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+}
+.contact-detail ul li{
+    display: flex;
+    padding: 10px 0;
+}
+.contact-detail ul li i{
+    font-size: 14px;
+   padding-right: 22px;
+}
+.contact-detail ul li p{
+    margin: 0;
+    font-size: 1rem;
+}
+.contact-detail-left{
+    margin-right:50px ;
+}
+.contact-detail .map{
+    width: 55%;
+    height: 400px;
+}
+.contact-detail .map iframe{
+    width: 80%;
+    height: 100%;
+}

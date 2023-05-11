@@ -2,10 +2,10 @@
 1. Product styling
    1.1 typography
    1.2 image styling
-2. star rating styling 
 ================ */
 
 .product-section {
+  margin: 0;
   background-color: #fff;
 }
 /* 1.1 typography */
@@ -66,50 +66,8 @@
 h4 {
   margin: 5px auto;
 }
-/* star scale styling */
-.rating-scale {
-  height: 30px;
-  display: flex;
-  /* flex-direction: row-reverse; */
-  transform: rotateY(180deg);
-  justify-content: center;
-  align-items: center;
-}
-
-.rating-scale label {
-  display: block;
-  cursor: pointer;
-  width: 20px;
-  position: relative;
-}
-.rating-scale input {
-  display: none;
-}
-.rating-scale label::before {
-  content: "\f005";
-  font-family: fontAwesome;
-  color: rgb(165, 154, 154);
-}
-
-.rating-scale label::after {
-  content: "\f005";
-  font-family: fontAwesome;
-  color: yellow;
-  position: absolute;
-  top: 0;
-  left: 2px;
-  opacity: 0;
-  transition: 0.8s;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-.rating-scale input:checked ~ label::after,
-.rating-scale label:hover ~ label::after,
-.rating-scale label:hover::after {
-  opacity: 1;
-}
 
 @media (max-width: 920px) {
-  /* styles for screens 799px wide */
   .product-card {
     width: 280px;
     margin: 15px;
