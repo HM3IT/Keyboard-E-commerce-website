@@ -1,0 +1,43 @@
+.title {
+  text-align: center;
+  letter-spacing: 5px;
+}
+body{
+    background: linear-gradient(#00ccff, #d400d4);
+    height: 100dvh;
+}
+/* @warnning */
+.title{
+    color: white;
+}
+#add-product {
+  width: 420px;
+  height: 480px;
+  margin: auto;
+  box-shadow: 3px 4px 5px black;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+}
+#add-product input,
+select {
+  display: block;
+  margin: 10px 0px;
+}
+#add-product select {
+  padding: 5px;
+}
+#add-product input[type="number"] {
+    padding: 0px 30px;
+  }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  padding: 10px;
+}
+
+#add-product input[type="text"],
+#add-product textarea {
+  width: 320px;
+  height: 30px;
+  line-height: 30px;
+}

@@ -1,0 +1,89 @@
+/* ======= Content =======
+1. FAQ section style 
+2. FAQ list (ul)
+3. Question style
+   3.1 icon styling
+   3.2 hover effects
+4. Answer style
+ =====================*/
+
+/* 1. FAQ section style  */
+#faq-section {
+  user-select: none;
+  color: white;
+  min-height: 600px;
+  max-height: 900px;
+  overflow-y: scroll;
+}
+#faq-section .title {
+  text-align: center;
+  font-weight: 800;
+}
+/* 2. FAQ list (ul) */
+.faq-list {
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+  max-width: 600px;
+}
+.faq-list li {
+  background-color: black;
+  border: 1px solid rgb(223, 0, 138);
+}
+/* 3. Question style */
+/* .faq-list .question, */
+.faq-list .question {
+  display: flex;
+  height: 35px;
+  align-items: center;
+}
+.faq-list .question span {
+  display: inline-block;
+  height: 35px;
+  line-height: 35px;
+  padding-left: 10px;
+}
+.faq-list .question i {
+  font-size: 1.5rem;
+}
+.faq-list .question p {
+  padding-left: 10px;
+}
+/* 3.2 hover effects */
+
+.left-text-highlight {
+  display: inline-block;
+  width: 1px;
+  height: 100%;
+  border-left: 10px solid transparent;
+}
+
+.faq-list .question:hover .left-text-highlight {
+  border-left: 10px solid aqua;
+  transition: 0.5s;
+}
+.faq-list .question:hover i {
+  color: orangered;
+  transition: 0.5s;
+}
+
+/* 4. Answer style */
+.faq-list .answer {
+  padding-left: 65px;
+  height: 0;
+  overflow-y: hidden;
+}
+.faq-list .answer p {
+  line-height: 25px;
+  text-align: justify;
+  word-wrap: break-word;
+}
+.faq-list .answer-opened {
+  padding: 15px 10px 0px 45px;
+
+  height: initial;
+  transition: 0.7s;
+}
+.arrow-rotate-down {
+  transform: rotate(90deg);
+}

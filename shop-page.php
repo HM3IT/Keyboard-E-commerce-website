@@ -32,7 +32,7 @@
 
     define('COMPONENTS_PATH', './pages/');
 
-    require COMPONENTS_PATH . 'navbar.html';
+    require COMPONENTS_PATH . 'navbar.php';
     require COMPONENTS_PATH . 'swiper.html';
     require COMPONENTS_PATH . 'search-bar.php';
     require COMPONENTS_PATH . 'product-section.php';

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/search-bar.css" />
     <link rel="stylesheet" href="css/shop-banner.css">
     <link rel="stylesheet" href="css/product-section.css">
+    <link rel="stylesheet" href="css/quantity-counter.css">
     <link rel="stylesheet" href="css/cart-list.css">
     <link rel="stylesheet" href="css/product-slider.css">
     <link rel="stylesheet" href="css/footer.css">
@@ -55,7 +56,7 @@
 
     define('COMPONENTS_PATH', './pages/');
 
-    require COMPONENTS_PATH . 'navbar.html';
+    require COMPONENTS_PATH . 'navbar.php';
     require COMPONENTS_PATH . 'search-bar.php';
     require COMPONENTS_PATH . 'product-detail.php';
     require COMPONENTS_PATH . 'cart-list.php';

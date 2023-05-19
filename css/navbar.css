@@ -49,8 +49,14 @@ nav .logo {
   line-height: var(--nav-bar-btn-height);
   text-align: center;
 }
+.nav-bar-btn  #login-btn{
+  margin: 0;
+}
 .nav-bar-btn a:hover {
   color: var(--action-color);
+}
+.nav-bar-btn #login-btn:hover{
+  color: aqua;
 }
 .home-btn {
   background-color: aqua;

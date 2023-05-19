@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/about-us.css">
+    <link rel="stylesheet" href="css/faq-section.css">
 
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/social-icon.css" />
@@ -19,9 +20,7 @@
     <?php
 
     define('COMPONENTS_PATH', './pages/');
-
-    require COMPONENTS_PATH . 'navbar.html';
-
+    require COMPONENTS_PATH . 'navbar.php';
     ?>
 
 
@@ -93,10 +92,12 @@
     </section>
 
     <?php
+    require COMPONENTS_PATH . 'faq-section.php';
     require COMPONENTS_PATH . 'footer.html';
     ?>
     <script src="scripts/navbar.js"> </script>
     <script src="scripts/about-us-parallax.js"> </script>
+    <script src="../scripts/faq-section.js"></script>
     <script src="scripts/footer.js"></script>
 </body>
 

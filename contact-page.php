@@ -20,7 +20,7 @@
 
     define('COMPONENTS_PATH', './pages/');
 
-    require COMPONENTS_PATH . 'navbar.html';
+    require COMPONENTS_PATH . 'navbar.php';
     ?>
 
     <section id="contact-section">
