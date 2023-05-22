@@ -1,0 +1,156 @@
+/*===== content ======
+ 
+ 
+ 1. Sidebar styling
+  1.1 Top of the sidebar styling 
+  1.2 Functionality styling 
+  1.3 button active & hover effects
+=====================*/
+
+/* .profile-photo {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  overflow: hidden;
+} */
+
+/*  2. Sidebar styling */
+#sidebar {
+  height: 100dvh;
+  background-color: var(--color-background);
+  padding: 10px;
+  border-radius: 10px;
+}
+/* 1.1 Top of Sidebar styling */
+#sidebar .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.4rem;
+}
+#sidebar .logo {
+  display: flex;
+  gap: 0.8rem;
+}
+
+#sidebar .logo img {
+  height: 5rem;
+}
+#sidebar .close {
+  display: none;
+}
+s #sidebar.logout {
+  position: absolute;
+  bottom: 5rem;
+}
+/*  1.2 Function of Sidebar styling */
+#sidebar .sidebar-function-container {
+  height: 86dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+  top: 3rem;
+}
+.sidebar-function-container h3 {
+  font-weight: 500;
+}
+.sidebar-function-container a i {
+  transition: all 0.5s ease;
+}
+.sidebar-function-container a {
+  display: flex;
+  width: 100%;
+  color: var(--color-info-dark);
+  margin-left: 6rem;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+  height: 3.5rem;
+  transition: all 0.3s ease;
+}
+
+.sidebar-function-container .report-count {
+  background-color: var(--color-danger);
+  color: var(--color-white);
+  padding: 2px 10px;
+  font-size: 0.77rem;
+  border-radius: var(--border-radius-1);
+}
+
+/* 1.3 button active & hover effects */
+
+.sidebar-function-container a.active {
+  background-color: var(--color-light);
+  color: var(--color-primary);
+  margin-left: 0;
+}
+.sidebar-function-container a.active:before {
+  content: "";
+  width: 6px;
+  height: 100%;
+  background-color: var(--color-primary);
+}
+
+.sidebar-function-container a:hover {
+  color: var(--color-primary);
+}
+
+.sidebar-function-container a:hover i {
+  margin-left: 1rem;
+}
+
+/*================== MEDIA QUERIES ================== */
+/* For tablet */
+
+@media screen and (max-width: 1200px) {
+  #sidebar .sidebar-function-container h3 {
+    display: none;
+  }
+  #sidebar .sidebar-function-container a {
+    width: 5.6rem;
+  }
+  #sidebar .sidebar-function-container a:last-child {
+    position: relative;
+    margin-top: 1.8rem;
+  }
+}
+/* For smaller tablet and mobile phones */
+@media screen and (max-width: 768px) {
+  #sidebar {
+    position: fixed;
+    left: -100%;
+    background-color: var(--color-white);
+    width: 18rem;
+    z-index: 3;
+    box-shadow: 1rem 3rem 4rem var(--color-white);
+    height: 100dvh;
+    padding-right: var(--card-padding);
+    display: none;
+    animation: showMenu 300ms ease forwards;
+  }
+  @keyframes showMenu {
+    to {
+      left: 0;
+    }
+  }
+  #sidebar .logo {
+    margin-left: 1rem;
+  }
+  #sidebar .sidebar-function-container h3 {
+    display: inline;
+  }
+  #sidebar .sidebar-function-container a {
+    width: 100%;
+    height: 3.4rem;
+  }
+  #sidebar .sidebar-function-container a:last-child {
+    position: absolute;
+    bottom: 5rem;
+  }
+  #sidebar .close {
+    display: inline-block;
+    cursor: pointer;
+  }
+}
