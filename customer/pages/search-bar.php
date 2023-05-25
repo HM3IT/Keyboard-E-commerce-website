@@ -12,7 +12,7 @@
         ?>
           <li>
             <div class="matched-item-box">
-              <img src="../images/Products/Summer-shirts/f1.jpg" alt="" />
+              <img src="../images/Products/Summer clothes/f1.jpg" alt="" />
               <div class="item-description">
                 <?php
                 if ($i % 2 == 0) {
@@ -42,7 +42,7 @@
         ?>
           <li>
             <div class="matched-item-box">
-              <img src="../images/Products/Summer-shirts/f2.jpg" alt="" />
+              <img src="../images/Products/Summer clothes/f2.jpg" alt="" />
               <div class="item-description">
                 <?php
                 if ($i % 2 == 0) {

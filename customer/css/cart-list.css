@@ -5,6 +5,7 @@
   3.1 cart-list total amount
   3.2 cart-list close btn
   3.3 cart-list open btn
+4. Car-list-items animation for removing from the cart list
 =====================*/
 
 /* 1.card-list container styling*/
@@ -20,7 +21,6 @@
   padding: 5px 10px;
   z-index: 999;
   border-radius: 25px;
-
 }
 .card-list-title {
   margin: 0;
@@ -28,17 +28,18 @@
 }
 .card-list ul {
   min-height: 100px;
-  max-height: 60dvh; 
-  background-color: gray;
+  max-height: 60dvh;
+  background-color: rgb(237, 223, 223);
   overflow: scroll;
 }
 .card-list li {
-  height: 100 px;
   width: 100%;
 }
 /* 2 cart box styling */
 .card-list-box {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .card-list-box-description1 {
   padding: 5px;
@@ -50,8 +51,13 @@
   margin: auto 0;
   text-align: center;
 }
+.card-list-box-description2 .product-remove-btn {
+  border: none;
+  background-color: transparent;
+}
 .card-list-box-description2 i {
   padding: 0 15px;
+  font-size: 1.4rem;
 }
 .card-list-box-description2 i:hover {
   color: red;
@@ -134,7 +140,6 @@
   height: 40px;
 }
 
-
 .card-list-close-btn:hover {
   color: red;
 }
@@ -145,4 +150,40 @@
 .card-list-box > img {
   width: 100px;
   height: 100px;
+}
+#popup-info-box {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+#popup-info-box i {
+  color: rgb(14, 202, 14);
+  font-size: 3rem;
+}
+
+/* 4. Car-list-items animation for removing from the cart list */
+.card-list-items {
+  transition: all 1s ease;
+}
+
+.card-list-items.removing {
+  opacity: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+#sad-emoji {
+  color: rgb(21, 181, 40);
+  font-size: 4rem;
+  width: 100px;
 }

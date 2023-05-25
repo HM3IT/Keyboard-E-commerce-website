@@ -29,11 +29,11 @@
             if ($i % 2 ==  0) {
 
             ?>
-              <img src="../images/Products/Summer-shirts/f1.jpg" alt="summer-shirt.png" />
+              <img src="../images/Products/summer clothes/f1.jpg" alt="summer-shirt.png" />
             <?php
             } else {
             ?>
-              <img src="../images/Products/Summer-shirts/f3.jpg" alt="summer-shirt.png" />
+              <img src="../images/Products/summer clothes/f3.jpg" alt="summer-shirt.png" />
             <?php
             }
             ?>
@@ -48,7 +48,7 @@
             <div class="cart-btn-part">
               <a href="./view-product.php" class="view-description-link">View description</a>
               <a href="#" class="cart-btn">
-                <img src="../images/Btn/cart-icon.png" alt="car.png">
+                <i id="cart-btn" class="fa-solid fa-cart-shopping"  ></i>
               </a>
             </div>
           </div>

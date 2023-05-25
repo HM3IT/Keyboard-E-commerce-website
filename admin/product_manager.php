@@ -1,3 +1,15 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if (empty($_SESSION["status"])) {
+    echo '
+    <script> 
+        alert("Please confirm the user authentication"); 
+        location.href = "./login.php"; 
+    </script>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +28,7 @@
 <body>
     <div id="main-container">
         <?php
-        require "./pages/sidebar.html";
+        require "./pages/sidebar.php";
         require "./pages/all_product_tbl.php";
         require "./pages/right-dashboard-panel.php";
         ?>

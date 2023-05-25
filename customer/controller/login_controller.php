@@ -1,5 +1,14 @@
 <?php
 require "../../dao/connection.php";
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+// if (isset($_SESSION["cart"])) {
+//     foreach ($_SESSION["cart"] as $key => $value) {
+//         // Remove the product from the session
+//         unset($_SESSION["cart"][$key]);
+//     }
+// }
 
 if (isset($_POST["Sign-Up"])) {
     $name = $_POST["name"];
@@ -7,9 +16,7 @@ if (isset($_POST["Sign-Up"])) {
     $phone = $_POST["phone"];
     $password = $_POST["password"];
 
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
+
 
     $create_new_user = "INSERT INTO user (
         image,
@@ -46,33 +53,38 @@ VALUES (
 
 if (isset($_POST["Sign-In"])) {
     $name = $_POST["name"];
-    $email = $_POST["email"];
     $password = $_POST["password"];
 
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
+    $get_all_user_qry = "SELECT * from user";
+    $dataset =  $connection->query($get_all_user_qry);
+
+    foreach ($dataset as $data) {
+        if ($data["name"] === $name && $data["password"] === $password) {
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            $_SESSION["name"] = $name;
+            $_SESSION["password"] = $password;
+
+            echo '<script> 
+            alert("valid user"); 
+            location.href = "../index.php"; 
+            </script>';
+        }
     }
 
-    if ($name === "admin" && $password === "1234") {
-        $_SESSION["name"] = $name;
-        $_SESSION["password"] = $password;
-
-        // User is logged in
-        $linkText = 'Logout';
-        $linkURL = 'logout.php';
-
-        echo '<script> 
-        alert("valid user"); 
-        location.href = "../index.php"; 
-        </script>';
-    } else {
-        // User is not logged in
-        $linkText = 'Login';
-        $linkURL = 'login.php';
-        echo '<script>  
+    echo '<script>  
         alert("Invalid user");
         location.href = "../login.php"; 
         </script>';
-        // header("location:login.php");
-    }
+}
+
+if (isset($_GET["logout"])) {
+    // Clear all session variables & destroy the session
+    session_unset();
+    session_destroy();
+
+    header("Location: ../login.php");
+    exit();
 }

@@ -26,8 +26,8 @@ $get_all_user_sql = "SELECT * FROM user";
                 <td><?php echo $row["name"]  ?></td>
                 <td><?php echo $row["phone"]  ?></td>
                 <td><?php echo $row["email"]  ?></td>
-                <td>
-                    <a href="./edit_customer.php?edit_customer_id=<?php echo $row['id']; ?>" class="edit-btn success-border">View</a>
+                <td class="customer-tbl-action-col">
+                    <a href="./view_customer.php?view_customer_id=<?php echo $row['id']; ?>" class="edit-btn information-border">View</a>
                     <a href="./controller/customer_controller.php?remove_customer_id=<?php echo $row['id']; ?>" class="remove-btn danger-border">Remove</a>
                 </td>
 

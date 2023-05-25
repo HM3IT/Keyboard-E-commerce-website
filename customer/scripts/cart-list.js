@@ -13,7 +13,7 @@ cartListCloseBtn.addEventListener("click", () => {
   cartList.style.right = "-600px";
 });
 
-// the logic of this incrementer and decrementer is not the same with the single product view 
+// the logic of this incrementer and decrementer is not the same with the single product view
 const productList = document.querySelector(".card-list ul");
 
 productList.addEventListener("click", (event) => {

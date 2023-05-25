@@ -1,4 +1,14 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if (empty($_SESSION["status"])) {
+    echo '
+    <script> 
+        alert("Please confirm the user authentication"); 
+        location.href = "./login.php"; 
+    </script>';
+}
 require "../dao/connection.php";
 if (isset($_GET["edit_product_id"])) {
     $id = $_GET["edit_product_id"];
@@ -26,7 +36,7 @@ if (isset($_GET["edit_product_id"])) {
 <body>
     <div id="main-container">
         <?php
-        require "./pages/sidebar.html";
+        require "./pages/sidebar.php";
         ?>
         <section class="product-form-section">
             <h2 class="title warning">Update product information</h2>

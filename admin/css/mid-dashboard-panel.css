@@ -94,6 +94,7 @@ main .insights .progress {
 main .insights svg {
   width: 7rem;
   height: 7rem;
+  z-index: 1;
 }
 main .insights svg circle {
   fill: none;

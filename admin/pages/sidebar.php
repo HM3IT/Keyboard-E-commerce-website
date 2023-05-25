@@ -33,14 +33,35 @@
       <span class="report-count">10</span>
     </a>
 
-    <a href="./setting.php">
+    <a onclick="openAuthenticationCheckForm()">
       <i class="fa-solid fa-gear"></i>
       <h3>Settings</h3>
     </a>
 
-    <a href="#" class="logout">
+    <a href="./controller/admin_controller.php?logout" class="logout">
       <i class="fa-solid fa-arrow-right-from-bracket"></i>
       <h3>Logout</h3>
     </a>
   </div>
 </aside>
+
+<div id="popup-form-authentication-check" class="authentication-check-overlay">
+  <div class="popup-form-authentication-check">
+    <h2>Please confirm the authentication</h2>
+    <form action="./controller/admin_controller.php" method="POST" id="popup-authentication-form">
+      <i class="fa-solid fa-circle-xmark" onclick="closeAuthenticationCheckForm()"></i>
+      <input type="password" placeholder="Password" name="password" id="password">
+      <input type="submit" name="authentication-check-submit" class="information-bg" value="check">
+    </form>
+  </div>
+</div>
+
+<script>
+  function openAuthenticationCheckForm() {
+    document.getElementById("popup-form-authentication-check").style.display = "flex";
+  }
+
+  function closeAuthenticationCheckForm() {
+    document.getElementById("popup-form-authentication-check").style.display = "none";
+  }
+</script>

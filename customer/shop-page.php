@@ -1,3 +1,6 @@
+<?php
+require "../dao/connection.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +38,9 @@
     require COMPONENTS_PATH . 'navbar.php';
     require COMPONENTS_PATH . 'swiper.html';
     require COMPONENTS_PATH . 'search-bar.php';
-    require COMPONENTS_PATH . 'product-section.php';
+    // require COMPONENTS_PATH . 'product-section.php';
+    require COMPONENTS_PATH . 'product-section-form.php';
+   
     require COMPONENTS_PATH . 'cart-list.php';
     require COMPONENTS_PATH . 'shop-banner.html';
     require COMPONENTS_PATH . 'footer.html';

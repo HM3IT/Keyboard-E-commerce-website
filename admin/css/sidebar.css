@@ -1,20 +1,13 @@
 /*===== content ======
- 
- 
  1. Sidebar styling
   1.1 Top of the sidebar styling 
   1.2 Functionality styling 
   1.3 button active & hover effects
+2. Pop-up-authentication
+3. Media QUERY
 =====================*/
 
-/* .profile-photo {
-  width: 2.8rem;
-  height: 2.8rem;
-  border-radius: 50%;
-  overflow: hidden;
-} */
-
-/*  2. Sidebar styling */
+/*  1. Sidebar styling */
 #sidebar {
   height: 100dvh;
   background-color: var(--color-background);
@@ -99,6 +92,41 @@ s #sidebar.logout {
 
 .sidebar-function-container a:hover i {
   margin-left: 1rem;
+}
+
+/* 2. Pop-up-authentication */
+.authentication-check-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+#popup-form-authentication-check > div {
+  position: relative;
+  background-color: var(--color-white);
+  padding: 25px;
+  border-radius: 5px;
+}
+
+#popup-authentication-form > i {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 1.5rem;
+  color: var(--color-dark);
+  cursor: pointer;
+}
+#popup-authentication-form > i:hover {
+  color: var(--color-danger);
+}
+#popup-authentication-form input[type="submit"] {
+  cursor: pointer;
 }
 
 /*================== MEDIA QUERIES ================== */

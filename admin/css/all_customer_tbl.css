@@ -9,7 +9,7 @@
     text-align: center;
     display: block;
     margin: 1rem auto;
-    color: var(--color-primary);
+
   }
   #all-customer-table {
     width: 100%;
@@ -34,6 +34,10 @@
   #all-customer-table .customer-tbl-img {
     width: 85px;
     height: 100px;
+  }
+  .customer-tbl-action-col a{
+    padding: 10px 15px;
+    border-radius: 10px;
   }
   /* #all-product-table tbody tr:last-child td {
     border: none;

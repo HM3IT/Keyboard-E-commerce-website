@@ -34,11 +34,11 @@ if (session_status() == PHP_SESSION_NONE) {
         <?php
         if (isset($_SESSION["name"])) {
         ?>
-          <a href="login.php"><?php echo $_SESSION["name"] ?></a>
+          <a href="./controller/login_controller.php?logout">logout</a>
         <?php
         } else {
         ?>
-          <a href="logout.php"> logout </a>
+          <a href="login.php"> login </a>
 
         <?php
         }

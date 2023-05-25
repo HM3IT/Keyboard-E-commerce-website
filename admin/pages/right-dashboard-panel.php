@@ -11,11 +11,27 @@
         </div>
         <div class="profile">
             <div class="info">
-                <p>Welcome, <b id="admin-name">Hein Min</b></p>
-                <small class="text-muted">Admin</small>
+                <p>Welcome, <b id="admin-name">
+                        <?php
+                        if (isset($_SESSION["name"])) {
+                            echo $_SESSION["name"];
+                        } else {
+                            //  if the user is passed thorugh the login authentication, there have to be name varibale in session
+                            echo '<script> 
+                            alert("Invalid authentication"); 
+                            // location.href = "./login.php"; 
+                            </script>';
+                        }
+                        ?>
+                    </b></p>
+                <small class="text-muted">(Admin)</small>
             </div>
             <div class="profile-photo">
-                <img src="../images/User/admin.png" alt="admin.png" id="admin-img">
+                <img src="../images/User/<?php
+                                            if (session_status() == PHP_SESSION_NONE) {
+                                                session_start();
+                                            }
+                                            echo $_SESSION["image"]  ?>" alt="admin.png" id="admin-img">
             </div>
         </div>
     </div>

@@ -1,3 +1,6 @@
+<?php
+require "../dao/connection.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 

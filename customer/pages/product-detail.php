@@ -3,13 +3,13 @@
         <div class="image-section">
             <div id="main-img">
                 <span class="stock-info"> In Stock</span>
-                <img src="../images/Products/Summer-shirts/f1.jpg" alt="">
+                <img src="../images/Products/summer clothes/f1.jpg" alt="">
             </div>
             <div class="small-img-group">
-                <img src="../images/Products/Summer-shirts/f2.jpg" alt="">
-                <img src="../images/Products/Summer-shirts/f3.jpg" alt="">
-                <img src="../images/Products/Summer-shirts/f4.jpg" alt="">
-                <img src="../images/Products/Summer-shirts/f5.jpg" alt="">
+                <img src="../images/Products/summer clothes/f2.jpg" alt="">
+                <img src="../images/Products/summer clothes/f3.jpg" alt="">
+                <img src="../images/Products/summer clothes/f4.jpg" alt="">
+                <img src="../images/Products/summer clothes/f5.jpg" alt="">
             </div>
         </div>
         <div class="product-description">

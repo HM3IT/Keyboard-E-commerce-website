@@ -20,10 +20,11 @@ if (isset($_POST["update-product-submit"])) {
     $description =  $_POST["description"];
     $category = $_POST["category"];
 
-    $image_file_name = $_FILES["image"]["name"];
-    $image_file_size = $_FILES["image"]["size"];
-    $image_file_tmp =  $_FILES["image"]["tmp_name"];
-    $image_file_type = $_FILES["image"]["type"];
+   if(!empty($_FILES["product-image"]["tmp_name"])){
+    $image_file_name = $_FILES["product-image"]["name"];
+    $image_file_size = $_FILES["product-image"]["size"];
+    $image_file_tmp =  $_FILES["product-image"]["tmp_name"];
+    $image_file_type = $_FILES["product-image"]["type"];
     $valid_file_extensions = array("png", "jpeg", "jpg", "svg", "jfif");
     $file_extension = strtolower(pathinfo($image_file_name, PATHINFO_EXTENSION));
 
@@ -48,19 +49,19 @@ if (isset($_POST["update-product-submit"])) {
     $target_file = $target_img_dir . basename($_FILES["image"]["name"]);
 
     if (move_uploaded_file($image_file_tmp, $target_file)) {
-        $update_product_sql = "UPDATE product SET name = '$name', price ='$price', category = '$category', quantity = '$quantity', description = '$description' WHERE id = '$id'";
-
-        if ($connection->query($update_product_sql)) {
-            echo '<script> 
-            alert("Successfully updated the product"); 
-            location.href = "../product_manager.php"; 
-            </script>';
-        } else {
-            // Update failed
-            echo "Error updating product ";
-        }
     } else {
         echo "target not found";
+    }
+   }
+    $update_product_sql = "UPDATE product SET name = '$name', price ='$price', category = '$category', quantity = '$quantity', description = '$description' WHERE id = '$id'";
+    if ($connection->query($update_product_sql)) {
+        echo '<script> 
+        alert("Successfully updated the product"); 
+        location.href = "../product_manager.php"; 
+        </script>';
+    } else {
+        // Update failed
+        echo "Error updating product ";
     }
 }
 // inserting a new product into TABLE product

@@ -20,21 +20,21 @@
                 <form class="sign-in-form" action="controller/login_controller.php" method="post">
                     <div class="group">
                         <label for="user" class="label">Username</label>
-                        <input id="user" type="text" class="input" name="name">
+                        <input type="text" id="user" class="input" name="name">
                     </div>
                     <div class="group">
                         <label for="pass" class="label">Password</label>
-                        <input id="pass" type="password" class="input" data-type="password" name="password">
+                        <input type="password" id="password" class="input" name="password">
                     </div>
                     <div class="group">
-                        <input id="check" type="checkbox" class="check" checked>
+                        <input type="checkbox" id="check" class="check" checked>
                         <label for="check"><span class="icon"></span> Keep me Signed in</label>
                     </div>
                     <div class="group">
                         <input type="submit" class="button" value="Sign In" name="Sign-In">
                     </div>
                     <div class="hr"></div>
-                    <div class="foot-lnk">
+                    <div class="foot-link">
                         <a href="#forgot">Forgot Password?</a>
                     </div>
                 </form>
@@ -44,19 +44,23 @@
                 <form class="sign-up-form" action="./controller/login_controller.php" method="POST">
                     <div class="group">
                         <label for="user" class="label">Username</label>
-                        <input id="user" type="text" class="input" name="name">
+                        <input type="text" id="user" class="input" name="name">
                     </div>
                     <div class="group">
                         <label for="email" class="label">Email address</label>
-                        <input id="email" type="email" class="input" name="email">
+                        <input type="email" id="email" class="input" name="email">
                     </div>
                     <div class="group">
                         <label for="phone" class="label">Phone (recently used)</label>
-                        <input id="phone" type="number" class="input" name="phone">
+                        <input type="tel" id="phone" class="input" name="phone">
                     </div>
                     <div class="group">
                         <label for="password" class="label">Password</label>
-                        <input id="password" type="password" class="input" data-type="password" name="password">
+                        <input type="password" id="password" class="input" name="password">
+                    </div>
+                    <div class="group">
+                        <label for="address" class="label">Current Address (For delivery)</label>
+                        <input type="text" id="address" class="input" name="password">
                     </div>
                     <!-- <div class="group">
                         <label for="pass" class="label">Repeat Password</label>
@@ -73,8 +77,8 @@
                         <input type="reset" class="button warning-border" value="Cancel">
                     </div>
                     <div class="hr"></div>
-                    <div class="foot-lnk">
-                        <label for="tab-1">Already Sign Up?</a>
+                    <div class="foot-link">
+                        <a for="tab-1" id="reloadLink">Already Sign Up?</a>
                     </div>
 
                 </form>
@@ -82,6 +86,13 @@
             </div>
         </section>
     </div>
+    <script>
+        var link = document.getElementById('reloadLink');
+        link.addEventListener('click', function(event) {
+            // Reload the page
+            location.reload();
+        });
+    </script>
 </body>
 
 </html>
