@@ -3,23 +3,25 @@
   <p>Product is added! </p>
 </div>
 
-<div class="card-list-open-btn">
-  <span>3</span>
-  <i class="fa-solid fa-basket-shopping"></i>
-</div>
-<script>
-  // let openButton = document.querySelector(".card-list-open-btn");
-
-  // openButton.addEventListener("click", function() {
-  //   location.reload();
-  // });
-</script>
+<?php
+if (isset($_SESSION["cart"])) {
+?>
+  <div class="card-list-open-btn">
+    <span id="cart-items-counter">
+      <?php
+      $count = count($_SESSION["cart"]);
+      echo  $count ?>
+    </span>
+    <i class="fa-solid fa-basket-shopping"></i>
+  </div>
+<?php
+}
+?>
 <div class="card-list">
   <h2 class="card-list-title">Your Cart</h2>
-  <ul>
+  <ul id="card-list-ul">
     <?php
     if (isset($_SESSION["cart"])) {
-      $count = count($_SESSION["cart"]);
 
       if ($count <= 0) {
     ?>
@@ -50,7 +52,7 @@
             </div>
             <div class="card-list-box-description2">
               <span><?php echo $value["price"] ?> Ks</span>
-              <button class="product-remove-btn" data-product-id="<?php echo $row['id']; ?>">
+              <button class="product-remove-btn" data-product-id="<?php echo $value['id']; ?>">
                 <i class="fa-regular fa-trash-can"></i>
               </button>
             </div>
@@ -63,9 +65,9 @@
   ?>
   </ul>
   <div class="card-list-footer">
-    <div class="card-list-check-out">Check Out -
-      <span> 250 Ks</span>
-    </div>
+    <a href="view-cart-list.php" class="card-list-check-out">
+      View Detail & Check Out
+    </a>
     <div class="card-list-close-btn">
       <i class="fa-regular fa-circle-xmark"></i>
     </div>

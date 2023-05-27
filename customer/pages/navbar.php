@@ -25,9 +25,9 @@ if (session_status() == PHP_SESSION_NONE) {
   </nav>
   <nav class="nav-bar nav-bar-right">
     <ul>
-      <li class="nav-bar-btn">
-        <a href="shop-page.php">
-          <img src="../images/Btn/shop-icon.png" alt="shop-icon.png" class="shop-icon" />
+      <li class="nav-bar-btn view-cart-btn">
+        <a href="view-cart-list.php" class="view-cart-icon">
+          <i class="fa-solid fa-bag-shopping"></i>
         </a>
       </li>
       <li class="nav-bar-btn">
@@ -39,7 +39,6 @@ if (session_status() == PHP_SESSION_NONE) {
         } else {
         ?>
           <a href="login.php"> login </a>
-
         <?php
         }
         ?>

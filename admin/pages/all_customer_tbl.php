@@ -1,6 +1,6 @@
 <?php
 require "../dao/connection.php";
-$get_all_user_sql = "SELECT * FROM user";
+$get_all_user_sql = "SELECT * FROM customer";
 
 ?>
 <section class="customer-section">

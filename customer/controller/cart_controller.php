@@ -1,7 +1,5 @@
 <?php
-require "../../dao/connection.php";
-// Set session cookie parameters
-session_set_cookie_params(0);
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -13,25 +11,32 @@ if (isset($_POST["add_to_cart"])) {
     $category = $_POST["category"];
     $price = $_POST["price"];
     $description = $_POST["description"];
-
+    $target_page = $_POST["current_page"];
 
     if (!isset($_SESSION["cart"])) {
         // New session and new product
         $_SESSION["cart"][0] = array(
-            array(
-                "id" => $productID,
-                "name" => $name,
-                "price" => $price,
-                "category" => $category,
-                "description" => $description,
-                "image" => $image_name,
-                "Quantity" => 1
-            )
+            "id" => $productID,
+            "name" => $name,
+            "price" => $price,
+            "category" => $category,
+            "description" => $description,
+            "image" => $image_name,
+            "Quantity" => 1
+
         );
     } else {
-        $ids = array_column($_SESSION["cart"], "id");
+        $isExistingProduct = false;
 
-        if (!in_array($productID, $ids)) {
+        foreach ($_SESSION["cart"] as $key => $value) {
+            if ($productID == $value["id"]) {
+                $isExistingProduct = true;
+                $_SESSION["cart"][$key]["Quantity"]++;
+                break;
+            }
+        }
+
+        if (!$isExistingProduct) {
             // New product
             $count = count($_SESSION["cart"]);
             $_SESSION["cart"][$count] = array(
@@ -43,37 +48,26 @@ if (isset($_POST["add_to_cart"])) {
                 "image" => $image_name,
                 "Quantity" => 1
             );
-        } else {
-            // Existing product
-            foreach ($_SESSION["cart"] as $key => $value) {
-                if ($productID == $value["id"]) {
-                    echo $_SESSION["cart"][$key]["Quantity"];
-                    $_SESSION["cart"][$key]["Quantity"]++;
-                    break;
-                }
-            }
         }
     }
-
-    echo ' <script>
-
-    document.getElementById("popup-info-box").style.display = "block";
-
-    // Hiding the popup box after 2.5 seconds
-    setTimeout(function () {
-      document.getElementById("popup-info-box").style.display = "none";
-    }, 2500);
-    </script>';
+    $redirectUrl = "../" . $target_page . "#product-section-anchor";
+    header("Location: " . $redirectUrl);
+    exit;
 }
 
 
 if (isset($_POST["remove_product_id"])) {
+
     $productID = $_POST["remove_product_id"];
-    foreach ($_SESSION["cart"] as $key => $value) {
-        if ($productID == $value["id"]) {
-            // Remove the product from the session
+
+    foreach ($_SESSION["cart"] as $key => $data) {
+
+        if ($data["id"]  == $productID) {
             unset($_SESSION["cart"][$key]);
             break;
         }
     }
+    $response = array('success' => true, 'message' => $productID . "count = " . count($_SESSION["cart"]));
+    header('Content-Type: application/json');
+    echo json_encode($response);
 }

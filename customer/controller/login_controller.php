@@ -1,14 +1,16 @@
 <?php
 require "../../dao/connection.php";
+if (isset($_SESSION["cart"])) {
+    foreach ($_SESSION["cart"] as $key => $value) {
+        // Remove the product from the session
+        unset($_SESSION["cart"][$key]);
+    }
+}
+
 if (session_status() == PHP_SESSION_NONE) {
+    session_set_cookie_params(0);
     session_start();
 }
-// if (isset($_SESSION["cart"])) {
-//     foreach ($_SESSION["cart"] as $key => $value) {
-//         // Remove the product from the session
-//         unset($_SESSION["cart"][$key]);
-//     }
-// }
 
 if (isset($_POST["Sign-Up"])) {
     $name = $_POST["name"];
@@ -16,9 +18,7 @@ if (isset($_POST["Sign-Up"])) {
     $phone = $_POST["phone"];
     $password = $_POST["password"];
 
-
-
-    $create_new_user = "INSERT INTO user (
+    $create_new_user = "INSERT INTO customer (
         image,
         name,
         phone,
@@ -37,7 +37,7 @@ VALUES (
 
         $_SESSION["name"] = $name;
         $_SESSION["email"] = $email;
-        $_SESSION["password"] = $password;
+        // $_SESSION["password"] = $password;
 
         echo '<script> 
         alert("Account is successfully created"); 
@@ -55,36 +55,32 @@ if (isset($_POST["Sign-In"])) {
     $name = $_POST["name"];
     $password = $_POST["password"];
 
-    $get_all_user_qry = "SELECT * from user";
-    $dataset =  $connection->query($get_all_user_qry);
+    $get_all_user_qry = "SELECT * from customer";
+    $dataset = $connection->query($get_all_user_qry);
 
     foreach ($dataset as $data) {
         if ($data["name"] === $name && $data["password"] === $password) {
-            if (session_status() == PHP_SESSION_NONE) {
-                session_start();
-            }
-
+            $_SESSION["customer_id"] = $data["id"];
             $_SESSION["name"] = $name;
             $_SESSION["password"] = $password;
-
-            echo '<script> 
-            alert("valid user"); 
-            location.href = "../index.php"; 
-            </script>';
+            $_SESSION["status-login"] = "valid";
+            header("Location: ../login.php");
+            exit;
         }
     }
 
-    echo '<script>  
-        alert("Invalid user");
-        location.href = "../login.php"; 
-        </script>';
+    $_SESSION["status-login"] = "invalid";
+    header("Location: ../login.php");
+    exit;
 }
 
 if (isset($_GET["logout"])) {
     // Clear all session variables & destroy the session
-    session_unset();
+    $_SESSION = array();
     session_destroy();
-
+    header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1
+    header("Pragma: no-cache"); // HTTP 1.0
+    header("Expires: 0"); // Proxies
     header("Location: ../login.php");
     exit();
 }

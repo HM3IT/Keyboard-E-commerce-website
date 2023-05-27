@@ -11,6 +11,10 @@ cartListOpenBtn.addEventListener("click", () => {
 
 cartListCloseBtn.addEventListener("click", () => {
   cartList.style.right = "-600px";
+
+  // setTimeout(function () {
+  //   location.reload();
+  // }, 1000);
 });
 
 // the logic of this incrementer and decrementer is not the same with the single product view

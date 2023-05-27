@@ -204,7 +204,9 @@ b {
   gap: 1rem;
   justify-content: space-between;
 }
-
+.button-flex > a{
+  margin: 10px 0;
+}
 #main-container {
   display: grid;
   width: 96%;

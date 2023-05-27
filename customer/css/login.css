@@ -215,3 +215,56 @@ a {
 .social i {
   margin-right: 4px;
 }
+
+/* overlay and popup valid or invalid noti */
+#user-authentication-noti-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 495px;
+  height: 160px;
+  transform: translate(-50%, -50%);
+  border: 0.3px solid grey;
+  box-shadow: 3px 4px 6px black;
+  background-color: whitesmoke;
+  z-index: 100;
+  padding: 25px;
+  border-radius: 35px;
+}
+#user-authentication-noti-form div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#user-authentication-noti-form a {
+  width: 100px;
+  border-radius: 10px;
+  height: 40px;
+  line-height: 40px;
+}
+#user-authentication-noti-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+}
+#user-authentication-noti-form #sad-emoji,
+#user-authentication-noti-form #smilly-emoji {
+  font-size: 5rem;
+}
+#user-authentication-noti-form #sad-emoji {
+  color: rgb(255, 172, 48);
+}
+#user-authentication-noti-form #smilly-emoji {
+  color: rgb(33, 250, 5);
+}
+#user-authentication-noti-form a {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  margin: auto;
+  text-align: center;
+}

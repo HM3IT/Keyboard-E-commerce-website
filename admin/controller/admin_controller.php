@@ -77,7 +77,7 @@ if (isset($_POST["update-admin"])) {
         $image_file_size = $_FILES["image"]["size"];
         $image_file_tmp =  $_FILES["image"]["tmp_name"];
         $image_file_type = $_FILES["image"]["type"];
-        $valid_file_extensions = array("png", "jpeg", "jpg", "svg", "jfif");
+        $valid_file_extensions = array("png", "jpeg", "jpg", "svg", "jfif", "webp");
 
         $file_extension = strtolower(pathinfo($image_file_name, PATHINFO_EXTENSION));
 

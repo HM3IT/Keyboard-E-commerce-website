@@ -1,0 +1,117 @@
+/* hightlighting view-cart-btn in  navigation bar */
+.nav-bar-btn {
+  background-color: white;
+}
+.view-cart-btn {
+  background-color: aqua;
+  border-radius: 20px;
+}
+.view-cart-btn:hover {
+  background-color: white;
+}
+
+/*  cart list TABLE  */
+.cart-list-section {
+  margin-top: 2rem;
+  user-select: text;
+}
+.cart-list-section h2 {
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+.cart-list-section a {
+  text-align: center;
+  display: block;
+  margin: 1rem auto;
+}
+#cart-list-table {
+  width: 80%;
+  margin: 50px auto;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 3px 4px 7px black;
+  transition: all 0.3s ease;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+#cart-list-table:hover {
+  box-shadow: none;
+}
+
+#cart-list-table tbody td {
+  height: 2.8rem;
+  border-bottom: 1px solid var(--color-light);
+  color: var(--color-dark-variant);
+}
+
+#cart-list-table .product-tbl-img {
+  width: 85px;
+  height: 100px;
+}
+/* #cart-list-table tbody tr:last-child td {
+    border: none;
+  } */
+
+#cart-list-table .view-btn,
+#cart-list-table .remove-btn,
+#cart-list-table .checkout-btn {
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+/* #cart-list-table .edit-btn{
+      background-color: var(--color-warning);
+  } */
+
+/* custom style of quantity counter for orderlist.php */
+#cart-list-table .product-quantity-wrapper {
+  margin: auto;
+}
+
+#cart-list-table .subtotal-col {
+  text-align: right;
+  width: 100px;
+  padding-right: 2rem;
+}
+
+#empty-cart-noti-form {
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 420px;
+    height: 160px;
+    transform: translate(-50%, -50%);
+    border: 0.3px solid grey;
+    box-shadow: 3px 4px 6px black;
+    background-color: whitesmoke;
+    z-index: 100;
+    padding: 25px;
+    border-radius: 35px;
+}
+#empty-cart-noti-form div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#empty-cart-noti-form a{
+ width: 100px;
+ border-radius: 10px;
+ height: 40px;
+ line-height: 40px;
+}
+#empty-cart-noti-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+}
+#empty-cart-noti-form #sad-emoji {
+  color: rgb(255, 172, 48);
+  font-size: 5rem;
+}
+@media screen and (min-width: 920px) {
+}

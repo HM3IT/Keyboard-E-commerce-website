@@ -67,7 +67,8 @@ if (isset($_GET["edit_product_id"])) {
                     <label for="description">Product Specification: </label>
                     <textarea name="description" id="description" cols="30" rows="10"><?php echo $data["description"] ?></textarea>
                     <div class="button-flex">
-                        <input type="reset" value="Cancel" class="cancel-btn danger-border">
+                        <!-- <input type="reset" value="Cancel" class="cancel-btn danger-border"> -->
+                        <a href="./product_manager.php" class="cancel-btn danger-border" id="back-btn"> Back </a>
                         <input type="submit" value="update" name="update-product-submit" id="update-product-btn" class="submit-btn success-border">
                     </div>
                 </div>

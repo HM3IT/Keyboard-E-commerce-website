@@ -25,6 +25,9 @@ require "../dao/connection.php";
     <link rel="stylesheet" href="css/social-icon.css" />
     <link rel="stylesheet" href="css/shop-page.css">
 
+    <!-- Meta Pixel Code -->
+
+    <!-- End Meta Pixel Code -->
 </head>
 
 <body>
@@ -33,16 +36,41 @@ require "../dao/connection.php";
     define('COMPONENTS_PATH', './pages/');
     ?>
     <div id="main-container">
-
-        <?php
-        require COMPONENTS_PATH . 'navbar.php';
-        require COMPONENTS_PATH . 'search-bar.php';
-        include COMPONENTS_PATH . 'product-section.php';
-        include COMPONENTS_PATH . 'cart-list.php';
-        require COMPONENTS_PATH . 'shop-banner.html';
-        require COMPONENTS_PATH . 'swiper.html';
-        require COMPONENTS_PATH . 'footer.html';
-        ?>
+        <div>
+            <?php
+            require COMPONENTS_PATH . 'navbar.php';
+            ?>
+        </div>
+        <div class="div-test-img">
+            <?php
+            // require COMPONENTS_PATH . 'search-bar.php';
+            ?>
+        </div>
+        <div class="div-test-img">
+            <?php
+            // require COMPONENTS_PATH . 'shop-banner.html';
+            ?>
+        </div>
+        <div class="div-test-img">
+            <?php
+            // require COMPONENTS_PATH . 'swiper.html';
+            ?>
+        </div>
+        <div class="div-test-img">
+            <?php
+            require COMPONENTS_PATH . 'product-section.php';
+            ?>
+        </div>
+        <div >
+            <?php
+            require COMPONENTS_PATH . 'cart-list.php';
+            ?>
+        </div>
+        <div >
+            <?php
+            // require COMPONENTS_PATH . 'footer.html';
+            ?>
+        </div>
     </div>
     <script src="scripts/navbar.js"> </script>
     <script src="scripts/search-bar.js"></script>

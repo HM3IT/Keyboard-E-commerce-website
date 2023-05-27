@@ -14,6 +14,7 @@
   --color-danger: #ff7782;
   --color-success: #41f1b6;
   --color-warning: #ffbb55;
+  --color-information: rgb(0, 10, 197);
   --color-dark: #363949;
   --color-light: rgba(139, 145, 201, 0.2);
 }
@@ -26,6 +27,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: aliceblue;
+  user-select: none;
 }
 /* Hide the scrollbar for elements with overflow: scroll */
 ::-webkit-scrollbar {
@@ -71,6 +73,17 @@ li {
 .success {
   color: var(--color-success);
 }
+.success-bg {
+  background-color: var(--color-success);
+  color: white;
+  border: 2px solid transparent;
+}
+.success-bg:hover {
+  background-color: transparent;
+  border: 2px solid var(--color-success);
+  color: var(--color-success);
+}
+
 .success-border {
   border: 2px solid var(--color-success);
   color: var(--color-dark);
@@ -92,11 +105,26 @@ li {
   color: var(--color-dark);
 }
 
-.text-muted {
-  color: var(--color-info-dark);
+.information {
+  color: var(--color-information);
 }
-.infomation {
-  color: var(--color-primary-variant);
+.information-bg {
+  background-color: var(--color-information);
+  color: white;
+}
+.information-bg:hover {
+  background-color: white;
+  border: 2px solid var(--color-information);
+  color: var(--color-information);
+}
+.information-border {
+  background-color: white;
+  border: 2px solid var(--color-information);
+  color: var(--color-information);
+}
+.information-border:hover {
+  background-color: var(--color-information);
+  color: white;
 }
 .button-flex {
   display: flex;

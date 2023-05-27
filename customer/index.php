@@ -9,10 +9,7 @@ require "../dao/connection.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/navbar.css">
+    <?php require "./components/base-link.php" ?>
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/shop-banner.css">
     <link rel="stylesheet" href="css/swiper.css">
@@ -20,10 +17,7 @@ require "../dao/connection.php";
     <link rel="stylesheet" href="css/newsletter.css">
     <link rel="stylesheet" href="css/star-scale-rating.css">
     <link rel="stylesheet" href="css/product-section.css">
-    <link rel="stylesheet" href="css/cart-list.css">
-    <link rel="stylesheet" href="css/quantity-counter.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/social-icon.css" />
+ 
     <!-- Meta Pixel Code -->
     <script>
         //     ! function(f, b, e, v, n, t, s) {
@@ -71,6 +65,7 @@ require "../dao/connection.php";
     <script src="scripts/navbar.js"> </script>
     <script src="scripts/cart-list.js"></script>
     <script src="scripts/star-scale-rating.js"> </script>
+
     <script src="scripts/footer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="scripts/swiper.js"> </script>

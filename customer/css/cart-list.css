@@ -14,20 +14,19 @@
   bottom: 5%;
   right: -600px;
   max-width: 480px;
-  max-height: 80dvh;
+  /* max-height: 80dvh; */
   background-color: #fefefe;
   transition: 0.5s;
   box-shadow: 0 40px 60px black;
   padding: 5px 10px;
-  z-index: 999;
   border-radius: 25px;
+  z-index: 999;
 }
 .card-list-title {
   margin: 0;
   font-weight: 600;
 }
 .card-list ul {
-  min-height: 100px;
   max-height: 60dvh;
   background-color: rgb(237, 223, 223);
   overflow: scroll;
@@ -73,9 +72,12 @@
 .card-list-check-out {
   width: 460px;
   height: 50px;
+  color: black;
+  text-decoration: none;
   background-color: ghostwhite;
   text-align: center;
   line-height: 50px;
+  border-bottom-left-radius: 25px;
 }
 .card-list-check-out:hover {
   transition: 0.5s;
@@ -172,18 +174,25 @@
 
 /* 4. Car-list-items animation for removing from the cart list */
 .card-list-items {
-  transition: all 1s ease;
+  transition: all 2s ease-out;
 }
 
 .card-list-items.removing {
   opacity: 0;
   height: 0;
   padding: 0;
-  margin: 0;
+  margin-left: 300px;
+  /* display: none; */
 }
 
 #sad-emoji {
   color: rgb(21, 181, 40);
   font-size: 4rem;
   width: 100px;
+}
+#cry-emoji {
+  color: rgb(197, 2, 34);
+  font-size: 4rem;
+  width: 100px;
+  margin: 10px 0;
 }

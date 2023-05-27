@@ -26,8 +26,14 @@
                 <button>
                     Add to Cart
                 </button>
+
+                <div class="product-quantity-wrapper">
+                            <span class="minus">-</span>
+                            <span class="quantity">3</span>
+                            <span class="plus">+</span>
+                        </div>
                 <?php
-                require "./components/quantity-counter.html";
+                // require "./components/quantity-counter.html";
                 ?>
             </div>
             <div class="product-description-body">
