@@ -61,7 +61,7 @@ window.addEventListener("scroll", () => {
 
   // Increase font size when scrolling down
   if (value > prevScroll) {
-    let textValue = fontSize + value * 0.5;
+    let textValue = fontSize + value * 0.33;
     title.style.fontSize = textValue + "px";
     if (title.style.fontSize > "330px") {
       title.style.fontSize = "1px";

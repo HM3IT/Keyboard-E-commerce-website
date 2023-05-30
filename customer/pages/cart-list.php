@@ -46,7 +46,9 @@ if (isset($_SESSION["cart"])) {
               <p> <?php echo $value["description"] ?></p>
               <div class="product-quantity-wrapper">
                 <span class="minus">-</span>
-                <span class="quantity"><?php echo $value["Quantity"] ?></span>
+                <span class="quantity" data-product-index="<?php echo $key; ?>">
+                  <?php echo $value["Quantity"] ?>
+                </span>
                 <span class="plus">+</span>
               </div>
             </div>
@@ -65,7 +67,7 @@ if (isset($_SESSION["cart"])) {
   ?>
   </ul>
   <div class="card-list-footer">
-    <a href="view-cart-list.php" class="card-list-check-out">
+    <a class="card-list-check-out">
       View Detail & Check Out
     </a>
     <div class="card-list-close-btn">
@@ -73,4 +75,6 @@ if (isset($_SESSION["cart"])) {
     </div>
   </div>
 </div>
+<script src="scripts/cart-list.js"></script>
+<script src="./scripts/quantity-counter.js"></script>
 <script src="./scripts/add-remove-cart.js"></script>

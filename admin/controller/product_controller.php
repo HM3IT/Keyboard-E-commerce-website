@@ -1,6 +1,6 @@
 <?php
 require "../../dao/connection.php";
-
+$valid_file_extensions = array("png", "jpeg", "jpg", "svg", "webp", "jfif");
 // removing product form TABLE product
 if (isset($_GET["remove_product_id"])) {
     $id = $_GET["remove_product_id"];
@@ -26,8 +26,6 @@ if (isset($_POST["update-product-submit"])) {
         $image_file_type = $_FILES["image"]["type"];
 
         $file_extension = strtolower(pathinfo($image_file_name, PATHINFO_EXTENSION));
-
-        $valid_file_extensions = array("png", "jpeg", "jpg", "svg", "webp", "jfif");
 
         if (!in_array($file_extension, $valid_file_extensions)) {
 
@@ -89,7 +87,7 @@ if (isset($_POST["add-product-submit"])) {
     $image_file_size = $_FILES["image"]["size"];
     $image_file_tmp =  $_FILES["image"]["tmp_name"];
     $image_file_type = $_FILES["image"]["type"];
-    $valid_file_extensions = array("png", "jpeg", "jpg", "svg", "jfif");
+
     $file_extension = strtolower(pathinfo($image_file_name, PATHINFO_EXTENSION));
 
 
@@ -129,15 +127,9 @@ if (isset($_POST["add-product-submit"])) {
             '$image_file_name',
             '$category'
         );";
-        if ($connection) {
-            echo "Know";
-        } else {
-            echo "No";
-        }
         $stmt =   $connection->query($insert_product_sql);
         echo '<script> 
-            alert("Successfully added the product"); 
-            
+            alert("Successfully added the product");        
             location.href = "../product_manager.php"; 
             </script>';
     } else {

@@ -1,3 +1,8 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,13 +11,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/navbar.css">
+    <?php require "./components/base-link.php" ?>
     <link rel="stylesheet" href="css/contact-page.css">
     <link rel="stylesheet" href="css/newsletter.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/social-icon.css" />
 </head>
 
 <body>
@@ -29,7 +30,7 @@
             <p>Leave a message, we love <i class="fa-regular fa-face-smile-beam"></i> to hear from you!</p>
         </div>
 
-        <div class="contact-detail" >
+        <div class="contact-detail">
             <div class="contact-detail-left">
                 <h4>Get In Touch</h4>
                 <h2>Reach out one of our agency locations or contact us today</h2>

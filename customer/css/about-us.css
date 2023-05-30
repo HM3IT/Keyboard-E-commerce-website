@@ -33,7 +33,6 @@ body {
   height: 70px;
   padding: 0 10px;
   border-radius: 15px;
-
 }
 .nav-bar-btn {
   background-color: white;
@@ -125,15 +124,10 @@ body {
   z-index: 11;
 }
 /* 2. about us background */
-/* .about-us-section {
-  position: relative;
-  text-align: justify;
-  padding: 100px;
 
-} */
-.content-section{
-    padding: 50px;
-    text-align: justify;
+.content-section {
+  padding: 50px;
+  text-align: justify;
 }
 .content-section div {
   display: grid;
@@ -142,7 +136,13 @@ body {
   min-height: 50dvh;
   color: white;
   font-size: 2rem;
-
+}
+.background-info {
+  text-indent: 7rem;
+  margin: 0 4rem;
+  text-align: justify;
+  font-size: 1.2rem;
+  line-height: 2.2rem;
 }
 #our-team-section {
   height: 480px;
@@ -152,19 +152,19 @@ body {
   opacity: 0;
   filter: blur(5px);
   transform: translateX(-100%);
-  transition: all 1s;
+  transition: all 1.5s;
 }
 .show {
   opacity: 1;
   filter: blur(0);
   transform: translateX(0);
 }
-#our-team-section > h2{
-    color: white;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 5px;
+#our-team-section > h2 {
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 5px;
 }
 
 .team-member-card-container {
@@ -206,15 +206,16 @@ body {
 .team-member-card-img.business-develop {
   background-image: url("../../images/About-us/team-member4.jpg");
 }
-.team-member-card .role, .team-member-card .name {
+.team-member-card .role,
+.team-member-card .name {
   margin: 0;
 }
-.team-member:nth-child(2){
-    transition-delay: 200ms;
+.team-member:nth-child(2) {
+  transition-delay: 200ms;
 }
-.team-member:nth-child(3){
-    transition-delay: 400ms;
+.team-member:nth-child(3) {
+  transition-delay: 400ms;
 }
-.team-member:nth-child(4){
-    transition-delay: 600ms;
+.team-member:nth-child(4) {
+  transition-delay: 600ms;
 }

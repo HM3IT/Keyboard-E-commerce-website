@@ -11,7 +11,7 @@
             <th>Action</th>
         </tr>
         <?php
-        if (!isset($_SESSION["cart"])) {
+        if (!isset($_SESSION["cart"]) || count($_SESSION["cart"]) <= 0) {
         ?>
             <div id="empty-cart-noti-overlay"></div>
             <div id="empty-cart-noti-form">
@@ -19,7 +19,7 @@
                     <i class="fa-solid fa-face-grin-beam-sweat" id="sad-emoji"></i>
                     <h2>Sorry, you have not added any product into the cart yet</h2>
                 </div>
-                <a href="./index.php" class="information-bg">OK</a>
+                <a href="./index.php#product-section-anchor" class="information-bg">OK</a>
             </div>
         <?php
             exit;
@@ -43,14 +43,18 @@
                 <td>
                     <div class="product-quantity-wrapper">
                         <span class="minus">-</span>
-                        <span class="quantity"><?php echo $quantity ?></span>
+                        <span class="quantity" data-product-id="<?php echo $value['id']; ?>">
+                            <?php echo $quantity ?>
+                        </span>
                         <span class="plus">+</span>
                     </div>
                 </td>
                 <td class="subtotal-col"><?php echo  $formattedSubtotal  ?></td>
                 <td>
-                    <a href="./controller/product_controller.php?view_product_id=<?php echo $value['id']; ?>" class="view-btn information-border">View</a>
-                    <a href="./controller/cart_controller.php?remove_product_id=<?php echo $value['id']; ?>" class="remove-btn danger-border">Remove</a>
+                    <a href="./controller/product_controller.php?view_product_id=<?php echo $value['id']; ?>" class="view-cart-a information-border">View</a>
+                    <a class="remove-cart-a danger-border" data-product-id="<?php echo $value['id']; ?>">Remove</a>
+
+
                 </td>
             </tr>
         <?php

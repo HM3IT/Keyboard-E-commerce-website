@@ -11,7 +11,6 @@ if (isset($_POST["add_to_cart"])) {
     $category = $_POST["category"];
     $price = $_POST["price"];
     $description = $_POST["description"];
-    $target_page = $_POST["current_page"];
 
     if (!isset($_SESSION["cart"])) {
         // New session and new product
@@ -50,12 +49,22 @@ if (isset($_POST["add_to_cart"])) {
             );
         }
     }
+
+    $target_page = $_POST["current_page"];
     $redirectUrl = "../" . $target_page . "#product-section-anchor";
     header("Location: " . $redirectUrl);
     exit;
+
+    // if (isset($_POST["current_page"])) {
+    //     $target_page = $_POST["current_page"];
+    //     $redirectUrl = "../" . $target_page . "#product-section-anchor";
+    //     header("Location: " . $redirectUrl);
+    // }else{
+    //     header("Location: " . $redirectUrl);
+    // }
 }
 
-
+// remove product form the cart
 if (isset($_POST["remove_product_id"])) {
 
     $productID = $_POST["remove_product_id"];
@@ -68,6 +77,34 @@ if (isset($_POST["remove_product_id"])) {
         }
     }
     $response = array('success' => true, 'message' => $productID . "count = " . count($_SESSION["cart"]));
+    header('Content-Type: application/json');
+    echo json_encode($response);
+    exit;
+}
+
+
+// update-quantity based on the quantity from the cart-list
+// Read the raw POST data and decode it into a PHP array
+
+$rawData = file_get_contents('php://input');
+$decodedData = json_decode($rawData, true);
+
+if (isset($decodedData)) {
+    $updatedProductAry = $decodedData;
+
+    foreach ($updatedProductAry as $productData) {
+        $productIndex = $productData['productIndex'];
+        $quantity = $productData['quantity'];
+        // Update the corresponding product quantity in the session
+        $_SESSION['cart'][$productIndex]["Quantity"] = $quantity;
+    }
+
+    $response = array(
+        'success' => true,
+        'message' => 'Quantity updated successfully',
+        'data' => $updatedProductAry
+    );
+
     header('Content-Type: application/json');
     echo json_encode($response);
 }

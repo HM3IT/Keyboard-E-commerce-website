@@ -1,4 +1,8 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 require "../dao/connection.php";
 ?>
 <!DOCTYPE html>
@@ -10,6 +14,7 @@ require "../dao/connection.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php require "./components/base-link.php" ?>
+
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/shop-banner.css">
     <link rel="stylesheet" href="css/swiper.css">
@@ -17,7 +22,7 @@ require "../dao/connection.php";
     <link rel="stylesheet" href="css/newsletter.css">
     <link rel="stylesheet" href="css/star-scale-rating.css">
     <link rel="stylesheet" href="css/product-section.css">
- 
+
     <!-- Meta Pixel Code -->
     <script>
         //     ! function(f, b, e, v, n, t, s) {
@@ -63,9 +68,7 @@ require "../dao/connection.php";
     ?>
 
     <script src="scripts/navbar.js"> </script>
-    <script src="scripts/cart-list.js"></script>
     <script src="scripts/star-scale-rating.js"> </script>
-
     <script src="scripts/footer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="scripts/swiper.js"> </script>

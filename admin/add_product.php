@@ -40,7 +40,7 @@ if (empty($_SESSION["status"])) {
                     <input type="number" id="price" name="price" min="1" value="1" placeholder="in Kyat" required>
                     <label for="category">Category:</label>
                     <select id="category" name="category" required>
-                        <option selected value="summer-clothes">Summer Clothes</option>
+                        <option selected value="summer clothes">Summer Clothes</option>
                         <option value="rainy clothes">Rainy clothes</option>
                         <option value="winter clothes">Winter clothes</option>
                     </select>

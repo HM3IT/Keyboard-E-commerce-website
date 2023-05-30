@@ -50,3 +50,5 @@ CREATE TABLE order_product(
     foreign key(order_id) references orders(id),
     foreign key(product_id) references product(id)
 );
+
+ALTER TABLE orders ADD COLUMN ship_address VARCHAR(500);

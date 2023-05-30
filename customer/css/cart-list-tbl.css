@@ -53,8 +53,8 @@
     border: none;
   } */
 
-#cart-list-table .view-btn,
-#cart-list-table .remove-btn,
+#cart-list-table .view-cart-a,
+#cart-list-table .remove-cart-a,
 #cart-list-table .checkout-btn {
   padding: 10px 15px;
   border-radius: 10px;

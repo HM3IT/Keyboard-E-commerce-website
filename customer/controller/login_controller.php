@@ -1,11 +1,6 @@
 <?php
 require "../../dao/connection.php";
-if (isset($_SESSION["cart"])) {
-    foreach ($_SESSION["cart"] as $key => $value) {
-        // Remove the product from the session
-        unset($_SESSION["cart"][$key]);
-    }
-}
+
 
 if (session_status() == PHP_SESSION_NONE) {
     session_set_cookie_params(0);
@@ -81,6 +76,6 @@ if (isset($_GET["logout"])) {
     header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1
     header("Pragma: no-cache"); // HTTP 1.0
     header("Expires: 0"); // Proxies
-    header("Location: ../login.php");
+    header("Location: ../index.php");
     exit();
 }

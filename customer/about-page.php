@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,14 +12,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/navbar.css">
+
+    <?php require "./components/base-link.php" ?>
     <link rel="stylesheet" href="css/about-us.css">
     <link rel="stylesheet" href="css/faq-section.css">
 
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/social-icon.css" />
 </head>
 
 <body>
@@ -49,11 +52,35 @@
     <section class="content-section">
         <div class="hidden">
             <h2>About us</h2>
-            <p class="background-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. At perferendis accusantium, eum minus ullam suscipit facilis quaerat totam magnam deserunt officia sed fuga numquam. Velit dolor dicta voluptatum nam saepe assumenda illum repudiandae minima provident tenetur accusantium aliquid nisi beatae eaque deserunt placeat, vitae natus officia deleniti? Provident harum sunt quae odio, omnis reprehenderit temporibus quasi. Harum soluta deserunt magni incidunt reprehenderit non tenetur corrupti dignissimos quisquam excepturi. Error cupiditate totam recusandae illum! Nesciunt enim, consectetur veniam, delectue?</p>
+            <p class="background-info">
+                Welcome to our online store, your ultimate destination for stylish and high-quality clothing. At our website, we specialize in three categories: summer clothes, winter clothes, and rainy clothes. Our mission is to provide you with fashionable options that keep you comfortable and confident in every season. Whether you're preparing for a sunny getaway, bundling up for the cold winter months, or looking for rain-ready attire, we have you covered. We curate a diverse collection of clothing items, carefully selected for their quality, durability, and trendy designs. Each piece is crafted with attention to detail, ensuring both style and functionality. From breezy summer dresses to cozy winter coats and waterproof rain jackets, our range of clothing is designed to meet your specific needs and preferences.
+            </p>
+            <p class="background-info">
+                We understand that fashion is a form of self-expression, and our goal is to help you showcase your unique style effortlessly. Browse through our carefully organized categories, explore our latest arrivals, and discover the perfect outfits to suit your personal taste and lifestyle. With our secure and user-friendly online platform, shopping with us is convenient and enjoyable. Our dedicated team is committed to providing exceptional customer service, assisting you with any inquiries or concerns you may have.
+
+            </p>
+            <p class="background-info">
+                Thank you for choosing <span class="primary">H3IN</span>. We are excited to be a part of your fashion journey and look forward to helping you find the perfect clothing pieces that make you look and feel amazing.
+
+            </p>
+
         </div>
         <div class="hidden">
-            <h2>Vision & Mission</h2>
-            <p class="background-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. At perferendis accusantium, eum minus ullam suscipit facilis quaerat totam magnam deserunt officia sed fuga numquam. Velit dolor dicta voluptatum nam saepe assumenda illum repudiandae minima provident ten</p>
+            <h2> Mission </h2>
+            <p class="background-info">
+                At H3IN, our mission is to empower individuals to express their personal style through high-quality clothing. We aim to provide a seamless and enjoyable shopping experience, offering a wide selection of trendy and comfortable clothing options for every season. Our goal is to inspire confidence and help our customers feel their best, no matter the occasion.
+            </p>
+        </div>
+        <div class="hidden">
+            <h2> Vision </h2>
+            <p class="background-info">
+                Our vision is to become the go-to destination for fashion enthusiasts seeking top-notch clothing that perfectly suits their style and needs. We strive to build long-lasting relationships with our customers by consistently delivering exceptional products and exceptional service. Through continuous innovation and a customer-centric approach, we aim to create a community where everyone can explore their fashion preferences, find inspiration, and embrace their individuality.
+            </p>
+            <p class="background-info">
+                We are committed to curating a diverse collection of clothing items that cater to different tastes, body types, and lifestyles. Our vision is to be at the forefront of fashion trends, providing our customers with access to the latest styles while maintaining a focus on quality and affordability. As we grow, we remain dedicated to sustainability and ethical practices. We aim to collaborate with eco-conscious brands and prioritize eco-friendly materials, contributing to a more sustainable fashion industry.
+
+                Join us on this exciting fashion journey, and let us help you define your unique style with confidence and convenience.
+            </p>
         </div>
     </section>
     <section id="our-team-section">

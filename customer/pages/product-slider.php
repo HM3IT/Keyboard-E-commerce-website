@@ -1,65 +1,61 @@
-<!DOCTYPE html>
-<!-- Website - www.codingnepalweb.com -->
-<html lang="en" dir="ltr">
+<section class="trend-product-wrapper">
+  <i id="left-arrow-btn" class="fa-solid fa-angle-left"></i>
+  <i id="right-arrow-btn" class="fa-solid fa-angle-right"></i>
+  
+  <ul class="carousel" id="product-section-anchor">
+    <?php
+    $serial = 1;
+    $get_all_product_sql = "SELECT * FROM product LIMIT 10";
+    foreach ($connection->query($get_all_product_sql) as $row) {
+      $id = $row["id"];
+      $name =  $row["name"];
+      $image = $row["image"];
+      $category =  $row["category"];
+      $price = $row["price"];
+      $description =  $row["description"];
+    ?>
+      <li>
+        <div class="product-card">
 
-<head>
-  <meta charset="utf-8">
-  <title>Infinite Card Slider JavaScript | CodingNepal</title>
-  <link rel="stylesheet" href="product-slider.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Fontawesome Link for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-  <script src="product-slider.js" defer></script>
-</head>
+          <img src="../images/Products/<?php echo $category . "/" . $image  ?>" alt="<?php echo  $image  ?>" />
 
-<body>
-  <div class="trend-product-wrapper">
-    <i id="left-arrow-btn" class="fa-solid fa-angle-left"></i>
-    <i id="right-arrow-btn" class="fa-solid fa-angle-right"></i>
-    <ul class="carousel">
-
-      <?php
-      $product_num = 20;
-      for ($i = 0; $i < $product_num; $i++) {
-
-      ?>
-        <li>
-          <div class="product-card">
-            <?php
-            if ($i % 2 ==  0) {
-
-            ?>
-              <img src="../images/Products/summer clothes/f1.jpg" alt="summer-shirt.png" />
-            <?php
-            } else {
-            ?>
-              <img src="../images/Products/summer clothes/f3.jpg" alt="summer-shirt.png" />
-            <?php
-            }
-            ?>
-            <?php require "./components/star-scale-rating.html";
-            ?>
-            <div class="cart-description">
-              <h3>product brand</h3>
-              <h4>product title</h4>
-              <div class="rating-star"></div>
-              <h4 class="price"><span class="old-price">32000 Ks</span><span class="discount-price">25000 Ks</span></h4>
-            </div>
-            <div class="cart-btn-part">
-              <a href="./view-product.php" class="view-description-link">View description</a>
-              <a href="#" class="cart-btn">
-                <i id="cart-btn" class="fa-solid fa-cart-shopping"  ></i>
-              </a>
-            </div>
+          <?php require "./components/star-scale-rating.html";
+          ?>
+          <div class="cart-description">
+            <h3>product brand</h3>
+            <h4><?php echo  $name  ?></h4>
+            <div class="rating-star"></div>
+            <h4 class="price">
+              <span class="old-price"><?php echo  $price + 12000 ?> Ks</span>
+              <span class="discount-price"><?php echo  $price  ?> Ks</span>
+            </h4>
           </div>
-        </li>
-      <?php
-      }
-      ?>
-    </ul>
+          <div class="cart-btn-part">
+            <a href="./view-product.php?view-product-id=<?php echo $id ?>" class="view-description-link">View description</a>
 
-  </div>
+            <form action="./controller/cart_controller.php" method="POST" class="add-cart-form">
+              <input type="hidden" name="id" id="id" value="<?php echo  $id ?>">
+              <input type="hidden" name="name" id="name" value="<?php echo $name ?>">
+              <input type="hidden" name="image" id="image" value="<?php echo $image ?>">
+              <input type="hidden" name="category" id="category" value="<?php echo $category ?>">
+              <input type="hidden" name="price" id="price" value="<?php echo $price ?>">
+              <input type="hidden" name="description" id="description" value="<?php echo $description ?>">
+              <input type="hidden" name="current_page" class="current_page">
 
-</body>
+              <!-- <a href="./controllercart_controller.php/add_to_cart" class="add-to-cart-btn">
+                            Add to Cart
+                        </a> -->
+              <button type="submit" name="add_to_cart" class="add-to-cart">
+                <i id="cart-btn" class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </li>
+    <?php
+    }
+    ?>
+  </ul>
 
-</html>
+</section>
+<script src="./scripts/product-slider.js"> </script>

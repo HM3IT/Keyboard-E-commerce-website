@@ -33,6 +33,7 @@ require "../dao/connection.php";
 
     <script src="scripts/navbar.js"> </script>
     <script src="scripts/quantity-counter.js"></script>
+    <script src="scripts/cart-list-tbl.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="scripts/swiper.js"> </script>
     <script src="scripts/footer.js"></script>

@@ -1,4 +1,8 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 require "../dao/connection.php";
 ?>
 <!DOCTYPE html>
@@ -26,12 +30,8 @@ require "../dao/connection.php";
     ?>
     <section class="checkout-form-section">
         <h2 class="title"> Checkout Form </h2>
-        <form action="" method="POST" class="checkout-form">
+        <form action="./controller/order_controller.php" method="POST" class="checkout-form">
             <table>
-                <tr>
-                    <td> <label for="phone">Contact Number</label></td>
-                    <td> <input type="tel" name="phone" id="phone"></td>
-                </tr>
 
                 <tr>
                     <td rowspan="3"> <label for="">Shipping address</label></td>
@@ -82,7 +82,7 @@ require "../dao/connection.php";
             </table>
 
             <div class="checkout-btn-div">
-                <input type="submit" name="checkout" value="Checkout" class="checkout-btn success-bg" >
+                <input type="submit" name="checkout" value="Checkout" class="checkout-btn success-bg">
             </div>
         </form>
 
