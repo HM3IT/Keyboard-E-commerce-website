@@ -12,11 +12,15 @@ if (empty($_SESSION["status"])) {
 require "../dao/connection.php";
 if (isset($_GET["edit_product_id"])) {
     $id = $_GET["edit_product_id"];
-    $get_product_baseID_sql = "SELECT * FROM product WHERE id =  $id";
+    $get_product_baseID_sql = "SELECT * FROM product WHERE id = $id";
     $resultSet = $connection->query($get_product_baseID_sql);
     $data = $resultSet->fetch();
-}
 
+    $category_id = $data["category_id"];
+
+    $get_category_sql = "SELECT id, category_name FROM category";
+    $category_dataset = $connection->query($get_category_sql);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,29 +47,45 @@ if (isset($_GET["edit_product_id"])) {
             <form class="product-form" action="controller/product_controller.php" method="post" enctype="multipart/form-data">
                 <div>
                     <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
-                    <label for="name">Enter product name</label>
-                    <input type="text" name="name" id="name" value="<?php echo $data["name"] ?>">
-                    <label for="price">Price:</label>
-                    <input type="number" id="price" name="price" min="1" value="<?php echo $data["price"] ?>" placeholder="in Kyat">
-                    <label for="category">Category:</label>
-                    <select id="category" name="category">
-                        <option selected value="summer clothes" <?php if ($data["category"] == "summer clothes") echo "selected" ?>>
-                            Summer Clothes
-                        </option>
-                        <option value="rainy clothes" <?php if ($data["category"] == "rainy clothes") echo "selected" ?>>
-                            Rainy Clothes
-                        </option>
-                        <option value="winter clothes" <?php if ($data["category"] == "winter clothes") echo "selected" ?>>
-                            Winter Clothes
-                        </option>
-                    </select>
 
-                    <label for="quantity">Quantity:</label>
-                    <input type="number" id="quantity" name="quantity" min="1" max="100" value="<?php echo $data["quantity"] ?>">
-                    <label for="fileToUpload">Select image to upload:</label>
-                    <input type="file" name="image" id="fileToUpload">
+                    <label for="name">Enter product name</label>
+                    <input type="text" name="name" id="name" value="<?php echo $data["name"] ?>" required>
+
                     <label for="description">Product Specification: </label>
-                    <textarea name="description" id="description" cols="30" rows="10"><?php echo $data["description"] ?></textarea>
+                    <textarea name="description" id="description" cols="30" rows="10" required><?php echo $data["description"] ?></textarea>
+
+                    <div class="inline-block">
+                        <label for="price">Price:</label>
+                        <input type="text" id="price" name="price" pattern="[0-9]*" inputmode="numeric" placeholder="Enter price in Kyat" value="<?php echo $data["price"] ?>" required>
+
+                        <label for="discount">Discount percent:</label>
+                        <input type="number" name="discount" id="discount" min="0" max="100" value="<?php echo $data["discount"] ?>" placeholder="in percent">
+                    </div>
+
+                    <div class="inline-block">
+                        <label for="category">Category:</label>
+                        <select id="category" name="category_id" required>
+                            <?php while ($category_data = $category_dataset->fetch()) { ?>
+                                <option value="<?php echo $category_data["id"]; ?>" <?php if ($category_data["id"] == $category_id) echo "selected"; ?>>
+                                    <?php echo $category_data["category_name"]; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="100" value="<?php echo $data["quantity"] ?>" required>
+                    </div>
+                    <div class="inline-block">
+                        <label for="primary_img">Select Main Featured Image:</label>
+                        <input type="file" name="primary_img" id="primary_img">
+                    </div>
+
+                    <div class="inline-block">
+                        <label for="additional_imgs">Additional images (up to 4):</label>
+                        <input type="file" name="additional_imgs[]" id="additional_imgs" multiple accept="image/*" max="4">
+                    </div>
+
+
                     <div class="button-flex">
                         <!-- <input type="reset" value="Cancel" class="cancel-btn danger-border"> -->
                         <a href="./product_manager.php" class="cancel-btn danger-border" id="back-btn"> Back </a>

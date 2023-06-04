@@ -27,6 +27,7 @@
         $serial = 1;
         $total_cost = 0;
         foreach ($_SESSION["cart"] as $key => $value) {
+            $product_id = $value['id'];
             $price = $value["price"];
             $quantity = $value["Quantity"];
             $subtotal = $price * $quantity;
@@ -43,7 +44,7 @@
                 <td>
                     <div class="product-quantity-wrapper">
                         <span class="minus">-</span>
-                        <span class="quantity" data-product-id="<?php echo $value['id']; ?>">
+                        <span class="quantity" data-product-id="<?php echo $product_id ; ?>">
                             <?php echo $quantity ?>
                         </span>
                         <span class="plus">+</span>
@@ -51,10 +52,9 @@
                 </td>
                 <td class="subtotal-col"><?php echo  $formattedSubtotal  ?></td>
                 <td>
-                    <a href="./controller/product_controller.php?view_product_id=<?php echo $value['id']; ?>" class="view-cart-a information-border">View</a>
-                    <a class="remove-cart-a danger-border" data-product-id="<?php echo $value['id']; ?>">Remove</a>
-
-
+                    <a 
+                    href="view-product.php?view-product-id=<?php echo $product_id  ?>" class="view-cart-a information-border">View</a>
+                    <a class="remove-cart-a danger-border" data-product-id="<?php echo $product_id ; ?>">Remove</a>
                 </td>
             </tr>
         <?php
@@ -67,7 +67,7 @@
                 echo  number_format($total_cost, 2, ',') . ' Ks';
                 ?></td>
             <td>
-                <a href="./controller/order_controller.php?checkout_order_id=<?php echo "1" ?>" class="checkout-btn success-bg">Check Out</a>
+                <a href="#checkout-anchor" class="checkout-btn success-bg">Order Now</a>
             </td>
         </tr>
     </table>

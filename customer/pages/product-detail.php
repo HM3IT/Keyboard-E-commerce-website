@@ -11,15 +11,20 @@ $view_product = $product_result->fetch();
 
 $id = $view_product['id'];
 $name = $view_product['name'];
-$category = $view_product['category'];
-$image = $view_product['image'];
 $price = $view_product['price'];
 $quantity = $view_product['quantity'];
 $description = $view_product['description'];
 
-$get_related_product_imgs_query = "SELECT image, category FROM product WHERE category = '{$category}' LIMIT 4";
-$related_product_imgs = $connection->query($get_related_product_imgs_query);
+$category_id =  $view_product["category_id"];
+$get_category_sql = "SELECT * FROM category WHERE id=$category_id";
+$category_dataset = $connection->query($get_category_sql);
+$category_row = $category_dataset->fetch();
+$category = $category_row["category_name"];
 
+
+$get_product_images_qry = "SELECT * FROM images WHERE product_id = $id";
+$img_dataset = $connection->query($get_product_images_qry);
+$img_row = $img_dataset->fetch();
 ?>
 <section class="view-product-section" id="product-section-anchor">
     <div class="view-product-box">
@@ -36,14 +41,19 @@ $related_product_imgs = $connection->query($get_related_product_imgs_query);
                 <?php
                 }
                 ?>
-                <img src="../images/Products/<?php echo $category . "/" . $image ?>" alt="<?php echo $image ?>">
+                <img src="../images/Products/<?php echo $category . "/" . $img_row["primary_img"] ?>" alt="<?php echo $img_row["primary_img"] ?>">
             </div>
             <div class="small-img-group">
                 <?php
-                foreach ($related_product_imgs as $data) {
+                $add_img_num = 1;
+                $additional_img_limit = 4;
+                for ($i = 1; $i <= $additional_img_limit; $i++) {
+                    if (!empty($img_row["additional_image" . $i])) {
                 ?>
-                    <img src="../images/Products/<?php echo $data['category'] . "/" . $data['image'] ?>" alt="<?php echo $data['image'] ?>">
+                        <img src="../images/Products/<?php echo $category . "/" . $img_row["additional_image" . $i] ?>" alt="<?php echo $img_row["additional_image". $i] ?>">
                 <?php
+                    }
+                    $add_img_num++;
                 }
                 ?>
             </div>
@@ -52,12 +62,12 @@ $related_product_imgs = $connection->query($get_related_product_imgs_query);
             <div class="product-description-head">
                 <h2 class="product-title "><?php echo $name ?></h2>
                 <h2 class="product-price "><?php echo $price ?> Ks</h2>
-                <select name="" id="">
-                    <option value="">Select Size</option>
-                    <option value="">XL</option>
-                    <option value="">XXL</option>
-                    <option value="">Smal</option>
-                    <option value="">Large</option>
+                <label for="Switch-color">Select Switch</label>
+                <select name="switch-color" id="switch-color">
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                    <option value="brown">Brown</option>
+                    <option value="white">White</option>
                 </select>
                 <?php
                 if ($view_product["quantity"] > 0) {

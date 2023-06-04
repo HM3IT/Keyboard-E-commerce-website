@@ -32,8 +32,6 @@ if (empty($_SESSION["status"])) {
         require "./pages/all_product_tbl.php";
         require "./pages/right-dashboard-panel.php";
         ?>
-
-
     </div>
     <script src="./scripts/sidebar.js"></script>
     <script src="./scripts/theme-togggler.js"></script>

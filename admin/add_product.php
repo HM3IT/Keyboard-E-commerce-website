@@ -9,6 +9,13 @@ if (empty($_SESSION["status"])) {
         location.href = "./login.php"; 
     </script>';
 }
+
+require "../dao/connection.php";
+
+$get_categories_sql = "SELECT * FROM category";
+$category_dataset = $connection->query($get_categories_sql);
+ 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,30 +33,54 @@ if (empty($_SESSION["status"])) {
 </head>
 
 <body>
+
     <div id="main-container">
         <?php
         require "./pages/sidebar.php";
         ?>
         <section class="product-form-section">
-            <h2 class="title information">Add product</h2>
+            <h2 class="title warning">Update product information</h2>
             <form class="product-form" action="controller/product_controller.php" method="post" enctype="multipart/form-data">
                 <div>
+                    <input type="hidden" name="id">
+
                     <label for="name">Enter product name</label>
                     <input type="text" name="name" id="name" required>
-                    <label for="price">Price:</label>
-                    <input type="number" id="price" name="price" min="1" value="1" placeholder="in Kyat" required>
-                    <label for="category">Category:</label>
-                    <select id="category" name="category" required>
-                        <option selected value="summer clothes">Summer Clothes</option>
-                        <option value="rainy clothes">Rainy clothes</option>
-                        <option value="winter clothes">Winter clothes</option>
-                    </select>
-                    <label for="quantity">Quantity:</label>
-                    <input type="number" id="quantity" name="quantity" min="1" max="100" value="1" required>
-                    <label for="fileToUpload">Select image to upload:</label>
-                    <input type="file" name="image" id="fileToUpload" required>
+
                     <label for="description">Product Specification: </label>
                     <textarea name="description" id="description" cols="30" rows="10" required></textarea>
+
+                    <div class="inline-block">
+                        <label for="price">Price:</label>
+                        <input type="text" id="price" name="price" pattern="[0-9]*" inputmode="numeric" placeholder="Enter price in Kyat" required>
+
+                        <label for="discount">Discount percent:</label>
+                        <input type="number" name="discount" id="discount" min="0" max="100" placeholder="in percent">
+                    </div>
+
+                    <div class="inline-block">
+                        <label for="category">Category:</label>
+                        <select id="category" name="category_id" required>
+                            <?php while ($category_data = $category_dataset->fetch()) { ?>
+                                <option value="<?php echo $category_data["id"]; ?>">
+                                    <?php echo $category_data["category_name"]; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="100">
+                    </div>
+                    <div class="inline-block">
+                        <label for="primary_img">Select Main Featured Image:</label>
+                        <input type="file" name="primary_img" id="primary_img" required>
+                    </div>
+
+                    <div class="inline-block">
+                        <label for="additional_imgs">Additional images (up to 4):</label>
+                        <input type="file" name="additional_imgs[]" id="additional_imgs" multiple accept="image/*" max="4" required>
+                    </div>
+
                     <div class="button-flex">
                         <input type="reset" value="Cancel" class="cancel-btn danger-border">
                         <input type="submit" value="submit" name="add-product-submit" id="add-product-btn" class="submit-btn success-border">

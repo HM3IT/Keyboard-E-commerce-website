@@ -38,18 +38,20 @@ if (isset($_SESSION["cart"])) {
         } else {
 
           foreach ($_SESSION["cart"] as $key => $value) {
+        
           ?>
         <li class="card-list-items">
           <div class="card-list-box">
-            <img src="../images/Products/<?php echo $value['category'] . '/' . $value['image'] ?>" alt="<?php echo $row['image'] ?>" />
+            
+            <img src="../images/Products/<?php echo $value['category'] . '/' . $value['image'] ?>" alt="<?php echo $value['image'] ?>" />
             <div class="card-list-box-description1">
               <p> <?php echo $value["description"] ?></p>
               <div class="product-quantity-wrapper">
-                <span class="minus">-</span>
+                <span class="minus" data-product-index="<?php echo $key; ?>">-</span>
                 <span class="quantity" data-product-index="<?php echo $key; ?>">
                   <?php echo $value["Quantity"] ?>
                 </span>
-                <span class="plus">+</span>
+                <span class="plus" data-product-index="<?php echo $key; ?>">+</span>
               </div>
             </div>
             <div class="card-list-box-description2">
@@ -60,6 +62,7 @@ if (isset($_SESSION["cart"])) {
             </div>
           </div>
         </li>
+
   <?php
           }
         }
@@ -67,7 +70,7 @@ if (isset($_SESSION["cart"])) {
   ?>
   </ul>
   <div class="card-list-footer">
-    <a class="card-list-check-out">
+    <a href="./view-cart-list.php" class="card-list-check-out">
       View Detail & Check Out
     </a>
     <div class="card-list-close-btn">
@@ -76,5 +79,6 @@ if (isset($_SESSION["cart"])) {
   </div>
 </div>
 <script src="scripts/cart-list.js"></script>
-<script src="./scripts/quantity-counter.js"></script>
-<script src="./scripts/add-remove-cart.js"></script>
+<script src="scripts/urgent.js"></script>
+<script src="scripts/quantity-counter.js"></script>
+<script src="scripts/add-remove-cart.js"></script>

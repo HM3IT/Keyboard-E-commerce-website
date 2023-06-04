@@ -6,10 +6,10 @@
 
 /* 1. global properties */
 .hero-section-content h4 {
-  font-size:  1.5rem;
+  font-size: 1.5rem;
 }
 .hero-section-content h5 {
-  font-size:  2rem;
+  font-size: 2rem;
 }
 
 .hero-section {
@@ -17,8 +17,7 @@
   display: flex;
   padding: 0 30px;
   margin: 0;
-  /* height: 580px; */
-  height: 100dvh;
+  height: 90dvh;
   background-size: cover;
   background-position: top 25% right 0;
   background-color: #fff;
@@ -26,6 +25,7 @@
   justify-content: center;
   align-content: center;
   align-items: center;
+  gap: 40px;
   z-index: 1;
 }
 
@@ -55,45 +55,43 @@
   margin-top: 20px;
   font-weight: 700;
   font-size: 15px;
-  border: 1px black solid;
-  background-color: orange;
-  color: black;
+   background-color:black;
+  color: orange;
+  border-radius: 15px;
+}
 
-  /* background-position: center;
-  width: 100%;
-  margin: 0 auto; */
-}
-.shop-now-btn:hover{
+.shop-now-btn:hover {
   cursor: pointer;
+  background: radial-gradient(black,orange);
 }
-.hero-section-img img{
-  width:  516px;
-  height:  536px;
+.hero-section-img img {
+  width: 640px;
+  height: 385px;
 }
 
 @media (max-width: 920px) {
   /* styles for screens 799px wide */
-  .hero-section{
-    height: 130dvh;
-  } 
+  .hero-section {
+    height: 110dvh;
+  }
 }
 @media (max-width: 530px) {
   /* styles for screens 799px wide */
-  .hero-section{
+  .hero-section {
     height: 65dvh;
     align-content: flex-end;
-    align-items:stretch;
+    align-items: stretch;
     padding: 0;
   }
-  .hero-section-img, .hero-section-img img{
-    width:  412px;
+  .hero-section-img,
+  .hero-section-img img {
+    width: 412px;
     height: 436px;
   }
   .hero-section-content h4 {
-    font-size:  .75rem;
+    font-size: 0.75rem;
   }
   .hero-section-content h5 {
-    font-size:  .5rem;
-
+    font-size: 0.5rem;
   }
 }

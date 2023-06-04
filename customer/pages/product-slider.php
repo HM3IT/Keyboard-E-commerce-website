@@ -9,15 +9,26 @@
     foreach ($connection->query($get_all_product_sql) as $row) {
       $id = $row["id"];
       $name =  $row["name"];
-      $image = $row["image"];
-      $category =  $row["category"];
+
+      $get_product_images_qry = "SELECT * FROM images WHERE product_id = $id";
+      $image_dataset = $connection->query( $get_product_images_qry );
+      $images = $image_dataset->fetch();
+      $primary_image = $images["primary_img"];
+      $category_id =  $row["category_id"];
+
+      $get_category_sql = "SELECT * FROM category WHERE id=$category_id";
+      $dataset = $connection->query($get_category_sql);
+      $data = $dataset->fetch();
+
+      $category = $data["category_name"];
       $price = $row["price"];
       $description =  $row["description"];
     ?>
       <li>
         <div class="product-card">
 
-          <img src="../images/Products/<?php echo $category . "/" . $image  ?>" alt="<?php echo  $image  ?>" />
+        <img src="../images/Products/<?php echo $category . '/' . $primary_image ?>" alt="<?php echo  $image ?>" />
+          <?php require "./components/star-scale-rating.html"; ?>
 
           <?php require "./components/star-scale-rating.html";
           ?>
@@ -34,17 +45,15 @@
             <a href="./view-product.php?view-product-id=<?php echo $id ?>" class="view-description-link">View description</a>
 
             <form action="./controller/cart_controller.php" method="POST" class="add-cart-form">
-              <input type="hidden" name="id" id="id" value="<?php echo  $id ?>">
-              <input type="hidden" name="name" id="name" value="<?php echo $name ?>">
-              <input type="hidden" name="image" id="image" value="<?php echo $image ?>">
-              <input type="hidden" name="category" id="category" value="<?php echo $category ?>">
-              <input type="hidden" name="price" id="price" value="<?php echo $price ?>">
-              <input type="hidden" name="description" id="description" value="<?php echo $description ?>">
-              <input type="hidden" name="current_page" class="current_page">
+            <input type="hidden" name="id" id="id" value="<?php echo  $id ?>">
+          <input type="hidden" name="name" id="name" value="<?php echo $name ?>">
+          <input type="hidden" name="primary_img" id="image" value="<?php echo $primary_image ?>">
+          <input type="hidden" name="category" id="category" value="<?php echo $category ?>">
+          <input type="hidden" name="price" id="price" value="<?php echo $price ?>">
+          <input type="hidden" name="description" id="description" value="<?php echo $description ?>">
+          <input type="hidden" name="current_page" class="current_page">
 
-              <!-- <a href="./controllercart_controller.php/add_to_cart" class="add-to-cart-btn">
-                            Add to Cart
-                        </a> -->
+        
               <button type="submit" name="add_to_cart" class="add-to-cart">
                 <i id="cart-btn" class="fa-solid fa-cart-shopping"></i>
               </button>

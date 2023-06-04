@@ -15,6 +15,7 @@ require "../dao/connection.php";
     <title>Document</title>
     <?php require "./components/base-link.php" ?>
     <link rel="stylesheet" href="css/cart-list-tbl.css">
+    <link rel="stylesheet" href="css/check-out.css">
     <link rel="stylesheet" href="css/swiper.css">
     <link rel="stylesheet" href="css/newsletter.css">
     <link rel="stylesheet" href="css/star-scale-rating.css">
@@ -27,6 +28,7 @@ require "../dao/connection.php";
     require COMPONENTS_PATH . 'navbar.php';
     require COMPONENTS_PATH . 'cart-list-tbl.php';
     require COMPONENTS_PATH . 'swiper.html';
+    require './checkout.php';
     require COMPONENTS_PATH . 'newsletter.html';
     require COMPONENTS_PATH . 'footer.html';
     ?>
@@ -34,6 +36,7 @@ require "../dao/connection.php";
     <script src="scripts/navbar.js"> </script>
     <script src="scripts/quantity-counter.js"></script>
     <script src="scripts/cart-list-tbl.js"></script>
+    <script src="scripts/check-out.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="scripts/swiper.js"> </script>
     <script src="scripts/footer.js"></script>

@@ -12,16 +12,15 @@
   z-index: 99;
 }
 .logo {
-  min-width: 65px;
-  max-width: var(--brand-logo-width);
-  max-height: var(--nav-bar-height);
+  width: 90px;
+  height: var(--nav-bar-height);
   margin-left: 15px;
 }
 .webpage-logo {
   margin-top: 0;
   padding: 0;
   width: 100%;
-  height: var(--nav-bar-height);
+  height: 75px;
 }
 nav .logo {
   display: none;
@@ -87,11 +86,11 @@ nav .logo {
 .hamburger-menu:active i {
   color: #00ccff;
 }
- 
+
 .nav-bar-right .view-cart-icon i {
   font-size: 2.5rem;
 }
-.nav-bar-right li:first-child{
+.nav-bar-right li:first-child {
   padding-top: 10px;
 }
 @media screen and (min-width: 920px) {

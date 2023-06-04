@@ -7,10 +7,11 @@ if (isset($_POST["add_to_cart"])) {
 
     $productID = $_POST['id'];
     $name = $_POST["name"];
-    $image_name = $_POST["image"];
+    $image_name = $_POST["primary_img"];
     $category = $_POST["category"];
     $price = $_POST["price"];
     $description = $_POST["description"];
+ 
 
     if (!isset($_SESSION["cart"])) {
         // New session and new product
@@ -54,14 +55,6 @@ if (isset($_POST["add_to_cart"])) {
     $redirectUrl = "../" . $target_page . "#product-section-anchor";
     header("Location: " . $redirectUrl);
     exit;
-
-    // if (isset($_POST["current_page"])) {
-    //     $target_page = $_POST["current_page"];
-    //     $redirectUrl = "../" . $target_page . "#product-section-anchor";
-    //     header("Location: " . $redirectUrl);
-    // }else{
-    //     header("Location: " . $redirectUrl);
-    // }
 }
 
 // remove product form the cart
@@ -98,13 +91,14 @@ if (isset($decodedData)) {
         // Update the corresponding product quantity in the session
         $_SESSION['cart'][$productIndex]["Quantity"] = $quantity;
     }
-
+  
     $response = array(
         'success' => true,
         'message' => 'Quantity updated successfully',
-        'data' => $updatedProductAry
+        'data' => '$updatedProductAry'
     );
 
     header('Content-Type: application/json');
     echo json_encode($response);
+    
 }

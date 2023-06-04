@@ -56,7 +56,7 @@
   scroll-behavior: smooth;
   scrollbar-width: none;
   transition: all 0.3s ease-out;
-  height: 420px;
+  height: 440px;
 }
 .carousel.no-transition {
   scroll-behavior: auto;
@@ -74,7 +74,7 @@
 /* 4. parent of the product cart  (li) styling */
 .carousel li{
   width: 200px;
-  height: 380px;
+  height: 400px;
 }
 
 /* 5. product cart styling */

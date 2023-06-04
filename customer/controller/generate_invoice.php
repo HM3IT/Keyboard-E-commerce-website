@@ -3,7 +3,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-require_once './dompdf/autoload.inc.php';
+require_once '../../dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
 
 

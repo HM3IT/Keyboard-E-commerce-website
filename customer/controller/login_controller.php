@@ -28,7 +28,8 @@ VALUES (
         '$password'
     );";
     if ($connection->query($create_new_user)) {
-
+        $lastInsertedId = $connection->lastInsertId();
+        $_SESSION["login_customer_id"] = $lastInsertedId;
 
         $_SESSION["name"] = $name;
         $_SESSION["email"] = $email;
@@ -55,9 +56,10 @@ if (isset($_POST["Sign-In"])) {
 
     foreach ($dataset as $data) {
         if ($data["name"] === $name && $data["password"] === $password) {
-            $_SESSION["customer_id"] = $data["id"];
+            $_SESSION["login_customer_id"] = $data["id"];
             $_SESSION["name"] = $name;
             $_SESSION["password"] = $password;
+
             $_SESSION["status-login"] = "valid";
             header("Location: ../login.php");
             exit;
@@ -73,9 +75,9 @@ if (isset($_GET["logout"])) {
     // Clear all session variables & destroy the session
     $_SESSION = array();
     session_destroy();
-    header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1
-    header("Pragma: no-cache"); // HTTP 1.0
-    header("Expires: 0"); // Proxies
+    header("Cache-Control: no-cache, no-store, must-revalidate"); 
+    header("Pragma: no-cache"); 
+    header("Expires: 0");
     header("Location: ../index.php");
     exit();
 }
