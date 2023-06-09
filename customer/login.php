@@ -22,6 +22,14 @@ session_start();
             <div class="login-form">
                 <!-- START of SIGN IN FORM  -->
                 <form class="sign-in-form" action="controller/login_controller.php" method="post">
+                    <?php
+                    if (isset($_POST["login-for-checkout"])) {
+                        $redirectPage = $_POST["current_page"];
+                    ?>
+                        <input type="hidden" name="current_page" class="current_page" value="<?php echo  $redirectPage ?>">
+                    <?php
+                    }
+                    ?>
                     <div class="group">
                         <label for="user-sign-in" class="label">Username</label>
                         <input type="text" id="user-sign-in" class="input" name="name">
@@ -46,6 +54,14 @@ session_start();
 
                 <!-- START of SIGN UP FORM  -->
                 <form class="sign-up-form" action="./controller/login_controller.php" method="POST">
+                    <?php
+                    if (isset($_POST["login-for-checkout"])) {
+                        $redirectPage = $_POST["current_page"];
+                    ?>
+                        <input type="hidden" name="current_page" class="current_page" value="<?php echo  $redirectPage ?>">
+                    <?php
+                    }
+                    ?>
                     <div class="group">
                         <label for="user-sign-up" class="label">Username</label>
                         <input type="text" id="user-sign-up" class="input" name="name">

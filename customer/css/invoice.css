@@ -124,6 +124,75 @@
   background-color: blue;
   color: white;
 }
+.description{
+  font-size: .7rem;
+  letter-spacing: 2px;
+}
+.text-left {
+  text-align: left;
+}
+/* popup form  */
+/* overlay and popup valid or invalid noti */
+#ask-login-overlay,
+#checkout-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: block;
+  z-index: 99;
+}
+#ask-login-form,
+#checkout-noti-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 495px;
+  height: 160px;
+  border: 0.3px solid grey;
+  box-shadow: 3px 4px 6px black;
+  background-color: whitesmoke;
+  border-radius: 35px;
+  padding: 25px;
+  display: block;
+  z-index: 100;
+}
+#ask-login-form div,
+#checkout-noti-form div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#ask-login-form a,
+#checkout-noti-form a {
+  width: 100px;
+  border-radius: 10px;
+  height: 40px;
+  line-height: 40px;
+}
+
+#ask-login-form #smilly-emoji,
+#checkout-noti-form #sad-emoji,
+#checkout-noti-form #smilly-emoji {
+  font-size: 5rem;
+}
+#checkout-noti-form #sad-emoji {
+  color: rgb(255, 172, 48);
+}
+#checkout-noti-form #smilly-emoji {
+  color: rgb(33, 250, 5);
+}
+#checkout-noti-form a {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  margin: auto;
+  text-align: center;
+}
+
 @media print {
   #print-btn,
   .header,

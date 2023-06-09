@@ -1,12 +1,11 @@
 <section class="product-section" id="product-section-anchor">
-  <h2>Trending Products</h2>
-  <p>Summer Collection New Morden Design</p>
+  <h2>Recommendation Products</h2>
+  <p>Best Collection with Awesome Keycaps & layouts</p>
 
   <div class="product-container">
     <?php
     $serial = 1;
-    $get_all_product_sql = "SELECT * FROM product";
-    foreach ($connection->query($get_all_product_sql) as $row) {
+    foreach ($dataset  as $row) {
       $id = $row["id"];
       $name =  $row["name"];
 
@@ -19,13 +18,13 @@
       $get_category_sql = "SELECT * FROM category WHERE id=$category_id";
       $dataset = $connection->query($get_category_sql);
       $data = $dataset->fetch();
-
       $category = $data["category_name"];
       $price = $row["price"];
       $description =  $row["description"];
+      $quantity = $row["quantity"];
     ?>
       <div class="product-card">
-        <form action="./controller/cart_controller.php" method="POST" class="cart-form">
+        <form method="POST" class="cart-form">
           <input type="hidden" name="id" id="id" value="<?php echo  $id ?>">
           <input type="hidden" name="name" id="name" value="<?php echo $name ?>">
           <input type="hidden" name="primary_img" id="image" value="<?php echo $primary_image ?>">
@@ -33,23 +32,60 @@
           <input type="hidden" name="price" id="price" value="<?php echo $price ?>">
           <input type="hidden" name="description" id="description" value="<?php echo $description ?>">
           <input type="hidden" name="current_page" class="current_page">
-
+          <?php
+          if ($quantity   > 0) {
+          ?>
+            <span class="stock-info in-stock"> In Stock</span>
+          <?php
+          } else {
+          ?>
+            <span class="stock-info out-stock"> Out of Stock</span>
+          <?php
+          }
+          ?>
           <img src="../images/Products/<?php echo $category . '/' . $primary_image ?>" alt="<?php echo  $image ?>" />
-          <?php require "./components/star-scale-rating.html"; ?>
 
+          <?php require "./components/star-scale-rating.html"; ?>
           <div class="cart-description">
             <h3><?php echo $name  ?></h3>
 
             <div class="rating-star"></div>
-            <h4 class="price"><span class="old-price"><?php echo  $price + 12000 ?> Ks</span>
-              <span class="discount-price"><?php echo  $price ?> Ks</span>
-            </h4>
+
+            <?php
+
+            $discount =   $row["discount"];
+
+            if ($discount > 0) {
+              // Calculate the discount price
+              $discount_price = $price - ($price * $discount / 100);
+
+            ?>
+              <h4 class="price"><span class="actual-price"><?php echo $price   ?> Ks</span>
+                <span class="discount-price"><?php echo   $discount_price ?> Ks</span>
+              </h4>
+            <?php
+            } else {
+
+            ?>
+              <h4 class="price"><?php echo  $price ?> Ks</span>
+              </h4>
+            <?php
+            }
+
+            ?>
+
           </div>
           <div class="cart-btn-part">
-            <a href="./view-product.php?view-product-id=<?php echo $id ?>" class="view-description-link">View description</a>
-            <button type="submit" name="add_to_cart" class="add-to-cart">
-              <i id="cart-btn" class="fa-solid fa-cart-shopping"></i>
-            </button>
+            <a href="./product-detail.php?view-product-id=<?php echo $id ?>" class="view-description-link">View Details</a>
+            <?php
+            if ($quantity   > 0) {
+            ?>
+              <button type="submit" name="add_to_cart" class="add-to-cart">
+                <i id="cart-btn" class="fa-solid fa-cart-shopping"></i>
+              </button>
+            <?php
+            }
+            ?>
           </div>
         </form>
       </div>

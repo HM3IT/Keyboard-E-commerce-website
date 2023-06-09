@@ -3,7 +3,7 @@ require "../dao/connection.php";
 $get_all_user_sql = "SELECT * FROM customer";
 
 ?>
-<section class="customer-section">
+<section class="customer-section table-container-wrap">
     <h2>Customers</h2>
     <table id="all-customer-table">
         <tr>

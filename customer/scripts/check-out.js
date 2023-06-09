@@ -20,39 +20,34 @@ function hidePaymentFields() {
 
 // Add an event listener to the checkout button
 
-document
-  .getElementById("checkout-form")
-  .addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent the form from submitting normally
+// document
+//   .getElementById("checkout-form")
+//   .addEventListener("submit", function (e) {
+//     e.preventDefault();
+//     let form = this;
+//     let formData = new FormData(form);
 
-    let form = this;
-    let formData = new FormData(form);
+//     let xhr = new XMLHttpRequest();
+//     xhr.open("POST", " ./controller/order_controller.php", true);
+//     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    console.log(formData);
+//     xhr.onreadystatechange = function () {
+//       if (xhr.readyState === XMLHttpRequest.DONE) {
+//         if (xhr.status === 200 && xhr.responseText) {
+//           let response = JSON.parse(xhr.responseText);
+//           // if (response.success) {
+//             document.getElementById("checkout-overlay").style.display = "block";
+//             document.getElementById("checkout-noti-form").style.display =
+//               "block";
+//           // } else {
+//           //   console.log("Connection error");
+//           // }
+//         } else {
+//           console.log("Failed to place order.");
+//         }
+//       }
+//     };
+//     xhr.send(formData);
+//   });
 
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", form.action, true);
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-          document.getElementById("checkout-overlay").style.display = "block";
-          document.getElementById("checkout-noti-form").style.display = "block";
 
-           
-        } else {
-          // Request failed
-          console.log("Failed to place order.");
-          // Handle the error or show error message
-        }
-      }
-    };
-    xhr.send(formData);
-  });
-
-document
-  .getElementById("check-out-noti-form-btn")
-  .addEventListener("click", function (e) {
-    document.getElementById("checkout-overlay").style.display = "none";
-    document.getElementById("checkout-noti-form").style.display = "none";
-    location.href = "./invoice.php";
-  });

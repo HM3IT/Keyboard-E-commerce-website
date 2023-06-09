@@ -11,6 +11,7 @@ try {
     echo  "
     <style>
      alert('Connection fail');
-     location.href = './customer/index.php'; 
     </style>";
+    exit;
 }
+?>

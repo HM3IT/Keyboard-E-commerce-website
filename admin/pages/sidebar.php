@@ -8,37 +8,37 @@
     </div>
   </div>
   <div class="sidebar-function-container">
-    <a href="./index.php" class="active">
+    <a href="./index.php" class="sidebar-link"> 
       <i class="fa-solid fa-table-columns"></i>
       <h3>Dashboard</h3>
     </a>
 
-    <a href="./customer_manager.php">
+    <a href="./customer_manager.php"  class="sidebar-link">
       <i class="fa-solid fa-user"></i>
       <h3>Customer</h3>
     </a>
 
-    <a href="./order_manager.php">
+    <a href="./order_manager.php"  class="sidebar-link">
       <i class="fa-solid fa-list-check"></i>
       <h3>Orders</h3>
     </a>
-    <a href="./product_manager.php">
+    <a href="./product_manager.php"  class="sidebar-link">
       <i class="fa-solid fa-warehouse"></i>
       <h3>Products</h3>
     </a>
 
-    <a href="./report.php">
+    <a href="./report.php"  class="sidebar-link">
       <i class="fa-regular fa-flag"></i>
       <h3>Reports</h3>
       <span class="report-count">10</span>
     </a>
 
-    <a onclick="openAuthenticationCheckForm()">
+    <a onclick="openAuthenticationCheckForm()"  class="sidebar-link">
       <i class="fa-solid fa-gear"></i>
       <h3>Settings</h3>
     </a>
 
-    <a href="./controller/admin_controller.php?logout" class="logout">
+    <a href="./controller/admin_controller.php?logout" class="logout" >
       <i class="fa-solid fa-arrow-right-from-bracket"></i>
       <h3>Logout</h3>
     </a>
@@ -63,5 +63,23 @@
 
   function closeAuthenticationCheckForm() {
     document.getElementById("popup-form-authentication-check").style.display = "none";
+  }
+
+  // Get the current page URL
+  let currentPage = window.location.href;
+
+  // Get all the sidebar links
+  let sidebarLinks = document.getElementsByClassName("sidebar-link");
+
+  // Loop through the sidebar links and check if the href matches the current page
+  for (let i = 0; i < sidebarLinks.length; i++) {
+    var link = sidebarLinks[i];
+
+    // If the href matches the current page, add the active class
+    if (link.href === currentPage) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
   }
 </script>

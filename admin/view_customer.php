@@ -12,7 +12,7 @@ if (empty($_SESSION["status"])) {
 require "../dao/connection.php";
 if (isset($_GET["view_customer_id"])) {
     $id = $_GET["view_customer_id"];
-    $get_user_baseID_sql = "SELECT * FROM user WHERE id =  $id";
+    $get_user_baseID_sql = "SELECT * FROM customer WHERE id =  $id";
     $resultSet = $connection->query($get_user_baseID_sql);
     $data = $resultSet->fetch();
 }

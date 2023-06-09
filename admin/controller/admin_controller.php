@@ -1,5 +1,9 @@
 <?php
 require "../../dao/connection.php";
+session_set_cookie_params(0);
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (isset($_POST["sign-in-btn"])) {
     $name =  $_POST["name"];
@@ -16,27 +20,20 @@ if (isset($_POST["sign-in-btn"])) {
         $password ===  $data["password"]
     ) {
         // Set session cookie parameters
-        session_set_cookie_params(0);
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+     
         $_SESSION["name"] = $name;
         $_SESSION["email"] = $data["email"];
         $_SESSION["phone"] = $data["phone"];
         $_SESSION["image"] = $data["image"];
 
         $_SESSION["status"] = "login";
-
-        echo '<script> 
-        alert("Admin login successfully"); 
-        location.href = "../index.php"; 
-        </script>';
+        $_SESSION["status-login"] = "valid";
     } else {
-        echo '<script> 
-        alert("Invalid authentication"); 
-         location.href = "../login.php"; 
-        </script>';
+        $_SESSION["status-login"] = "invalid";
     }
+     
+    header("Location: ../login.php");
+    exit;
 }
 // ajuthentication check pop up form
 if (isset($_POST["authentication-check-submit"])) {

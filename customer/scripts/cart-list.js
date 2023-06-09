@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
   // cart-list add remove animation
   const cartListOpenBtn =
     document.getElementsByClassName("card-list-open-btn")[0];
@@ -17,27 +16,37 @@ document.addEventListener("DOMContentLoaded", function () {
     cartList.style.right = "-600px";
   });
 
+  let quantityOverlay = document.getElementById("quantity-limit-overlay");
+  let quantityAlertBox = document.getElementById("quantity-limit-alert-box");
+
   let quantityButtons = document.querySelectorAll(
     ".product-quantity-wrapper .minus, .product-quantity-wrapper .plus"
   );
-
   quantityButtons.forEach(function (button) {
     button.addEventListener("click", function () {
       let quantityElement = button.parentNode.querySelector(".quantity");
       let productIndex = quantityElement.dataset.productIndex;
       let quantity = parseInt(quantityElement.textContent.trim());
 
+      let productID =
+        quantityElement.parentNode.querySelector(".cart-id").dataset.productId;
+
       if (button.classList.contains("minus")) {
         quantity = Math.max(quantity - 1, 1);
-        if(quantity<=0){
+        if (quantity <= 0) {
           quantity == 1;
         }
       } else if (button.classList.contains("plus")) {
-        quantity += 1;
+        if (quantity >= 5) {
+          quantityOverlay.style.display = "block";
+          quantityAlertBox.style.display = "block";
+        } else {
+          quantity += 1;
+        }
       }
 
       quantityElement.textContent = quantity;
-      handleQuantityChange(quantity, productIndex);
+      handleQuantityChange(quantity, productIndex, productID, quantityElement);
     });
   });
 
@@ -45,10 +54,16 @@ document.addEventListener("DOMContentLoaded", function () {
   let waitTimer = 500;
   let updatedProductAry = [];
 
-  function handleQuantityChange(quantity, productIndex) {
+  function handleQuantityChange(
+    quantity,
+    productIndex,
+    productID,
+    quantityElement
+  ) {
     clearTimeout(timer);
     updatedProductAry.push({
       productIndex: productIndex,
+      productID: productID,
       quantity: quantity,
     });
 
@@ -60,13 +75,20 @@ document.addEventListener("DOMContentLoaded", function () {
       xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status === 200) {
-            console.log("Quantity updated successfully.");
-            try {
-              var response = JSON.parse(xhr.responseText);
-              console.log(response);
-            } catch (error) {
-              console.error("Error parsing response: " + error);
-              alert("Invalid response from the server.");
+            let response = JSON.parse(xhr.responseText);
+            if (response.out_of_stock) {
+              // Handle out of stock scenario
+
+              let quantityOverlay = document.getElementById(
+                "quantity-limit-overlay"
+              );
+              let outOfStockBox = document.getElementById("out-of-stock-box");
+              let instockInfo = outOfStockBox.querySelector("span");
+
+              quantityOverlay.style.display = "block";
+              outOfStockBox.style.display = "block";
+              instockInfo.innerText = response.data;
+              quantityElement.textContent = response.data;
             }
           } else {
             console.log("Failed to update quantity.");

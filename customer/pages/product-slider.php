@@ -1,7 +1,7 @@
 <section class="trend-product-wrapper">
   <i id="left-arrow-btn" class="fa-solid fa-angle-left"></i>
   <i id="right-arrow-btn" class="fa-solid fa-angle-right"></i>
-  
+
   <ul class="carousel" id="product-section-anchor">
     <?php
     $serial = 1;
@@ -11,7 +11,7 @@
       $name =  $row["name"];
 
       $get_product_images_qry = "SELECT * FROM images WHERE product_id = $id";
-      $image_dataset = $connection->query( $get_product_images_qry );
+      $image_dataset = $connection->query($get_product_images_qry);
       $images = $image_dataset->fetch();
       $primary_image = $images["primary_img"];
       $category_id =  $row["category_id"];
@@ -27,7 +27,7 @@
       <li>
         <div class="product-card">
 
-        <img src="../images/Products/<?php echo $category . '/' . $primary_image ?>" alt="<?php echo  $image ?>" />
+          <img src="../images/Products/<?php echo $category . '/' . $primary_image ?>" alt="<?php echo  $image ?>" />
           <?php require "./components/star-scale-rating.html"; ?>
 
           <?php require "./components/star-scale-rating.html";
@@ -42,18 +42,18 @@
             </h4>
           </div>
           <div class="cart-btn-part">
-            <a href="./view-product.php?view-product-id=<?php echo $id ?>" class="view-description-link">View description</a>
+            <a href="./product-detail.php?view-product-id=<?php echo $id ?>" class="view-description-link">View Details</a>
 
             <form action="./controller/cart_controller.php" method="POST" class="add-cart-form">
-            <input type="hidden" name="id" id="id" value="<?php echo  $id ?>">
-          <input type="hidden" name="name" id="name" value="<?php echo $name ?>">
-          <input type="hidden" name="primary_img" id="image" value="<?php echo $primary_image ?>">
-          <input type="hidden" name="category" id="category" value="<?php echo $category ?>">
-          <input type="hidden" name="price" id="price" value="<?php echo $price ?>">
-          <input type="hidden" name="description" id="description" value="<?php echo $description ?>">
-          <input type="hidden" name="current_page" class="current_page">
+              <input type="hidden" name="id" id="id" value="<?php echo  $id ?>">
+              <input type="hidden" name="name" id="name" value="<?php echo $name ?>">
+              <input type="hidden" name="primary_img" id="image" value="<?php echo $primary_image ?>">
+              <input type="hidden" name="category" id="category" value="<?php echo $category ?>">
+              <input type="hidden" name="price" id="price" value="<?php echo $price ?>">
+              <input type="hidden" name="description" id="description" value="<?php echo $description ?>">
+              <input type="hidden" name="current_page" class="current_page">
 
-        
+
               <button type="submit" name="add_to_cart" class="add-to-cart">
                 <i id="cart-btn" class="fa-solid fa-cart-shopping"></i>
               </button>

@@ -17,7 +17,7 @@ if (!isset($_SESSION)) {
     <?php require "./components/base-link.php" ?>
     <link rel="stylesheet" href="css/shop-page.css">
     <link rel="stylesheet" href="css/search-bar.css" />
-    <link rel="stylesheet" href="css/shop-banner.css">
+    <link rel="stylesheet" href="css/collection-banner.css">
     <link rel="stylesheet" href="css/swiper.css">
     <link rel="stylesheet" href="css/product-section.css">
     <link rel="stylesheet" href="css/star-scale-rating.css">
@@ -33,9 +33,11 @@ if (!isset($_SESSION)) {
         <?php
         require COMPONENTS_PATH . 'navbar.php';
         require COMPONENTS_PATH . 'search-bar.php';
+        $get_all_product_sql = "SELECT * FROM product";
+        $dataset = $connection->query($get_all_product_sql);
         include COMPONENTS_PATH . 'product-section.php';
         include COMPONENTS_PATH . 'cart-list.php';
-        require COMPONENTS_PATH . 'shop-banner.html';
+        require COMPONENTS_PATH . 'collection-banner.php';
         require COMPONENTS_PATH . 'swiper.html';
         require COMPONENTS_PATH . 'footer.html';
         ?>

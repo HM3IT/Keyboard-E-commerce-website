@@ -6,7 +6,7 @@
             <i class="fa-solid fa-bars"></i>
         </button>
         <div class="theme-toggler">
-            <i class="fa-solid fa-sun active" id="light-mode-toggle"></i>
+            <i class="fa-solid fa-sun" id="light-mode-toggle"></i>
             <i class="fa-solid fa-moon" id="dark-mode-toggle"></i>
         </div>
         <div class="profile">

@@ -213,6 +213,11 @@ b {
 .inline-block{
   display: inline-block;
 }
+
+.table-container-wrap{
+    overflow-y: scroll;
+    max-height: 80dvh;
+}
 #main-container {
   display: grid;
   width: 96%;

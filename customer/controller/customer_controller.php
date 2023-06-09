@@ -53,11 +53,6 @@ if (isset($_POST["create-account-submit"])) {
             '$image_file_name',
             '$category'
         );";
-        if ($connection) {
-            echo "Know";
-        } else {
-            echo "No";
-        }
         $stmt =   $connection->query($insert_product_sql);
         echo '<script> 
             alert("Successfully added the product"); 

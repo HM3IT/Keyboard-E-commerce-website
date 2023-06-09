@@ -28,7 +28,7 @@
 }
 .product-card {
   width: 240px;
-  height: 400px;
+  height: 380px;
   text-align: center;
   box-shadow: 3px 2px 10px black;
   border-radius: 20px;
@@ -37,14 +37,17 @@
 }
 .product-card img {
   width: clamp(190px, 80%, 200px);
-  max-height: 190px;
+  height: 190px;
   margin: 10px;
   margin-bottom: 0;
   border-radius: 20px;
 }
-.old-price{
+.actual-price {
   text-decoration: line-through;
   color: rgb(163, 166, 166);
+}
+.discount-price {
+  color: red;
 }
 .cart-btn-part {
   height: 50px;
@@ -66,12 +69,33 @@
   color: black;
   margin-left: 1rem;
 }
-#cart-btn:hover{
- color: green;
+#cart-btn:hover {
+  color: green;
 }
 .cart-description h3,
 h4 {
   margin: 5px auto;
+}
+
+/* Stock status */
+.product-card form {
+  position: relative;
+}
+.product-card .stock-info {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  padding: 8px 14px;
+  color: aliceblue;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 800;
+}
+.product-card .stock-info.out-stock {
+  background-color: rgb(230, 22, 15);
+}
+.product-card .stock-info.in-stock {
+  background-color: rgb(34, 245, 34);
 }
 
 @media (max-width: 920px) {

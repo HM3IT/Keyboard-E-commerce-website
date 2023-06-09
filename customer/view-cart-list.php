@@ -28,15 +28,15 @@ require "../dao/connection.php";
     require COMPONENTS_PATH . 'navbar.php';
     require COMPONENTS_PATH . 'cart-list-tbl.php';
     require COMPONENTS_PATH . 'swiper.html';
-    require './checkout.php';
+    if (isset($_SESSION['name'])) {
+        require './checkout.php';
+    }
     require COMPONENTS_PATH . 'newsletter.html';
     require COMPONENTS_PATH . 'footer.html';
     ?>
 
     <script src="scripts/navbar.js"> </script>
-    <script src="scripts/quantity-counter.js"></script>
     <script src="scripts/cart-list-tbl.js"></script>
-    <script src="scripts/check-out.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="scripts/swiper.js"> </script>
     <script src="scripts/footer.js"></script>

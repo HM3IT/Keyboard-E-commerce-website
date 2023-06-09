@@ -1,0 +1,16 @@
+#order-information {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 20px 10px;
+  border-radius: 20px;
+  background-color: var(--color-white);
+}
+
+.description {
+  padding: 10px;
+}
+.text-justify {
+  text-align: justify;
+}

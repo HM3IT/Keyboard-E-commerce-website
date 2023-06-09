@@ -23,5 +23,4 @@ document.addEventListener("DOMContentLoaded", function () {
       xhr.send("remove_product_id=" + encodeURIComponent(productId));
     });
   });
-
 });

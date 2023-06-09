@@ -76,6 +76,7 @@
 }
 
 /* overlay and popup valid or invalid noti */
+#ask-login-overlay,
 #checkout-overlay {
   position: fixed;
   top: 0;
@@ -86,13 +87,14 @@
   display: none;
   z-index: 99;
 }
+#ask-login-form,
 #checkout-noti-form {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
   width: 495px;
   height: 160px;
-  transform: translate(-50%, -50%);
   border: 0.3px solid grey;
   box-shadow: 3px 4px 6px black;
   background-color: whitesmoke;
@@ -101,11 +103,13 @@
   display: none;
   z-index: 100;
 }
+#ask-login-form div,
 #checkout-noti-form div {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+#ask-login-form a,
 #checkout-noti-form a {
   width: 100px;
   border-radius: 10px;
@@ -113,6 +117,7 @@
   line-height: 40px;
 }
 
+#ask-login-form #smilly-emoji,
 #checkout-noti-form #sad-emoji,
 #checkout-noti-form #smilly-emoji {
   font-size: 5rem;

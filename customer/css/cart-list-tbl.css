@@ -76,29 +76,29 @@
 }
 
 #empty-cart-noti-form {
-  position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 420px;
-    height: 160px;
-    transform: translate(-50%, -50%);
-    border: 0.3px solid grey;
-    box-shadow: 3px 4px 6px black;
-    background-color: whitesmoke;
-    z-index: 100;
-    padding: 25px;
-    border-radius: 35px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 420px;
+  height: 160px;
+  transform: translate(-50%, -50%);
+  border: 0.3px solid grey;
+  box-shadow: 3px 4px 6px black;
+  background-color: whitesmoke;
+  z-index: 100;
+  padding: 25px;
+  border-radius: 35px;
 }
-#empty-cart-noti-form div{
+#empty-cart-noti-form div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-#empty-cart-noti-form a{
- width: 100px;
- border-radius: 10px;
- height: 40px;
- line-height: 40px;
+#empty-cart-noti-form a {
+  width: 100px;
+  border-radius: 10px;
+  height: 40px;
+  line-height: 40px;
 }
 #empty-cart-noti-overlay {
   position: fixed;
@@ -112,6 +112,13 @@
 #empty-cart-noti-form #sad-emoji {
   color: rgb(255, 172, 48);
   font-size: 5rem;
+}
+
+.ask-login-btn {
+  color: white;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  border-radius: 15px;
 }
 @media screen and (min-width: 920px) {
 }

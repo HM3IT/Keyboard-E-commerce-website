@@ -1,5 +1,5 @@
 .slider-container {
-  height: 300px;
+  height: 340px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,8 @@
   height: fit-content;
 }
 .swiper-slide {
-  height: 300px;
+  height: 340px;
+  background-color: white;
 }
 .swiper-slide img {
   width: 100%;
@@ -24,4 +25,24 @@
 }
 .swiper-pagination-bullet-active {
   background-color: whitesmoke;
+}
+
+#custom-keyboards-ads1,
+#custom-keyboards-ads2,
+#custom-keyboards-ads3 {
+  background-size: cover;
+  height: 100%;
+  background-repeat: no-repeat;
+  border: none;
+}
+#custom-keyboards-ads2 {
+  width: 1400px;
+  margin: 0 auto;
+}
+
+#custom-keyboards-ads1 {
+  background-image: url("../../images/Slider/custom-keyboard-ads1.png");
+}
+#custom-keyboards-ads2 {
+  background-image: url("../../images/Slider/custom-keyboard-ads2.png");
 }

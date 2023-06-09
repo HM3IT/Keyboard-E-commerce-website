@@ -38,15 +38,16 @@ if (isset($_SESSION["cart"])) {
         } else {
 
           foreach ($_SESSION["cart"] as $key => $value) {
-        
+
           ?>
         <li class="card-list-items">
           <div class="card-list-box">
-            
             <img src="../images/Products/<?php echo $value['category'] . '/' . $value['image'] ?>" alt="<?php echo $value['image'] ?>" />
             <div class="card-list-box-description1">
               <p> <?php echo $value["description"] ?></p>
+
               <div class="product-quantity-wrapper">
+                <input type="hidden" class="cart-id" data-product-id="<?php echo $value['id']; ?>">
                 <span class="minus" data-product-index="<?php echo $key; ?>">-</span>
                 <span class="quantity" data-product-index="<?php echo $key; ?>">
                   <?php echo $value["Quantity"] ?>
@@ -79,6 +80,4 @@ if (isset($_SESSION["cart"])) {
   </div>
 </div>
 <script src="scripts/cart-list.js"></script>
-<script src="scripts/urgent.js"></script>
-<script src="scripts/quantity-counter.js"></script>
 <script src="scripts/add-remove-cart.js"></script>

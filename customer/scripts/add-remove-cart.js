@@ -1,14 +1,53 @@
+document.addEventListener("DOMContentLoaded", function () {
+  let addToCartForms = document.querySelectorAll(".cart-form");
 
-let addToCartButtons = document.querySelectorAll(".add-to-cart");
+  addToCartForms.forEach(function (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-addToCartButtons.forEach(function (button) {
-  button.addEventListener("click", function (event) {
-    document.getElementById("popup-info-box").style.display = "block";
+      let formData = new FormData(form);
 
-    // Hiding the popup box after a certain period (1.5 seconds)
-    setTimeout(function () {
-      document.getElementById("popup-info-box").style.display = "none";
-    }, 1500);
+      fetch("./controller/cart_session_controller.php", {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.out_of_stock);
+          if (data.out_of_stock) {
+            let quantityOverlay = document.getElementById(
+              "quantity-limit-overlay"
+            );
+            let outOfStockBox = document.getElementById("out-of-stock-box");
+            let instockInfo = outOfStockBox.querySelector("span");
+
+            quantityOverlay.style.display = "block";
+            outOfStockBox.style.display = "block";
+            instockInfo.innerText = data.message;
+          } else if (!data.exceed_quantity) {
+            document.getElementById("popup-info-box").style.display = "block";
+            // Hiding the popup box after a certain period (1.5 seconds)
+            setTimeout(function () {
+              document.getElementById("popup-info-box").style.display = "none";
+            }, 800);
+            setTimeout(function () {
+              location.reload();
+            }, 1000);
+          } else {
+            let quantityOverlay = document.getElementById(
+              "quantity-limit-overlay"
+            );
+            let quantityAlertBox = document.getElementById(
+              "quantity-limit-alert-box"
+            );
+            quantityOverlay.style.display = "block";
+            quantityAlertBox.style.display = "block";
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
   });
 });
 
@@ -36,9 +75,6 @@ removeButtons.forEach(function (button) {
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-        console.log("Response:", xhr.responseText);
-
-        // Check if the cart is empty
         let cartList = document.getElementById("card-list-ul");
         let emptyCartItems = cartList.querySelector(
           ".card-list-items:not(.removing)"

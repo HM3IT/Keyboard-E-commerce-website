@@ -44,7 +44,7 @@
                 <td>
                     <div class="product-quantity-wrapper">
                         <span class="minus">-</span>
-                        <span class="quantity" data-product-id="<?php echo $product_id ; ?>">
+                        <span class="quantity" data-product-id="<?php echo $product_id; ?>">
                             <?php echo $quantity ?>
                         </span>
                         <span class="plus">+</span>
@@ -52,9 +52,8 @@
                 </td>
                 <td class="subtotal-col"><?php echo  $formattedSubtotal  ?></td>
                 <td>
-                    <a 
-                    href="view-product.php?view-product-id=<?php echo $product_id  ?>" class="view-cart-a information-border">View</a>
-                    <a class="remove-cart-a danger-border" data-product-id="<?php echo $product_id ; ?>">Remove</a>
+                    <a href="product-detail.php?view-product-id=<?php echo $product_id  ?>" class="view-cart-a information-border">View</a>
+                    <a class="remove-cart-a danger-border" data-product-id="<?php echo $product_id; ?>">Remove</a>
                 </td>
             </tr>
         <?php
@@ -67,8 +66,45 @@
                 echo  number_format($total_cost, 2, ',') . ' Ks';
                 ?></td>
             <td>
-                <a href="#checkout-anchor" class="checkout-btn success-bg">Order Now</a>
+                <?php
+                if (isset($_SESSION['name'])) {
+                ?>
+                    <a href="#checkout-anchor" class="checkout-btn success-bg">Order Now</a>
+
+                <?php
+                } else {
+                ?>
+
+                    <a onclick="askLogin()" class="checkout-btn success-bg">Order Now</a>
+
+                <?php
+                }
+                ?>
             </td>
         </tr>
     </table>
 </section>
+<div id="ask-login-overlay"></div>
+<div id="ask-login-form">
+    <div>
+        <i class="fa-regular fa-face-laugh-beam" id="smilly-emoji"></i>
+        <h2>Please login to your account. </h2>
+    </div>
+
+    <div>
+        <form action="./login.php" method="post">
+            <input type="hidden" name="current_page" class="current_page">
+            <input type="submit" class="information-bg ask-login-btn" name="login-for-checkout" value="Login">
+        </form>
+    </div>
+</div>
+
+<script>
+    function askLogin() {
+        document.getElementById("ask-login-overlay").style.display = "block";
+        document.getElementById("ask-login-form").style.display = "block";
+    }
+ 
+</script>
+<script src="./scripts/redirect.js">
+</script>

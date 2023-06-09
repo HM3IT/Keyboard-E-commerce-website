@@ -1,60 +1,7 @@
 <?php
-
+require "../../dao/connection.php";
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
-}
-if (isset($_POST["add_to_cart"])) {
-
-    $productID = $_POST['id'];
-    $name = $_POST["name"];
-    $image_name = $_POST["primary_img"];
-    $category = $_POST["category"];
-    $price = $_POST["price"];
-    $description = $_POST["description"];
- 
-
-    if (!isset($_SESSION["cart"])) {
-        // New session and new product
-        $_SESSION["cart"][0] = array(
-            "id" => $productID,
-            "name" => $name,
-            "price" => $price,
-            "category" => $category,
-            "description" => $description,
-            "image" => $image_name,
-            "Quantity" => 1
-
-        );
-    } else {
-        $isExistingProduct = false;
-
-        foreach ($_SESSION["cart"] as $key => $value) {
-            if ($productID == $value["id"]) {
-                $isExistingProduct = true;
-                $_SESSION["cart"][$key]["Quantity"]++;
-                break;
-            }
-        }
-
-        if (!$isExistingProduct) {
-            // New product
-            $count = count($_SESSION["cart"]);
-            $_SESSION["cart"][$count] = array(
-                "id" => $productID,
-                "name" => $name,
-                "price" => $price,
-                "category" => $category,
-                "description" => $description,
-                "image" => $image_name,
-                "Quantity" => 1
-            );
-        }
-    }
-
-    $target_page = $_POST["current_page"];
-    $redirectUrl = "../" . $target_page . "#product-section-anchor";
-    header("Location: " . $redirectUrl);
-    exit;
 }
 
 // remove product form the cart
@@ -86,19 +33,40 @@ if (isset($decodedData)) {
     $updatedProductAry = $decodedData;
 
     foreach ($updatedProductAry as $productData) {
+
+        $productID = $productData['productID'];     
         $productIndex = $productData['productIndex'];
         $quantity = $productData['quantity'];
+
+        $get_instock_quantity_qry = "SELECT quantity FROM product WHERE id=$productID";
+        $dataset = $connection->query($get_instock_quantity_qry);
+        $instock_quantity_row = $dataset->fetch();
+
+        $instock_quantity = $instock_quantity_row["quantity"];
+
+
+        if ($instock_quantity < $quantity) {
+            $response = array(
+                'success' => true,
+                'out_of_stock' => true,
+                'data' => $instock_quantity
+            );
+            header('Content-Type: application/json');
+            echo json_encode($response);
+            exit;
+        }
+
         // Update the corresponding product quantity in the session
         $_SESSION['cart'][$productIndex]["Quantity"] = $quantity;
     }
-  
+
     $response = array(
         'success' => true,
-        'message' => 'Quantity updated successfully',
-        'data' => '$updatedProductAry'
+        'out of stock' => false,
+        'message' => 'Quantity is updated successfully',
     );
 
     header('Content-Type: application/json');
     echo json_encode($response);
-    
+    exit;
 }

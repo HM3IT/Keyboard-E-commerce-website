@@ -23,19 +23,16 @@ if (!isset($_SESSION)) {
 
   require COMPONENTS_PATH . 'navbar.php';
   ?>
-
-
-
   <section id="invoice-popup-section">
     <!-- START of invoice-header-block1  -->
     <div class="header-block block1">
       <div>
         <img src="../../images/logo.png" alt="" id="invoice-icon">
-         <h6>No. 24D, Nar Nat Taw Road, Kamayut Township, Yangon</h6>
-         <h6>Gmail: heinmin2maw.it@gmail.com</h6>
+        <h6>No. 24D, Nar Nat Taw Road, Kamayut Township, Yangon</h6>
+        <h6>Gmail: heinmin2maw.it@gmail.com</h6>
       </div>
       <div class="company-info">
-        <h1 class="website-name">H3IN</h1>
+        <h1 class="website-name">HM3</h1>
         <h5 style="margin: 5px 0;">Business Address</h5>
         <table id="business-address-tbl">
           <tr>
@@ -114,7 +111,7 @@ if (!isset($_SESSION)) {
             <td><?php echo  $serial++  ?></td>
 
             <td><?php echo $value["name"]  ?></td>
-            <td> <?php echo $value["description"]  ?></td>
+            <td class="description text-left"> <?php echo $value["description"]  ?></td>
             <td><?php echo  $price   ?></td>
             <td>
               <span class="quantity"><?php echo $quantity ?></span>
@@ -141,11 +138,32 @@ if (!isset($_SESSION)) {
 
   </section>
 
-
+  <div id="checkout-overlay"></div>
+  <div id="checkout-noti-form">
+    <div>
+      <i class="fa-regular fa-face-laugh-beam" id="smilly-emoji"></i>
+      <h2>Order has submitted. Please stay tuned for the reply within one hour.</h2>
+    </div>
+    <a class="information-bg" id="check-out-noti-form-btn">OK</a>
+  </div>
 
   <button onclick="window.print();" id="print-btn">Print the invoice section</button>
 
-  <?php require COMPONENTS_PATH . 'footer.html';?>
+  <?php 
+  require COMPONENTS_PATH . 'footer.html'; 
+  foreach ($_SESSION["cart"] as $key => $value) {
+    // Remove the product from the session
+    unset($_SESSION["cart"][$key]);
+  }
+  ?>
+  <script>
+    document
+      .getElementById("check-out-noti-form-btn")
+      .addEventListener("click", function(e) {
+        document.getElementById("checkout-overlay").style.display = "none";
+        document.getElementById("checkout-noti-form").style.display = "none";
+      });
+  </script>
   <script src="scripts/navbar.js"> </script>
   <script src="scripts/footer.js"></script>
 </body>

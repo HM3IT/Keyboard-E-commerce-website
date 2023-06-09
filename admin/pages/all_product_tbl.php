@@ -2,7 +2,7 @@
 require "../dao/connection.php";
 $get_all_product_sql = "SELECT * FROM product";
 ?>
-<section class="product-section">
+<section class="product-section table-container-wrap">
     <h2>Products from inventory</h2>
     <table id="all-product-table">
         <tr>
@@ -24,7 +24,7 @@ $get_all_product_sql = "SELECT * FROM product";
             $category_id =  $row["category_id"];
             $get_category_sql = "SELECT category_name FROM category WHERE id=$category_id";
             $get_product_images_sql = "SELECT primary_img FROM images WHERE product_id=$id";
-          
+
             $dataset = $connection->query($get_category_sql);
             $data = $dataset->fetch();
             $category = $data["category_name"];

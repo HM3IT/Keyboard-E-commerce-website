@@ -3,24 +3,18 @@ require "../../dao/connection.php";
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
 if (isset($_SESSION["cart"])) {
 
-    if (!isset($_SESSION["name"])) {
-        echo '
-        <script>
-         alert("Please login first");
-         location.href = "../login.php";
-        </script>
-        ';
-    }
     $street = $_POST["street"];
     $township = $_POST["township"];
     $city = $_POST["city"];
+    $zipcode =  $_POST["zipcode"];
     $total_price = $_SESSION["total_cost"];
     $customer_id =  $_SESSION["login_customer_id"];
     $today = date('y-m-d');
     $ship_address = $street . ", " . $township . ", " . $city;
-    $zipcode =  $_SESSION["zipcode"];
+
     $_SESSION["ship_address"] = $ship_address;
 
     $additional_request = "";
@@ -76,10 +70,33 @@ if (isset($_SESSION["cart"])) {
     $insert_order_product_qry = "INSERT INTO order_product (order_id, product_id,num_ordered,quoted_price) VALUES (?,?,?,?)";
     $statement2 = $connection->prepare($insert_order_product_qry);
 
+
+    $get_org_quantity = "SELECT quantity FROM product WHERE id = ?";
+
+    $stmt = $connection->prepare($get_org_quantity);
+
     foreach ($_SESSION['cart'] as $key => $value) {
         $quantity = $value["Quantity"];
-        $quoted_price = $value["price"] *  $quantity;
-        $statement2->execute(array($order_id,  $value["id"], $quantity, $quoted_price));
+        $quoted_price = $value["price"] * $quantity;
+        $statement2->execute(array($order_id, $value["id"], $quantity, $quoted_price));
+
+        $product_id = $value["id"];
+
+        $stmt->execute([$product_id]);
+        $original_quantity = $stmt->fetchColumn();
+        $updated_quantity = $original_quantity - $quantity;
+        $update_product_quantity = "UPDATE product SET quantity = $updated_quantity WHERE id = $product_id";
+
+        $connection->query($update_product_quantity);
     }
+    header("Location: ../invoice.php");
     exit;
+    // $response = array(
+    //     'success' => true,
+    //     'message' => 'Order has been subbmited',
+    // );
+
+    // header('Content-Type: application/json');
+    // echo json_encode($response);
+    // exit;
 }

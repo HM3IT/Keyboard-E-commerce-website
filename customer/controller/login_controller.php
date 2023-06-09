@@ -35,9 +35,15 @@ VALUES (
         $_SESSION["email"] = $email;
         // $_SESSION["password"] = $password;
 
+        if (isset($_POST["current_page"])) {
+            $redirectPage = $_POST["current_page"];
+        } else {
+            $redirectPage = "index.php";
+        }
+
         echo '<script> 
-        alert("Account is successfully created"); 
-        location.href = "../index.php"; 
+            alert("Account is successfully created"); 
+            location.href = "../' . $redirectPage . '"; 
         </script>';
     } else {
         echo '<script> 
@@ -61,7 +67,19 @@ if (isset($_POST["Sign-In"])) {
             $_SESSION["password"] = $password;
 
             $_SESSION["status-login"] = "valid";
-            header("Location: ../login.php");
+
+
+
+            if (isset($_POST["current_page"])) {
+                $redirectPage = $_POST["current_page"];
+            } else {
+                $redirectPage = "index.php";
+            }
+
+            echo '<script> 
+                alert("Account is successfully created"); 
+                location.href = "../' . $redirectPage . '#checkout-anchor' . '"; 
+            </script>';
             exit;
         }
     }
@@ -75,8 +93,8 @@ if (isset($_GET["logout"])) {
     // Clear all session variables & destroy the session
     $_SESSION = array();
     session_destroy();
-    header("Cache-Control: no-cache, no-store, must-revalidate"); 
-    header("Pragma: no-cache"); 
+    header("Cache-Control: no-cache, no-store, must-revalidate");
+    header("Pragma: no-cache");
     header("Expires: 0");
     header("Location: ../index.php");
     exit();

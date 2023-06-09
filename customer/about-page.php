@@ -60,7 +60,7 @@ if (!isset($_SESSION)) {
 
             </p>
             <p class="background-info">
-                Thank you for choosing <span class="primary">H3IN</span>. We are excited to be a part of your fashion journey and look forward to helping you find the perfect clothing pieces that make you look and feel amazing.
+                Thank you for choosing <span class="primary">HM3</span>. We are excited to be a part of your fashion journey and look forward to helping you find the perfect clothing pieces that make you look and feel amazing.
 
             </p>
 

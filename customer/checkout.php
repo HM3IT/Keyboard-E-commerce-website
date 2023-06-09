@@ -3,17 +3,9 @@ if (!isset($_SESSION)) {
     session_start();
 }
 ?>
-<div id="checkout-overlay"></div>
-<div id="checkout-noti-form">
-    <div>
-        <i class="fa-regular fa-face-laugh-beam" id="smilly-emoji"></i>
-        <h2>Order has submitted. Please stay tuned for the reply within one hour.</h2>
-    </div>
-    <a class="information-bg" id="check-out-noti-form-btn">OK</a>
-</div>
 <section class="checkout-form-section" id="checkout-anchor">
     <h2 class=" title"> Checkout Form </h2>
-    <form action=" ./controller/order_controller.php" method="POST" enctype="multipart/form-data" class="checkout-form" id="checkout-form">
+    <form action="./controller/order_controller.php" method="POST" enctype="multipart/form-data" class="checkout-form" id="checkout-form">
         <table>
 
             <tr>
@@ -85,3 +77,4 @@ if (!isset($_SESSION)) {
     </form>
 
 </section>
+<script src="scripts/check-out.js"></script>

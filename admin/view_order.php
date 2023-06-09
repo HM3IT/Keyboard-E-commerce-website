@@ -10,12 +10,6 @@ if (empty($_SESSION["status"])) {
     </script>';
 }
 require "../dao/connection.php";
-if (isset($_GET["view_customer_id"])) {
-    $id = $_GET["view_customer_id"];
-    $get_user_baseID_sql = "SELECT * FROM user WHERE id =  $id";
-    $resultSet = $connection->query($get_user_baseID_sql);
-    $data = $resultSet->fetch();
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,14 +24,15 @@ if (isset($_GET["view_customer_id"])) {
     <link rel="stylesheet" href="./css/sidebar.css" />
     <link rel="stylesheet" href="./css/right-dashboard-panel.css" />
     <link rel="stylesheet" href="./css/product_form.css">
-    <link rel="stylesheet" href="./css/customer-detail-form.css">
+    <link rel="stylesheet" href="./css/all_product_tbl.css">
+    <link rel="stylesheet" href="./css/order_detail_form.css">
 </head>
 
 <body>
     <div id="main-container">
         <?php
         require "./pages/sidebar.php";
-        require "./pages/customer-detail-form.php";
+        require "./pages/order_detail_form.php";
         require "./pages/right-dashboard-panel.php";
         ?>
     </div>
