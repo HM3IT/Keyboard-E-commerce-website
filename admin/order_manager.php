@@ -46,8 +46,6 @@ if (empty($_SESSION["status"])) {
     </div>
     <script src="./scripts/sidebar.js"></script>
 
-    <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
-    <!-- <script src="./scripts/jquery.min.js"></script> -->
     <script src="./scripts/order_status_changer.js"> </script>
     <script src="./scripts/all_order_tbl.js"> </script>
     <script src="./scripts/theme-togggler.js"></script>

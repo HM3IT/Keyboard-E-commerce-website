@@ -11,7 +11,7 @@
     margin: 1rem auto;
 
   }
-  #all-customer-table {
+  .all-customer-table {
     width: 100%;
     padding: var(--card-padding);
     background: var(--color-white);
@@ -21,17 +21,17 @@
     transition: all 0.3s ease;
   }
   
-  #all-customer-table:hover {
+  .all-customer-table:hover {
     box-shadow: none;
   }
   
-  #all-customer-table tbody td {
+  .all-customer-table tbody td {
     height: 2.8rem;
     border-bottom: 1px solid var(--color-light);
     color: var(--color-dark-variant);
   }
   
-  #all-customer-table .customer-tbl-img {
+  .all-customer-table .customer-tbl-img {
     width: 85px;
     height: 100px;
   }

@@ -4,7 +4,8 @@
 
   <div class="product-container">
     <?php
-    $serial = 1;
+    $item_per_page = 10;
+    $counter = 0;
     foreach ($dataset  as $row) {
       $id = $row["id"];
       $name =  $row["name"];
@@ -17,6 +18,7 @@
 
       $get_category_sql = "SELECT * FROM category WHERE id=$category_id";
       $dataset = $connection->query($get_category_sql);
+
       $data = $dataset->fetch();
       $category = $data["category_name"];
       $price = $row["price"];
@@ -90,6 +92,10 @@
         </form>
       </div>
     <?php
+      $counter++;
+      if ($counter >= $item_per_page) {
+        break;
+      }
     }
     ?>
   </div>

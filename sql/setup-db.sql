@@ -30,6 +30,12 @@ CREATE TABLE orders(
     order_date date,
     totalprice int(11),
     customer_id int(5),
+    ship_address VARCHAR(255),
+    additional_request VARCHAR(255),
+    payment_method VARCHAR(255),
+    transaction_slip VARCHAR(255),
+    order_aproval VARCHAR(255),
+    delivery_status VARCHAR(255),
     foreign key(customer_id) references customer(id)
 );
 CREATE TABLE order_product(
@@ -51,10 +57,10 @@ CREATE TABLE images (
     product_id INT(10),
     FOREIGN KEY (product_id) REFERENCES product(id),
     primary_img VARCHAR(255),
-    associated_img1 VARCHAR(255),
-    associated_img2 VARCHAR(255),
-    associated_img3 VARCHAR(255),
-    associated_img4 VARCHAR(255)
+    additional_image1 VARCHAR(255),
+    additional_image2 VARCHAR(255),
+    additional_image3 VARCHAR(255),
+    additional_image4 VARCHAR(255)
 );
 
 ALTER TABLE orders

@@ -1,12 +1,12 @@
 .nav-bar-btn {
-    background-color: white;
+  background-color: white;
 }
-.shop-btn{
-    background-color: aqua;
-    border-radius: 20px;
+.shop-btn {
+  background-color: aqua;
+  border-radius: 20px;
 }
-.shop-btn:hover{
-    background-color: white;
+.shop-btn:hover {
+  background-color: white;
 }
 
 /* .div-test-img{
@@ -15,3 +15,85 @@
     background-size: cover;
     height:400px;
 } */
+
+/* Pagination */
+
+#pagination {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+#pagination li {
+  display: inline-block;
+  margin: 5px;
+  box-shadow: 0 5px 25px grey;
+}
+#pagination li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  line-height: 45px;
+}
+.previous-page,
+.next-page {
+  background-color: #0ab1ce;
+  width: 80px;
+  border-radius: 45px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.previous-page:hover {
+  transform: translateX(-5px);
+}
+.next-page:hover {
+  transform: translateX(5px);
+}
+.current-page {
+  width: 45px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.active {
+  background-color: #0ab1ce;
+}
+#pagination {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  background-color: #fff;
+}
+#pagination li {
+  display: inline-block;
+  margin: 5px;
+  box-shadow: 0 5px 25px grey;
+}
+#pagination li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  line-height: 45px;
+}
+.previous-page,
+.next-page {
+  background-color: #0ab1ce;
+  width: 80px;
+  border-radius: 45px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.previous-page:hover {
+  transform: translateX(-5px);
+}
+.next-page:hover {
+  transform: translateX(5px);
+}
+.current-page {
+  width: 45px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.active {
+  background-color: #0ab1ce;
+}

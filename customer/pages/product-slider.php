@@ -44,7 +44,7 @@
           <div class="cart-btn-part">
             <a href="./product-detail.php?view-product-id=<?php echo $id ?>" class="view-description-link">View Details</a>
 
-            <form action="./controller/cart_controller.php" method="POST" class="add-cart-form">
+            <form action="./controller/cart_controller.php" method="POST" class="cart-form">
               <input type="hidden" name="id" id="id" value="<?php echo  $id ?>">
               <input type="hidden" name="name" id="name" value="<?php echo $name ?>">
               <input type="hidden" name="primary_img" id="image" value="<?php echo $primary_image ?>">

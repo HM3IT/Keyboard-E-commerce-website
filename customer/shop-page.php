@@ -33,9 +33,66 @@ if (!isset($_SESSION)) {
         <?php
         require COMPONENTS_PATH . 'navbar.php';
         require COMPONENTS_PATH . 'search-bar.php';
-        $get_all_product_sql = "SELECT * FROM product";
-        $dataset = $connection->query($get_all_product_sql);
+
+        $page_num = 1;
+        $item_per_page = 10;
+
+        if (isset($_REQUEST["page-num"])) {
+            $page_num = $_REQUEST["page-num"];
+        }
+        $offset = ($page_num - 1) * $item_per_page;
+        $get_item_per_page = "SELECT * FROM product ORDER BY id LIMIT $offset, $item_per_page";
+        $dataset = $connection->query($get_item_per_page);
         include COMPONENTS_PATH . 'product-section.php';
+        ?>
+
+        <dvi id="pagination">
+            <li class="page-item previous-page">
+                <a href="shop-page.php?page-num=<?php echo ($page_num - 1) ?>#main-container" class="page-link">Prev</a>
+            </li>
+            <?php
+            $i = 1;
+
+            $countQuery = "SELECT COUNT(*) as total FROM product";
+            $countStmt = $connection->query($countQuery);
+            $countResult = $countStmt->fetch(PDO::FETCH_ASSOC);
+            $totalItems = $countResult['total'];
+
+            $page_count = ceil($totalItems / $item_per_page);
+            echo "<script> console.log('$page_count '); </script>";
+            while ($i <= $page_count) {
+            ?>
+
+                <?php
+                if ($i == $page_num) {
+                ?>
+                    <li class="page-item current-page active">
+                        <a href="shop-page.php?page-num=<?php echo $i ?>#main-container" class="page-link">
+                            <?php echo $i  ?>
+                        </a>
+                    </li>
+                <?php
+                    $i++;
+                    continue;
+                }
+                ?>
+                <li class="page-item current-page">
+                    <a href="shop-page.php?page-num=<?php echo $i ?>#main-container" class="page-link">
+                        <?php echo $i  ?>
+                    </a>
+                </li>
+
+            <?php
+                $i++;
+            }
+            ?>
+
+            <li class="page-item next-page">
+                <a href="shop-page.php?page-num=<?php echo ($page_num + 1) ?>#main-container" class="page-link">Next</a>
+            </li>
+        </dvi>
+
+        <?php
         include COMPONENTS_PATH . 'cart-list.php';
         require COMPONENTS_PATH . 'collection-banner.php';
         require COMPONENTS_PATH . 'swiper.html';
@@ -44,6 +101,7 @@ if (!isset($_SESSION)) {
     </div>
     <script src="scripts/navbar.js"> </script>
     <script src="scripts/search-bar.js"></script>
+    <script src="scripts/pagination.js"></script>
     <script src="scripts/redirect.js"> </script>
     <script src="scripts/footer.js"></script>
     <script src="scripts/star-scale-rating.js"> </script>

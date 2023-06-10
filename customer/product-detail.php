@@ -56,6 +56,7 @@ require "../dao/connection.php";
     $get_product_images_qry = "SELECT * FROM images WHERE product_id = $id";
     $img_dataset = $connection->query($get_product_images_qry);
     $img_row = $img_dataset->fetch();
+    $primary_image = $img_row["primary_img"];
     ?>
     <section class="view-product-section" id="product-section-anchor">
         <div class="view-product-box">
@@ -72,7 +73,7 @@ require "../dao/connection.php";
                     <?php
                     }
                     ?>
-                    <img src="../images/Products/<?php echo $category . "/" . $img_row["primary_img"] ?>" alt="<?php echo $img_row["primary_img"] ?>">
+                    <img src="../images/Products/<?php echo $category . "/" . $primary_image ?>" alt="<?php echo $img_row["primary_img"] ?>">
                 </div>
                 <div class="small-img-group">
                     <?php
@@ -104,10 +105,10 @@ require "../dao/connection.php";
                     if ($view_product["quantity"] > 0) {
                     ?>
 
-                        <form action="./controller/cart_controller.php" method="POST" class="add-cart-form">
+                        <form method="POST" class="cart-form">
                             <input type="hidden" name="id" id="id" value="<?php echo  $id ?>">
                             <input type="hidden" name="name" id="name" value="<?php echo $name ?>">
-                            <input type="hidden" name="image" id="image" value="<?php echo $image ?>">
+                            <input type="hidden" name="primary_img" id="image" value="<?php echo $primary_image ?>">
                             <input type="hidden" name="category" id="category" value="<?php echo $category ?>">
                             <input type="hidden" name="price" id="price" value="<?php echo $price ?>">
                             <input type="hidden" name="description" id="description" value="<?php echo $description ?>">
