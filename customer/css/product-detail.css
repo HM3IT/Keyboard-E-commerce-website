@@ -112,7 +112,7 @@
 }
 /* 3.5 product detail paragraph */
 .product-description-body h2 {
-  line-height: 50px;
+  letter-spacing: 5px;
 }
 .view-product-box p {
   margin-top: 30px;

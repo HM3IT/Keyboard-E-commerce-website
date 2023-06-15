@@ -11,9 +11,10 @@
         LEFT JOIN images i ON p.id = i.product_id
         LEFT JOIN category c ON p.category_id = c.id";
         $stmt = $connection->query($get_product_images_sql);
-        $dataset = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $search_data_source = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach ($dataset as $data) {
+        foreach ($search_data_source as $data) {
+          $id = $data["id"];
           $name = $data["name"];
           $price = $data["price"];
           $quantity = $data["quantity"];
@@ -23,30 +24,32 @@
           $quantity = $data["quantity"];
         ?>
           <li>
-            <div class="matched-item-box">
-              <img src="../images/Products/Summer clothes/f1.jpg" alt="" />
-              <img src="../images/Products/<?php echo $category . '/' . $primary_image ?>" alt="<?php echo  $image ?>" />
+            <a href="./product-detail.php?view-product-id=<?php echo $id ?>">
+              <div class="matched-item-box">
+                <img src="../images/Products/<?php echo $category . '/' . $primary_image ?>" alt="<?php echo  $primary_image ?>" />
 
-              <div class="item-description">
-                <?php
-                if ($quantity > 0) {
-                ?>
-                  <span class="stock-info in-stock"> In stock</span>
-                <?php
-                } else {
-                ?>
-                  <span class="stock-info out-stock">out-of-stock</span>
-                <?php
-                }
-                ?>
-                <h2 class="item-title"><?php echo $name ?></h2>
-                <p class="item-detail">
-                  <?php echo  $description  ?>
-                </p>
+                <div class="item-description">
+                  <?php
+                  if ($quantity > 0) {
+                  ?>
+                    <span class="stock-info in-stock"> In stock</span>
+                  <?php
+                  } else {
+                  ?>
+                    <span class="stock-info out-stock">out-of-stock</span>
+                  <?php
+                  }
+                  ?>
+                  <h2 class="item-title"><?php echo $name ?></h2>
+                  <p class="item-detail">
+                    <?php echo  $description  ?>
+                  </p>
+
+                </div>
                 <h4 class="item-price"> <?php echo  $price  ?> Ks</h4>
               </div>
-            </div>
-            <hr>
+              <hr>
+            </a>
           </li>
         <?php
         }

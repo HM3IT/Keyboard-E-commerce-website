@@ -1,0 +1,305 @@
+/* ======= Content ===========
+1. product-rating div style
+2. Star scale rating 
+3. Review progress bar
+4. Review button
+5. Reviw message section 
+   5.1 reviewer image
+   5.2 review header 
+   5.3 review body 
+   5.4 review footer 
+   5.5 show more & less btns
+6. Overlay & popup boxes
+   6.1 Ask sign in 
+   6.2 Give a review
+=========================== */
+
+/* Changing the higlight in navigation buttons  */
+.nav-bar-btn {
+  background-color: white;
+}
+.shop-btn {
+  background-color: aqua;
+  border-radius: 20px;
+}
+.shop-btn:hover {
+  background-color: white;
+}
+/* 1. product-rating div style */
+#product-rating {
+  width: 880px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgb(247 247 247);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid rgb(194, 191, 191);
+}
+#product-rating #avg-rating-value {
+  font-weight: 900;
+}
+
+/* 2. Star scale rating  */
+#product-rating .rating-scale {
+  justify-content: flex-end;
+}
+
+#product-rating i.blank-star {
+  color: rgb(174, 171, 171);
+}
+#product-rating .review-mid .star-scale-review i {
+  color: gold;
+}
+
+#product-rating .review-mid ul li {
+  margin: 5px 0;
+}
+/* 3. Review progress bar */
+#product-rating .review-mid .progress {
+  display: inline-block;
+  width: 200px;
+  background: #fff;
+  height: 1rem;
+  line-height: 20px;
+}
+#product-rating .review-mid .progress,
+#product-rating .review-mid .progress-bar {
+  border-radius: 15px;
+}
+#product-rating .progress-bar {
+  height: 1rem;
+}
+#product-rating #five_star_progress {
+  background-color: rgb(1, 162, 1);
+}
+#product-rating #four_star_progress {
+  background-color: rgb(0, 72, 0);
+}
+#product-rating #three_star_progress {
+  background-color: rgb(238, 255, 0);
+}
+#product-rating #two_star_progress {
+  background-color: rgb(206, 91, 3);
+}
+#product-rating #one_star_progress {
+  background-color: rgb(120, 0, 0);
+}
+/* 4. Review button */
+#product-rating .review-right button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 15px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+#product-rating .review-right button:hover {
+  cursor: pointer;
+  background-color: aqua;
+}
+
+/* 5. Reviw message section */
+#review_content {
+  max-height: 450px;
+  overflow-y: hidden;
+}
+#review_content .customer-reviews {
+  width: 900px;
+  margin: 20px auto;
+  display: flex;
+  gap: 1rem;
+}
+#review_content .reivew-div {
+  width: 800px;
+  background-color: rgb(247 247 247);
+  border: 1px solid rgb(194, 191, 191);
+}
+/* 5.1 reviewer image  */
+#review_content .customer-reviews img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid rgb(194, 191, 191);
+}
+/* 5.2 review header  */
+#review_content .reivew-div .customer-review-header {
+  border-bottom: 1px solid rgb(189, 185, 185);
+}
+#review_content .customer-review-header h3 {
+  margin: 0;
+  padding: 10px 20px;
+}
+/* 5.3 review body */
+#review_content .reivew-div .card-body {
+  padding: 20px;
+}
+#review_content .reivew-div .card-footer {
+  border-top: 1px solid rgb(189, 185, 185);
+  padding: 10px;
+}
+#review_content .customer-review-header,
+#review_content .card-footer {
+  background-color: #efefef;
+}
+/* 5.4 review footer  */
+#review_content .card-footer {
+  text-align: right;
+}
+/* 5.5 show more & less btns  */
+#show-btns {
+  display: none;
+}
+#view-all-reviews-btn {
+  display: block;
+  margin: 0 auto;
+  background-color: transparent;
+  border: none;
+  color: orange;
+  font-size: 1.5rem;
+  padding: 20px;
+}
+#show-less-reviews-btn {
+  display: none;
+  margin: 0 auto;
+  background-color: transparent;
+  border: none;
+  color: blue;
+  font-size: 1.5rem;
+  padding: 20px;
+}
+#view-all-reviews-btn:hover,
+#show-less-reviews-btn:hover {
+  cursor: pointer;
+  color: darkblue;
+}
+/*6 Overlay & popup boxes  */
+
+/* 6.1 Ask sign in  */
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 990;
+}
+#review-box,
+#ask-login-form,
+#noti-review-already-form {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 20px;
+  z-index: 999;
+  padding: 20px;
+}
+
+#review-box .title {
+  text-align: center;
+}
+#review-box-form .rating-value {
+  text-align: center;
+}
+#review-box-form textarea {
+  width: 287px;
+  display: block;
+  margin: 0px auto;
+  min-height: 90px;
+  min-width: 400px;
+}
+#review-box #close-review-box {
+  background-color: transparent;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+}
+#review-box #close-review-box i {
+  color: blue;
+  font-size: 2rem;
+}
+#review-box #close-review-box:hover i {
+  color: darkblue;
+  cursor: pointer;
+}
+
+#review-box-form #save-review {
+  display: block;
+  margin: 10px auto;
+  padding: 15px 20px;
+  border: none;
+  background-color: blue;
+  color: white;
+  font-weight: 700;
+  border-radius: 5px;
+}
+#review-box-form #save-review:hover {
+  background-color: darkblue;
+  cursor: pointer;
+}
+
+/* 6.2 Give a review */
+#noti-review-already-form,
+#ask-login-form {
+  border: 0.3px solid grey;
+  box-shadow: 3px 4px 6px black;
+  background-color: whitesmoke;
+  border-radius: 35px;
+  padding: 25px;
+}
+#noti-review-already-form {
+  width: 310px;
+  height: 224px;
+}
+#ask-login-form {
+  width: 495px;
+  height: 180px;
+}
+
+#ask-login-form div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#ask-login-form a {
+  width: 100px;
+  border-radius: 10px;
+  height: 40px;
+  line-height: 40px;
+}
+#close-noti-review-already-box,
+#ask-login-form input[type="submit"] {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  margin: 0 auto;
+  display: block;
+  color: white;
+}
+#close-noti-review-already-box,
+#ask-login-form input[type="submit"]:hover {
+  background-color: darkblue;
+  cursor: pointer;
+}
+.smilly-emoji {
+  color: rgb(214, 207, 7);
+  font-size: 5rem;
+}
+.pleasure-emoji {
+  color: rgb(0, 94, 244);
+  font-size: 5rem;
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+}
+#noti-review-already-form p {
+  text-align: justify;
+}

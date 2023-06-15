@@ -42,22 +42,58 @@
         <h2>Recent updates</h2>
         <div class="update-container">
             <?php
-            $update_noti_count = 3;
-            $temp_ID = 1;
-            for ($i = 0; $i <  $update_noti_count; $i++, $temp_ID++) {
+            if (!isset($connection)) {
+                require "../dao/connection.php";
+            }
+            $get_recent_received =
+                "SELECT `orders`.*, customer.*
+            FROM `orders`
+            INNER JOIN customer ON `orders`.customer_id = customer.id
+            WHERE `orders`.delivery_status = 'RECEIVED'
+            ORDER BY `orders`.order_date
+            LIMIT 3";
+
+            $stmt = $connection->prepare($get_recent_received);
+            $stmt->execute();
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($results as $row) {
             ?>
                 <div class="update">
                     <div class="profile-photo">
-                        <img src="../images/User/UID-10<?php echo  $temp_ID ?>.jpg" alt="">
+                        <img src="../images/User/<?php echo  $row['image'] ?>" alt="<?php echo  $row['image'] ?>">
                     </div>
                     <div class="message">
-                        <p><b>Kaung Sett</b> received the order.</p>
-                        <small class="text-muted">2 minute ago</small>
+
+                        <?php
+                        $order_received_date = $row['order_received_date'];
+
+                        $current_time = time();
+                        $received_time = strtotime($order_received_date);
+
+                        $time_elapsed = $current_time - $received_time;
+
+                        if ($time_elapsed < 60) {
+                            $elapsed_time = $time_elapsed . " minute" . ($time_elapsed > 1 ? "s" : "") . " ago";
+                        } elseif ($time_elapsed >= 60 && $time_elapsed < 3600) {
+                            $elapsed_minutes = floor($time_elapsed / 60);
+                            $elapsed_time = $elapsed_minutes . " minute" . ($elapsed_minutes > 1 ? "s" : "") . " ago";
+                        } else {
+                            $elapsed_hours = floor($time_elapsed / 3600);
+                            $elapsed_time = $elapsed_hours . " hour" . ($elapsed_hours > 1 ? "s" : "") . " ago";
+                        }
+                        ?>
+                        <p><b><?php echo  $row['name'] ?></b> has received the order.</p>
+                        <small class="text-muted"><?php echo  $elapsed_time ?></small>
                     </div>
                 </div>
+
             <?php
+
             }
+
             ?>
+
         </div>
     </section>
     <!-- END of RECENT UPDATES section  -->
@@ -109,7 +145,50 @@
         </a>
         <!-- END of add new product card  -->
 
+
+        <!-- START of add new product card  -->
+        <button type="button" id="add-category-btn">
+            <div class="item-card add-category-card">
+                <div>
+                    <i class="fa-solid fa-plus"></i>
+                    <h3>Add category</h3>
+                </div>
+            </div>
+        </button>
+        <!-- END of add new product card  -->
     </section>
     <!-- END of the sales analytics section  -->
 </section>
 <!-- END of the right-side-panel -->
+<div id="overlay"></div>
+<div id="add-category-form">
+
+<div id="close-btn-relative">
+    <i class="fa-solid fa-circle-xmark" id="close-add-category-form"></i>
+        <i class="fa-solid fa-circle-info info-emoji"></i>
+
+</div>
+<div>
+    <form action="./controller/category_controller.php" method="post">
+        <div>
+            <label for="new-category">New category Name</label>
+            <input type="text" id="new-category" name="category" class="category-category">
+        </div>
+        <input type="submit" class="information-bg add-category" name="add-category" value="Submit">
+    </form>
+</div>
+</div>
+<script>
+    $(document).ready(function() {
+        // Add category popup
+        $("#add-category-btn").click(function() {
+            $("#overlay").show();
+            $("#add-category-form").show();
+        });
+
+        $("#close-add-category-form").click(function() {
+            $("#overlay").hide();
+            $("#add-category-form").hide();
+        })
+    });
+</script>

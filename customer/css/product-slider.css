@@ -7,7 +7,10 @@
 5. product card styling
  ===========================*/
 
- /* 1. trend-product wrapper styling */
+#product-slider-section {
+  background-color: white;
+}
+/* 1. trend-product wrapper styling */
 .trend-product-wrapper {
   max-width: 1100px;
   width: 100%;
@@ -27,7 +30,7 @@
   font-size: 1.25rem;
   text-align: center;
   border-radius: 50%;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+  /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23); */
   transform: translateY(-50%);
   transition: transform 0.4s linear;
 }
@@ -37,7 +40,10 @@
 .trend-product-wrapper #right-arrow-btn {
   right: -70px;
 }
-
+.trend-product-wrapper #left-arrow-btn,
+.trend-product-wrapper #right-arrow-btn {
+  font-size: 3rem;
+}
 /* 2.1 buttons animation */
 .trend-product-wrapper #left-arrow-btn:active,
 .trend-product-wrapper #right-arrow-btn:active {
@@ -52,15 +58,14 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   gap: 16px;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   scroll-behavior: smooth;
   scrollbar-width: none;
   transition: all 0.3s ease-out;
-  height: 440px;
+  height: 360px;
 }
 .carousel.no-transition {
   scroll-behavior: auto;
-
 }
 .carousel.dragging {
   scroll-snap-type: none;
@@ -72,25 +77,27 @@
 }
 
 /* 4. parent of the product cart  (li) styling */
-.carousel li{
+.carousel li {
   width: 200px;
-  height: 400px;
+  height: 300px;
 }
 
 /* 5. product cart styling */
 .carousel .product-card {
+  position: relative;
   scroll-snap-align: start;
   width: 100%;
   height: 100%;
   list-style: none;
-  background: #fff;
+  background-color: transparent;
   cursor: pointer;
-  border-radius: 8px;
+  box-shadow: none;
+  /* border-radius: 8px; */
 }
-.product-card > img {
+.product-card .product-img{
   width: 120px;
   height: 140px;
-  object-fit: cover;
+  object-fit: scale-down;
 }
 .carousel .product-card h2 {
   font-weight: 500;
@@ -100,10 +107,14 @@
 .carousel .product-card span {
   font-size: 1rem;
 }
-.product-card .old-price{
+.product-card .old-price {
   text-decoration: line-through;
   color: grey;
-  font-size: .075rem;
+  font-size: 0.075rem;
+}
+.product-card:hover .product-img {
+  width: 160px;
+  object-fit: fill;
 }
 @media screen and (max-width: 900px) {
   .trend-product-wrapper .carousel {

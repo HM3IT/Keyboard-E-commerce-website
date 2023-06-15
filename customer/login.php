@@ -23,7 +23,7 @@ session_start();
                 <!-- START of SIGN IN FORM  -->
                 <form class="sign-in-form" action="controller/login_controller.php" method="post">
                     <?php
-                    if (isset($_POST["login-for-checkout"])) {
+                    if (isset($_POST["login-for"])) {
                         $redirectPage = $_POST["current_page"];
                     ?>
                         <input type="hidden" name="current_page" class="current_page" value="<?php echo  $redirectPage ?>">
@@ -55,7 +55,7 @@ session_start();
                 <!-- START of SIGN UP FORM  -->
                 <form class="sign-up-form" action="./controller/login_controller.php" method="POST">
                     <?php
-                    if (isset($_POST["login-for-checkout"])) {
+                    if (isset($_POST["login-for"])) {
                         $redirectPage = $_POST["current_page"];
                     ?>
                         <input type="hidden" name="current_page" class="current_page" value="<?php echo  $redirectPage ?>">
@@ -82,16 +82,7 @@ session_start();
                         <label for="address" class="label">Current Address (For delivery)</label>
                         <input type="text" id="address" class="input" name="password">
                     </div>
-                    <!-- <div class="group">
-                        <label for="pass" class="label">Repeat Password</label>
-                        <input id="pass" type="password" class="input" data-type="password">
-                    </div> -->
-
-                    <!-- <div class="social">
-                        <h4>Sign Up with </h4>
-                        <div class="go"><i class="fab fa-google"></i> Google</div>
-                        <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
-                    </div> -->
+                 
                     <div class="group button-flex">
                         <input type="submit" class="button success-border" value="Sign Up" name="Sign-Up">
                         <input type="reset" class="button warning-border" value="Cancel">

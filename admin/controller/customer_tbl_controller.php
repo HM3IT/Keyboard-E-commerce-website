@@ -41,7 +41,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         "name" => $row['name'],
         "phone" => $row['phone'],
         "email" => $row['email'],
-        "action" => '<a href="./view_customer.php?view_customer_id=' . $row['id'] . '" class="edit-btn information-border">View</a> <a href="./controller/customer_controller.php?remove_customer_id=' . $row['id'] . '" class="remove-btn danger-border">Remove</a>'
+        "action" => '<a href="./view_customer.php?view_customer_id=' . $row['id'] . '" class="view-btn information-border">View</a> <a href="./controller/customer_controller.php?remove_customer_id=' . $row['id'] . '" class="remove-btn danger-border">Remove</a>'
     );
 }
 

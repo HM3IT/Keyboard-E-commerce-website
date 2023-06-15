@@ -33,16 +33,22 @@ if (session_status() == PHP_SESSION_NONE) {
       <li class="nav-bar-btn">
         <?php
         if (isset($_SESSION["name"])) {
-        ?>
-          <a href="setting.php"> Setting </a>
-          <!-- <a href="./controller/login_controller.php?logout">logout</a> -->
 
-        <?php
-        } else {
+          $current_page = basename($_SERVER['PHP_SELF']);
+
+          if ($current_page == 'setting.php') {
         ?>
+
+            <a href="./controller/login_controller.php?logout">logout</a>
+          <?php
+          } else {
+          ?>
+            <a href="setting.php"> Setting </a> <?php  }
+                                            } else {
+                                                ?>
           <a href="./login.php">login</a>
         <?php
-        }
+                                            }
         ?>
       </li>
     </ul>

@@ -126,6 +126,10 @@ li {
   background-color: var(--color-information);
   color: white;
 }
+
+.disable-text {
+  color: rgb(173, 168, 168);
+}
 .button-flex {
   display: flex;
   gap: 1rem;

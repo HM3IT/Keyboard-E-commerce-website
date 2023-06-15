@@ -28,14 +28,11 @@ $data = $dataset->fetch();
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=!, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/sidebar.css" />
-    <link rel="stylesheet" href="./css/mid-dashboard-panel.css" />
-    <link rel="stylesheet" href="./css/right-dashboard-panel.css" />
+    <?php require "./base_link_script.php";  ?>
     
+    <link rel="stylesheet" href="./css/mid-dashboard-panel.css" />
     <link rel="stylesheet" href="./css/setting.css" />
 </head>
 
@@ -70,11 +67,11 @@ $data = $dataset->fetch();
                             <input type="file" id="image" name="image">
                         </div>
                         <div class="group">
-                            <label for="address" class="danger">Question</label>
+                            <label for="question" class="danger">Question</label>
                             <input type="text" id="question" name="question" value=" <?php echo $data["question"] ?>" required>
                         </div>
                         <div class="group">
-                            <label for="address" class="danger">Answer</label>
+                            <label for="answer" class="danger">Answer</label>
                             <input type="text" id="answer" name="answer" value=" <?php echo $data["answer"] ?>" required>
                         </div>
                     </div>

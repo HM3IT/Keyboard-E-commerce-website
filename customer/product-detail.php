@@ -14,22 +14,25 @@ require "../dao/connection.php";
     <title>Document</title>
     <?php require "./components/base-link.php" ?>
 
-    <link rel="stylesheet" href="css/search-bar.css" />
-    <link rel="stylesheet" href="css/collection-banner.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+    </script>
+
+    <!-- <link rel="stylesheet" href="css/collection-banner.css"> -->
     <link rel="stylesheet" href="css/product-section.css">
     <link rel="stylesheet" href="css/product-slider.css">
     <link rel="stylesheet" href="css/star-scale-rating.css">
     <link rel="stylesheet" href="css/product-detail.css">
+    <link rel="stylesheet" href="css/review-product.css">
+    <link rel="stylesheet" href="css/alert-box.css" />
 </head>
 
 <body>
     <?php
     define('COMPONENTS_PATH', './pages/');
     require COMPONENTS_PATH . 'navbar.php';
-    require COMPONENTS_PATH . 'search-bar.php';
+    require 'components/alert-box.php';
 
-    ?>
-    <?php
+    $product_id;
     if (isset($_GET["view-product-id"])) {
         $product_id = $_GET["view-product-id"];
         $_SESSION["current-view-product"] = $product_id;
@@ -122,33 +125,46 @@ require "../dao/connection.php";
                     <?php
                     }
                     ?>
-                    <?php require "./components/star-scale-rating.html";
-                    ?>
                 </div>
                 <div class="product-description-body">
+             
                     <h2 class="product-detail">Product Details</h2>
-                    <p>
-                        <?php echo $description ?>
-                    </p>
+                    <?php
+                    if (strpos($description, "\n") !== false) {
+                        // If the description contains line breaks, display as line-separated paragraphs
+                        $paragraphs = explode("\n", $description);
+
+                        // Display each paragraph
+                        echo '<ul style="list-style-type: disc;">';
+                        foreach ($paragraphs as $paragraph) {
+                            $trimmedParagraph = trim($paragraph);   
+                            if (!empty($trimmedParagraph)) {
+                                echo '<li>' . $trimmedParagraph . '</li>';
+                            }
+                        }
+                        echo '</ul>';
+                    } else {
+                        // If the description does not contain line breaks, display as a single paragraph
+                        echo '<p>' . $description . '</p>';
+                    }
+                    ?>
+
                 </div>
             </div>
         </div>
 
     </section>
-
-
     <?php
+    require COMPONENTS_PATH . 'review_product.php';
     require COMPONENTS_PATH . 'cart-list.php';
     require COMPONENTS_PATH . 'product-slider.php';
-    require COMPONENTS_PATH . 'collection-banner.php';
     require COMPONENTS_PATH . 'footer.html';
     ?>
 
     <script src="scripts/navbar.js"> </script>
-    <script src="scripts/search-bar.js"></script>
     <script src="scripts/view-product.js"></script>
-    <script src="scripts/quantity-counter.js"> </script>
     <script src="scripts/redirect.js"> </script>
+    <script src="scripts/review-submit.js"> </script>
     <script src="scripts/star-scale-rating.js"> </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="scripts/swiper.js"> </script>

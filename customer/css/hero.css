@@ -78,7 +78,7 @@
 @media (max-width: 530px) {
   /* styles for screens 799px wide */
   .hero-section {
-    height: 65dvh;
+    height: 70dvh;
     align-content: flex-end;
     align-items: stretch;
     padding: 0;
@@ -86,7 +86,7 @@
   .hero-section-img,
   .hero-section-img img {
     width: 412px;
-    height: 436px;
+    height: 250px;
   }
   .hero-section-content h4 {
     font-size: 0.75rem;

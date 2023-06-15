@@ -8,37 +8,45 @@
     </div>
   </div>
   <div class="sidebar-function-container">
-    <a href="./index.php" class="sidebar-link"> 
+    <a href="./index.php" class="sidebar-link">
       <i class="fa-solid fa-table-columns"></i>
       <h3>Dashboard</h3>
     </a>
 
-    <a href="./customer_manager.php"  class="sidebar-link">
+    <a href="./customer_manager.php" class="sidebar-link">
       <i class="fa-solid fa-user"></i>
       <h3>Customer</h3>
     </a>
 
-    <a href="./order_manager.php"  class="sidebar-link">
+    <a href="./order_manager.php" class="sidebar-link">
       <i class="fa-solid fa-list-check"></i>
       <h3>Orders</h3>
+      <span class="report-count"><?php
+                                  if (!isset($connection)) {
+                                    require "../dao/connection.php";
+                                  }
+                                  $get_all_order_sql = "SELECT COUNT(*) AS row_count FROM orders";
+                                  $result = $connection->query($get_all_order_sql);
+                                  $row_count = $result->fetchColumn();
+
+                                  echo $row_count; ?></span>
     </a>
-    <a href="./product_manager.php"  class="sidebar-link">
+    <a href="./product_manager.php" class="sidebar-link">
       <i class="fa-solid fa-warehouse"></i>
       <h3>Products</h3>
     </a>
 
-    <a href="./report.php"  class="sidebar-link">
-      <i class="fa-regular fa-flag"></i>
-      <h3>Reports</h3>
-      <span class="report-count">10</span>
+    <a href="./category_manager.php" class="sidebar-link">
+      <i class="fa-solid fa-tags"></i>
+      <h3>Category</h3>
     </a>
 
-    <a onclick="openAuthenticationCheckForm()"  class="sidebar-link">
+    <a onclick="openAuthenticationCheckForm()" class="sidebar-link">
       <i class="fa-solid fa-gear"></i>
       <h3>Settings</h3>
     </a>
 
-    <a href="./controller/admin_controller.php?logout" class="logout" >
+    <a href="./controller/admin_controller.php?logout" class="logout">
       <i class="fa-solid fa-arrow-right-from-bracket"></i>
       <h3>Logout</h3>
     </a>

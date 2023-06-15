@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const firstCardWidth = carousel.querySelector(".product-card").offsetWidth;
   const arrowBtns = document.querySelectorAll(".trend-product-wrapper > i");
   const carouselChildrens = [...carousel.children];
-  console.log(firstCardWidth);
   let isDragging = false,
     isAutoPlay = true,
     startX,

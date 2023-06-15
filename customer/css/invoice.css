@@ -61,7 +61,7 @@
 /* 3. Table coloring */
 #invoice-popup-section .header-block.block1,
 #total-cost-row td:nth-child(2) {
-  background-color: rgb(236, 101, 23);
+  background-color: rgb(225 134 5);
   color: white;
 }
 
@@ -125,12 +125,12 @@
   color: white;
 }
 .description{
+  padding: 0 20px;
   font-size: .7rem;
-  letter-spacing: 2px;
+  line-height: 1.1rem;
+  text-align: justify;
 }
-.text-left {
-  text-align: left;
-}
+
 /* popup form  */
 /* overlay and popup valid or invalid noti */
 #ask-login-overlay,

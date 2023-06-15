@@ -3,6 +3,7 @@ require "../../dao/connection.php";
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+$valid_file_extensions = array("png", "jpeg", "jpg", "svg", "jfif");
 
 if (isset($_SESSION["cart"])) {
 

@@ -32,6 +32,7 @@
   box-shadow: 3px 4px 7px black;
   transition: all 0.3s ease;
   border: 1px solid grey;
+  background-color: #fdfdfd;
   border-radius: 10px;
 }
 

@@ -43,11 +43,12 @@
                 <td><?php echo  $price   ?></td>
                 <td>
                     <div class="product-quantity-wrapper">
-                        <span class="minus">-</span>
-                        <span class="quantity" data-product-id="<?php echo $product_id; ?>">
-                            <?php echo $quantity ?>
+                        <input type="hidden" class="cart-id" data-product-id="<?php echo $value['id']; ?>">
+                        <span class="minus" data-product-index="<?php echo $key; ?>">-</span>
+                        <span class="quantity" data-product-index="<?php echo $key; ?>">
+                            <?php echo $value["Quantity"] ?>
                         </span>
-                        <span class="plus">+</span>
+                        <span class="plus" data-product-index="<?php echo $key; ?>">+</span>
                     </div>
                 </td>
                 <td class="subtotal-col"><?php echo  $formattedSubtotal  ?></td>
@@ -94,7 +95,7 @@
     <div>
         <form action="./login.php" method="post">
             <input type="hidden" name="current_page" class="current_page">
-            <input type="submit" class="information-bg ask-login-btn" name="login-for-checkout" value="Login">
+            <input type="submit" class="information-bg ask-login-btn" name="login-for" value="Login">
         </form>
     </div>
 </div>
@@ -104,7 +105,6 @@
         document.getElementById("ask-login-overlay").style.display = "block";
         document.getElementById("ask-login-form").style.display = "block";
     }
- 
 </script>
 <script src="./scripts/redirect.js">
 </script>

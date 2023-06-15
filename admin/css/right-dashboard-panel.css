@@ -93,6 +93,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 /* 3. SALES ANALYTICS SECTION  */
@@ -118,16 +119,24 @@
 #sales-analytics .item-card:hover {
   box-shadow: none;
 }
-#sales-analytics .add-product-card {
+#sales-analytics .add-product-card, 
+#sales-analytics .add-category-card {
   display: flex;
   background-color: transparent;
-  border: 2px dashed var(--color-primary);
-  color: var(--color-primary);
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
+#sales-analytics .add-product-card{
+  border: 2px dashed var(--color-primary);
+  color: var(--color-primary);
+}
+#sales-analytics .add-category-card{
+  border: 2px dashed blue;
+  color: blue;
+}
 
+#sales-analytics .add-category-card > div,
 #sales-analytics .add-product-card > div {
   display: flex;
   align-items: center;
@@ -156,9 +165,96 @@
   margin: 0;
   width: 100%;
 }
-
-#sales-analytics .add-product-card div h3 {
+#sales-analytics .add-product-card div h3,
+#sales-analytics .add-category-card div h3 {
   font-weight: 600;
+}
+
+
+#add-category-btn{
+  background-color: transparent;
+  width: 100%;
+}
+
+/* Overlay & popup form  */
+
+#overlay{
+  display: none;
+ position: fixed;
+ top: 0;
+ left: 0;
+ bottom: 0;
+ right: 0;
+ background-color: rgba(0, 0, 0, 0.7);
+ z-index: 990;
+}
+
+#add-category-form{
+ display: none;
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%,-50%);
+ border: 0.3px solid grey;
+ box-shadow: 3px 4px 6px black;
+ background-color: var(--color-light);
+ border-radius: 35px;
+ padding: 25px;
+ z-index: 999;
+}
+
+
+#add-category-form div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+
+#add-category-form label{
+  color: orange;
+}
+
+#add-category-form .group{
+  display: flex;
+}
+
+#add-category-form input[type="submit"] {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  margin: 0 auto;
+  display: block;
+  color: white;
+}
+#add-category-form input[type="submit"]:hover {
+  background-color: darkblue;
+  cursor: pointer;
+}
+
+.info-emoji {
+  color: rgb(0, 94, 244);
+  font-size: 5rem;
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+}
+
+
+ #close-btn-relative{
+  position: relative;
+ }
+ #close-add-category-form{
+  position: absolute;
+  font-size: 2rem;
+  top: 0;
+  right: 5px;
+  color: orange;
+}
+#close-add-category-form:hover{
+  color: red;
+  cursor: pointer;
 }
 
 /* For smaller tablet and mobile phones */

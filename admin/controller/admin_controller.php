@@ -10,39 +10,45 @@ if (isset($_POST["sign-in-btn"])) {
     $answer =   $_POST["answer"];
     $password = str_replace(' ', '', $_POST["password"]);
 
-    $get_admin_qry = "SELECT * FROM admin WHERE id='1'";
+    $encryptedPassword = hash('sha512', $password);
+
+    $get_admin_qry = "SELECT * FROM admin";
     $dataset = $connection->query($get_admin_qry);
     $data = $dataset->fetch();
 
     if (
         $name === $data["name"] &&
         $answer === $data["answer"] &&
-        $password ===  $data["password"]
+        $encryptedPassword ===  $data["password"]
     ) {
         // Set session cookie parameters
-     
+
         $_SESSION["name"] = $name;
         $_SESSION["email"] = $data["email"];
         $_SESSION["phone"] = $data["phone"];
         $_SESSION["image"] = $data["image"];
+        $_SESSION["admin_id"] = $data["id"];
 
         $_SESSION["status"] = "login";
         $_SESSION["status-login"] = "valid";
     } else {
         $_SESSION["status-login"] = "invalid";
     }
-     
+
     header("Location: ../login.php");
     exit;
 }
 // ajuthentication check pop up form
 if (isset($_POST["authentication-check-submit"])) {
     $password = str_replace(' ', '', $_POST["password"]);
-    $get_admin_password = "SELECT password FROM admin WHERE id='1'";
+    $encryptedPassword = hash('sha512', $password);
+
+    $admin_id =  $_SESSION["admin_id"];
+    $get_admin_password = "SELECT password FROM admin WHERE id=$admin_id";
     $dataset = $connection->query($get_admin_password);
     $data = $dataset->fetch();
 
-    if ($password ===  $data["password"]) {
+    if ($encryptedPassword ===  $data["password"]) {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
@@ -53,7 +59,7 @@ if (isset($_POST["authentication-check-submit"])) {
         echo '
     <script> 
         alert("Invalid authentication!"); 
-        location.href = "../login.php"; 
+        location.href = "../index.php"; 
     </script>';
     }
 }
@@ -130,12 +136,14 @@ if (isset($_POST["update-admin"])) {
 // change password
 
 if (!empty($_POST["new-password"])) {
-    echo "heelo";
     $new_password = $_POST["new-password"];
+    $encryptedPassword = hash('sha512', $new_password);
+
+    $admin_id =  $_SESSION["admin_id"];
 
     $update_admin_sql = "UPDATE admin SET 
-    password = '$new_password'
-    WHERE id = '1'";
+    password = '$encryptedPassword'
+    WHERE id =  $admin_id";
 
     if ($connection->query($update_admin_sql)) {
         echo '<script> 

@@ -16,12 +16,14 @@ if (empty($_SESSION["status"])) {
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=!, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/sidebar.css" />
-    <link rel="stylesheet" href="./css/right-dashboard-panel.css" />
+    <?php require "./base_link_script.php";  ?>
+    <!-- Integration -->
+    <link href='https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
     <link rel="stylesheet" href="./css/all_product_tbl.css" />
 </head>
 
@@ -35,7 +37,7 @@ if (empty($_SESSION["status"])) {
     </div>
     <script src="./scripts/sidebar.js"></script>
     <script src="./scripts/theme-togggler.js"></script>
-    <script src="./scripts/all_product_tbl.js"></script>
+    <!-- <script src="./scripts/all_product_tbl.js"></script> -->
 </body>
 
 

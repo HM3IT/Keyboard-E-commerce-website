@@ -10,8 +10,8 @@ if (empty($_SESSION["status"])) {
     </script>';
 }
 require "../dao/connection.php";
-if (isset($_GET["edit_product_id"])) {
-    $id = $_GET["edit_product_id"];
+if (isset($_GET["update_product_id"])) {
+    $id = $_GET["update_product_id"];
     $get_product_baseID_sql = "SELECT * FROM product WHERE id = $id";
     $resultSet = $connection->query($get_product_baseID_sql);
     $data = $resultSet->fetch();
@@ -30,10 +30,7 @@ if (isset($_GET["edit_product_id"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/sidebar.css" />
-    <link rel="stylesheet" href="./css/right-dashboard-panel.css" />
+    <?php require "./base_link_script.php";  ?>
     <link rel="stylesheet" href="./css/product_form.css">
 </head>
 

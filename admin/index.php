@@ -16,14 +16,12 @@ if (empty($_SESSION["status"])) {
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=!, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./css/sidebar.css" />
+    <?php require "./base_link_script.php";  ?>
+
     <link rel="stylesheet" href="./css/mid-dashboard-panel.css" />
-    <link rel="stylesheet" href="./css/right-dashboard-panel.css" />
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet" />
 </head>
 
 <body>

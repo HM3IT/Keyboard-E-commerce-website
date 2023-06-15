@@ -40,14 +40,13 @@ require "../dao/connection.php";
     $dataset = $connection->query($get_all_product_sql);
 
     require COMPONENTS_PATH . 'product-section.php';
-    require './components/alert-box.php';
+    require 'components/alert-box.php';
     require COMPONENTS_PATH . 'cart-list.php';
     require COMPONENTS_PATH . 'newsletter.html';
     require COMPONENTS_PATH . 'footer.html';
     ?>
 
     <script src="scripts/navbar.js"> </script>
-    <script src="scripts/star-scale-rating.js"> </script>
     <script src="scripts/footer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="scripts/swiper.js"> </script>

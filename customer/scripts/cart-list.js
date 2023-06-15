@@ -8,14 +8,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const cartList = document.getElementsByClassName("card-list")[0];
 
-  cartListOpenBtn.addEventListener("click", () => {
-    cartList.style.right = "20px";
-  });
-
-  cartListCloseBtn.addEventListener("click", () => {
-    cartList.style.right = "-600px";
-  });
-
+  if( cartListOpenBtn != null){
+    cartListOpenBtn.addEventListener("click", function () {
+      cartList.style.right = "20px";
+    });
+  
+    cartListCloseBtn.addEventListener("click", () => {
+      cartList.style.right = "-600px";
+    });
+  
+  }
+  
   let quantityOverlay = document.getElementById("quantity-limit-overlay");
   let quantityAlertBox = document.getElementById("quantity-limit-alert-box");
 

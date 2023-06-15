@@ -23,13 +23,7 @@
 .all-product-table:hover {
   box-shadow: none;
 }
-
-.all-product-table tbody td {
-  height: 2.8rem;
-  border-bottom: 1px solid var(--color-light);
-  color: var(--color-dark-variant);
-}
-
+ 
 .all-product-table .product-tbl-img {
   width: 85px;
   height: 100px;
@@ -63,8 +57,7 @@
   border-radius: 0;
   font-size: 1rem;
   font-weight: 600;
-
-  background-color: transparent;
+  background-color: var(--color-white);
 }
 .text-red {
   color: red;
@@ -140,4 +133,9 @@
 #confirm-status-box #information-icon {
   font-size: 5rem;
   color: darkblue;
+}
+
+/* overriding the property from the library */
+.dataTables_wrapper .dataTables_length select{
+  background-color: var(--color-white);
 }

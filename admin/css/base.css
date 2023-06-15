@@ -227,6 +227,18 @@ b {
   background-color: var(--color-background);
 }
 
+#table-wrapper{
+  height: 83dvh;
+  overflow-y: scroll;
+  color: var(--color-white);
+}
+#empTable_info{
+  color: var(--color-dark);
+}
+#empTable tbody tr td{
+  background-color: var(--color-white);
+}
+
 /* For tablet */
 @media screen and (max-width: 1200px) {
   #main-container {

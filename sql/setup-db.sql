@@ -4,8 +4,12 @@ CREATE TABLE product (
     id INT(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255),
     description VARCHAR(255),
+    added_date VARCHAR(255),
     price INT(5),
+    discount INT(3),
     quantity INT(5),
+    sold_quantity INT(255),
+    category_id INT(3),
     foreign key(category) references category(id)
 );
 --  creating USER table with 6 columns
@@ -51,7 +55,6 @@ CREATE TABLE category(
     id int(3) not null primary key AUTO_INCREMENT,
     category_name VARCHAR(255)
 );
-
 CREATE TABLE images (
     id INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     product_id INT(10),
@@ -61,6 +64,16 @@ CREATE TABLE images (
     additional_image2 VARCHAR(255),
     additional_image3 VARCHAR(255),
     additional_image4 VARCHAR(255)
+);
+CREATE TABLE product_review(
+    id INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    product_id INT(10),
+    customer_id INT(5),
+    FOREIGN KEY (product_id) REFERENCES product(id),
+    FOREIGN KEY (customer_id) REFERENCES customer(id),
+    rating INT(10),
+    comments VARCHAR(255),
+    created_date VARCHAR(50)
 );
 
 ALTER TABLE orders

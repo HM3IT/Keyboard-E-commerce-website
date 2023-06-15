@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+
   // Get all product remove buttons
   let removeButtons = document.querySelectorAll(".remove-cart-a");
 
