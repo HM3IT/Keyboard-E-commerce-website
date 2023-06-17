@@ -1,27 +1,28 @@
-document.addEventListener("DOMContentLoaded", function () {
-
+$(document).ready(function () {
   // Get all product remove buttons
-  let removeButtons = document.querySelectorAll(".remove-cart-a");
+  let removeButtons = $(".remove-cart-a");
 
-  removeButtons.forEach(function (button) {
-    button.addEventListener("click", function (event) {
+  removeButtons.each(function () {
+    $(this).click(function (event) {
       event.preventDefault();
 
-      let productId = button.dataset.productId;
+      let productId = $(this).data("productId");
 
-      let xhr = new XMLHttpRequest();
-      xhr.open("POST", "./controller/cart_controller.php", true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-          console.log("Response:", xhr.responseText);
+      $.ajax({
+        url: "./controller/cart_controller.php",
+        method: "POST",
+        data: "remove_product_id=" + encodeURIComponent(productId),
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+          );
+        },
+        success: function (response) {
+          console.log("Response:", response);
           location.reload();
-        }
-      };
-
-      console.log("remove product " + productId);
-      xhr.send("remove_product_id=" + encodeURIComponent(productId));
+        },
+      });
     });
   });
 });

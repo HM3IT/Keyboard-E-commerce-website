@@ -45,13 +45,13 @@
             if (!isset($connection)) {
                 require "../dao/connection.php";
             }
-            $get_recent_received =
-                "SELECT `orders`.*, customer.*
+            $get_recent_received = "SELECT `orders`.*, customer.*
             FROM `orders`
             INNER JOIN customer ON `orders`.customer_id = customer.id
             WHERE `orders`.delivery_status = 'RECEIVED'
-            ORDER BY `orders`.order_date
+            ORDER BY `orders`.order_received_date DESC
             LIMIT 3";
+
 
             $stmt = $connection->prepare($get_recent_received);
             $stmt->execute();
@@ -98,7 +98,37 @@
     </section>
     <!-- END of RECENT UPDATES section  -->
 
-    <!-- START of the sales analytics section  -->
+    <?php
+    // Assuming you have established a database connection using PDO
+
+    // Get today's date
+    $today = date('Y-m-d');
+
+    // Get yesterday's date
+    $yesterday = date('Y-m-d', strtotime('-1 day'));
+
+    // Query to retrieve today's total revenue
+    $todayQuery = "SELECT SUM(total_price) AS today_revenue FROM orders WHERE order_date = :today";
+    $todayStatement = $connection->prepare($todayQuery);
+    $todayStatement->bindParam(':today', $today);
+    $todayStatement->execute();
+    $todayData = $todayStatement->fetch(PDO::FETCH_ASSOC);
+    $todayRevenue = $todayData['today_revenue'];
+
+    // Query to retrieve yesterday's total revenue
+    $yesterdayQuery = "SELECT SUM(total_price) AS yesterday_revenue FROM orders WHERE order_date = :yesterday";
+    $yesterdayStatement = $connection->prepare($yesterdayQuery);
+    $yesterdayStatement->bindParam(':yesterday', $yesterday);
+    $yesterdayStatement->execute();
+    $yesterdayData = $yesterdayStatement->fetch(PDO::FETCH_ASSOC);
+    $yesterdayRevenue = $yesterdayData['yesterday_revenue'];
+
+    // Calculate the percentage difference
+    $revenueDifference = $todayRevenue - $yesterdayRevenue;
+    $revenuePercentage = ($revenueDifference / $yesterdayRevenue) * 100;
+
+    ?>
+
     <section id="sales-analytics">
         <h2>Sales Analytics</h2>
 
@@ -112,13 +142,46 @@
                     <h3>ONLINE ORDERS</h3>
                     <small class="text-muted">Last 24 Hours</small>
                 </div>
-                <h5 class="success">+39%</h5>
-                <h3>365,000K ks</h3>
+                <h5 class="success"><?php echo ($revenueDifference >= 0) ? '+' : '-'; ?><?php echo number_format(abs($revenuePercentage), 2); ?>%</h5>
+
+                <h3><?php echo $todayRevenue; ?> ks</h3>
             </div>
         </div>
         <!-- END of the item-online card  -->
+    
+        <?php
+// Get the current date and yesterday's date
+$currentDate = date('Y-m-d');
+$yesterdayDate = date('Y-m-d', strtotime('-1 day'));
 
-        <!-- START of the new customer card  -->
+// Query to fetch today's new customers
+$todayQuery = "SELECT COUNT(*) AS today_new_customers FROM customer WHERE DATE(FROM_UNIXTIME(created_date)) = :currentDate";
+
+// Query to fetch yesterday's new customers
+$yesterdayQuery = "SELECT COUNT(*) AS yesterday_new_customers FROM customer WHERE DATE(FROM_UNIXTIME(created_date)) = :yesterdayDate";
+
+$todayStatement = $connection->prepare($todayQuery);
+$todayStatement->bindValue(':currentDate', $currentDate);
+$todayStatement->execute();
+$todayResult = $todayStatement->fetch(PDO::FETCH_ASSOC);
+$todayNewCustomers = $todayResult['today_new_customers'];
+
+$yesterdayStatement = $connection->prepare($yesterdayQuery);
+$yesterdayStatement->bindValue(':yesterdayDate', $yesterdayDate);
+$yesterdayStatement->execute();
+$yesterdayResult = $yesterdayStatement->fetch(PDO::FETCH_ASSOC);
+$yesterdayNewCustomers = $yesterdayResult['yesterday_new_customers'];
+
+// Calculate the difference and percentage change
+$customerDifference = $todayNewCustomers - $yesterdayNewCustomers;
+$customerPercentage = 0;
+
+if ($yesterdayNewCustomers != 0) {
+    $customerPercentage = ($customerDifference / $yesterdayNewCustomers) * 100;
+}
+?>
+
+  <!-- START of the new customer card  -->
         <div class="item-card new-customer-card">
             <div class="icon">
                 <i class="fa-solid fa-user"></i>
@@ -128,10 +191,13 @@
                     <h3>NEW CUSTOMERS</h3>
                     <small class="text-muted">Last 24 Hours</small>
                 </div>
-                <h5 class="danger">-25%</h5>
-                <h3>120 customers</h3>
+                <h5 class="<?php echo ($customerDifference >= 0) ? 'success' : 'danger'; ?>">
+                    <?php echo ($customerDifference >= 0) ? '+' : '-'; ?><?php echo number_format(abs($customerPercentage), 2); ?>%
+                </h5>
+                <h3><?php echo $todayNewCustomers; ?> customers</h3>
             </div>
         </div>
+
         <!-- END of the new customer card  -->
 
         <!-- START of add new product card  -->
@@ -163,20 +229,20 @@
 <div id="overlay"></div>
 <div id="add-category-form">
 
-<div id="close-btn-relative">
-    <i class="fa-solid fa-circle-xmark" id="close-add-category-form"></i>
+    <div id="close-btn-relative">
+        <i class="fa-solid fa-circle-xmark" id="close-add-category-form"></i>
         <i class="fa-solid fa-circle-info info-emoji"></i>
 
-</div>
-<div>
-    <form action="./controller/category_controller.php" method="post">
-        <div>
-            <label for="new-category">New category Name</label>
-            <input type="text" id="new-category" name="category" class="category-category">
-        </div>
-        <input type="submit" class="information-bg add-category" name="add-category" value="Submit">
-    </form>
-</div>
+    </div>
+    <div>
+        <form action="./controller/category_controller.php" method="post">
+            <div>
+                <label for="new-category">New category Name</label>
+                <input type="text" id="new-category" name="category" class="category-category">
+            </div>
+            <input type="submit" class="information-bg add-category" name="add-category" value="Submit">
+        </form>
+    </div>
 </div>
 <script>
     $(document).ready(function() {

@@ -80,7 +80,7 @@ session_start();
                     </div>
                     <div class="group">
                         <label for="address" class="label">Current Address (For delivery)</label>
-                        <input type="text" id="address" class="input" name="password">
+                        <input type="text" id="address" class="input" name="address">
                     </div>
                  
                     <div class="group button-flex">

@@ -35,15 +35,18 @@ if(isset($_POST["update-category"])){
     </script>";
 }
 
-if(isset($_REQUEST["remove-category-id"])){
-    $remove_category_id = $_REQUEST["remove-category-id"];
+if (isset($_REQUEST["remove_category_id"])) {
+    $remove_category_id = $_REQUEST["remove_category_id"];
 
-    $remove_category_qry = "DELETE * FROM category WHERE id = $remove_category_id";
+    $remove_category_qry = "DELETE FROM category WHERE id = :category_id";
+    $stmt = $connection->prepare($remove_category_qry);
+    $stmt->bindParam(":category_id", $remove_category_id, PDO::PARAM_INT);
+    $stmt->execute();
 
-    $connection->query($remove_category_qry);
     echo "
     <script>
         alert('Category has been removed');
         location.href='../category_manager.php';
     </script>";
 }
+

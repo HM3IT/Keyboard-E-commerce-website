@@ -54,14 +54,18 @@ if (empty($_SESSION["status"])) {
                     <tr>
                         <td><?php echo  $serial++  ?></td>
                         <td class="category-name-col">
-                  
+
                             <?php echo $row["category_name"]  ?>
                         </td>
                         <td><?php echo $row_count ?></td>
                         <td>
-                        <button type="button" class="edit-btn warning-border" data-category-name="<?php echo $category_name; ?>">Edit category</button>
+                            <button type="button" class="edit-btn warning-border" data-category-name="<?php echo $category_name; ?>">Edit category</button>
 
-                            <a href="./controller/remove_category_controller.php?remove_category_id=<?php echo $row['id']; ?>" class="remove-btn danger-border">Remove</a>
+                            <a href="./controller/category_controller.php?remove_category_id=<?php echo $row['id']; ?>" class="remove-btn danger-border <?php if ($row_count > 0) echo 'disableLink'; ?>">
+                                Remove
+                            </a>
+
+
                         </td>
                     </tr>
                 <?php
@@ -104,13 +108,30 @@ if (empty($_SESSION["status"])) {
     <script src="./scripts/theme-togggler.js"></script>
     <script>
         $(document).ready(function() {
+            $(".disableLink").css({
+                "background-color": "#e4d6d6",
+                "border-color": "#fff5f5",
+                "color": "#676464"
+            });
+            $(".disableLink").hover(
+                function() {
+                    $(this).addClass("no-pointer");
+                },
+                function() {
+                    $(this).removeClass("no-pointer");
+                }
+            );
+            $(".disableLink").click(function() {
+                event.preventDefault();
+                alert("cannot remove the category");
+            });
             // update category popup
             $(".edit-btn").click(function() {
                 $("#overlay").show();
                 $("#update-category-form").show();
 
                 var categoryName = $(this).attr("data-category-name");
-         
+
                 $(".old-category-name").val(categoryName);
 
             });

@@ -71,38 +71,34 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     timer = setTimeout(function () {
-      let xhr = new XMLHttpRequest();
-      xhr.open("POST", "controller/cart_controller.php", true);
-      xhr.setRequestHeader("Content-Type", "application/json");
+      $.ajax({
+        url: "controller/cart_controller.php",
+        method: "POST",
+        data: JSON.stringify(updatedProductAry),
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader("Content-Type", "application/json");
+        },
+        success: function (response) {
+          if (response.out_of_stock) {
+            // Handle out of stock scenario
+            let quantityOverlay = $("#quantity-limit-overlay")[0];
+            let outOfStockBox = $("#out-of-stock-box")[0];
+            let instockInfo = $(outOfStockBox).find("span");
 
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200) {
-            let response = JSON.parse(xhr.responseText);
-            if (response.out_of_stock) {
-              // Handle out of stock scenario
-
-              let quantityOverlay = document.getElementById(
-                "quantity-limit-overlay"
-              );
-              let outOfStockBox = document.getElementById("out-of-stock-box");
-              let instockInfo = outOfStockBox.querySelector("span");
-
-              quantityOverlay.style.display = "block";
-              outOfStockBox.style.display = "block";
-              instockInfo.innerText = response.data;
-              quantityElement.textContent = response.data;
-            }
-          } else {
-            console.log("Failed to update quantity.");
-            alert(
-              "There was an error updating the quantity of the product. Please report this to the admin!"
-            );
+            $(quantityOverlay).css("display", "block");
+            $(outOfStockBox).css("display", "block");
+            $(instockInfo).text(response.data);
+            $(quantityElement).text(response.data);
           }
-        }
-      };
+        },
+        error: function () {
+          console.log("Failed to update quantity.");
+          alert(
+            "There was an error updating the quantity of the product. Please report this to the admin!"
+          );
+        },
+      });
 
-      xhr.send(JSON.stringify(updatedProductAry));
       // Reset the array after sending the data
       updatedProductAry = [];
     }, waitTimer);

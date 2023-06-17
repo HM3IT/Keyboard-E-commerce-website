@@ -1,85 +1,83 @@
-    $(document).ready(function() {
-        $("#empTable").DataTable({
-            processing: true,
-            serverSide: true,
-            serverMethod: "post",
-            ajax: {
-                url: "./controller/table_controller.php",
-            },
-            columns: [{
-                    data: "order_id"
-                },
-                {
-                    data: "customer_name"
-                },
-                {
-                    data: "order_date"
-                },
-                {
-                    data: "ship_address"
-                },
-                {
-                    data: "total_price"
-                },
-                {
-                    data: "order_approval"
-                },
-                {
-                    data: "delivery_status"
-                },
-                {
-                    data: "action"
-                }
-            ],
-        });
+$(document).ready(function () {
+  $("#empTable").DataTable({
+    processing: true,
+    serverSide: true,
+    serverMethod: "post",
+    ajax: {
+      url: "./controller/table_controller.php",
+    },
+    columns: [
+      {
+        data: "order_id",
+      },
+      {
+        data: "customer_name",
+      },
+      {
+        data: "order_date",
+      },
+      {
+        data: "ship_address",
+      },
+      {
+        data: "total_price",
+      },
+      {
+        data: "order_approval",
+      },
+      {
+        data: "delivery_status",
+      },
+      {
+        data: "action",
+      },
+    ],
+  });
+});
+function updateOrderStatus(event, orderId) {
+  event.preventDefault();
+
+  const row = $(event.target).closest("tr");
+  const approvalStatus = row.find(".order-approval").val();
+  const deliveryStatus = row.find(".delivery-status").val();
+
+  const payload = {
+    order_id: orderId,
+    order_approval: approvalStatus,
+    delivery_status: deliveryStatus,
+  };
+
+  $("#confirm-btn").click(function () {
+    $("#confirm-status-overlay").hide();
+    $("#confirm-status-box").hide();
+
+    $.ajax({
+      url: "./controller/order_status_controller.php",
+      type: "POST",
+      dataType: "json",
+      contentType: "application/json",
+      data: JSON.stringify(payload),
+      success: function (response) {
+        console.log("Success");
+        location.reload();
+      },
     });
+  });
+}
 
-    function updateOrderStatus(event, orderId) {
-        event.preventDefault();
+let overlay = $("#confirm-status-overlay");
+let confirmForm = $("#confirm-status-box");
 
-        const row = event.target.closest("tr");
-        // Get the approval status and delivery status values from the row
-        const approvalStatus = row.querySelector(".order-approval").value;
-        const deliveryStatus = row.querySelector(".delivery-status").value;
+function confirmChanges(event, orderId) {
+  overlay.show();
+  confirmForm.show();
 
-        const payload = {
-            order_id: orderId,
-            order_approval: approvalStatus,
-            delivery_status: deliveryStatus
-        };
+  $("#confirm-btn").click(function () {
+    updateOrderStatus(event, orderId);
+  });
+}
 
-        confirmForm.querySelector("#confirm-btn").addEventListener("click", function() {
-            document.getElementById("confirm-status-overlay").style.display = "none";
-            document.getElementById("confirm-status-box").style.display = "none";
-
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST", "./controller/order_status_controller.php", true);
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    console.log("Success");
-                    location.reload();
-                }
-            };
-            xhr.send(JSON.stringify(payload));
-        });
-    }
-
-    let overlay = document.getElementById("confirm-status-overlay");
-    let confirmForm = document.getElementById("confirm-status-box");
-
-    function confirmChanges(event, orderId) {
-        overlay.style.display = "block";
-        confirmForm.style.display = "block";
-        confirmForm
-            .querySelector("#confirm-btn")
-            .addEventListener("click", function() {
-
-                updateOrderStatus(event, orderId);
-            });
-    }
-
-    function closeConfirmForm() {
-        overlay.style.display = "none";
-        confirmForm.style.display = "none";
-    }
+function closeConfirmForm() {
+  overlay.hide();
+  confirmForm.hide();
+}

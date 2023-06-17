@@ -12,47 +12,44 @@ if (isset($_POST["Sign-Up"])) {
     $email = $_POST["email"];
     $phone = $_POST["phone"];
     $password = $_POST["password"];
+    $address = $_POST["address"];
     $encryptedPassword = hash('sha512', $password);
+    $image_name = 'default-user-img.jpg';
 
+    $created_date = time();
 
-    $create_new_user = "INSERT INTO customer (
-        image,
-        name,
-        phone,
-        email,
-        password  
-    )
-VALUES (
-    'default-user-img.jpg',
-        '$name',
-        '$phone',
-        '$email',
-        '$encryptedPassword'
-    );";
-    if ($connection->query($create_new_user)) {
-        $lastInsertedId = $connection->lastInsertId();
-        $_SESSION["login_customer_id"] = $lastInsertedId;
+    // Prepare the statement
+    $statement = $connection->prepare("INSERT INTO customer (image, name, phone, email, password, address, created_date) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
-        $_SESSION["name"] = $name;
-        $_SESSION["email"] = $email;
-        // $_SESSION["password"] = $password;
+    // Bind the parameters
+    $statement->bindParam(1,  $image_name);
+    $statement->bindParam(2, $name);
+    $statement->bindParam(3, $phone);
+    $statement->bindParam(4, $email);
+    $statement->bindParam(5, $encryptedPassword);
+    $statement->bindParam(6, $address);
+    $statement->bindParam(7, $created_date);
 
-        if (isset($_POST["current_page"])) {
-            $redirectPage = $_POST["current_page"];
-        } else {
-            $redirectPage = "index.php";
-        }
+    // Execute the statement
+    $statement->execute();
 
-        echo '<script> 
+    $lastInsertedId = $connection->lastInsertId();
+    $_SESSION["login_customer_id"] = $lastInsertedId;
+
+    $_SESSION["name"] = $name;
+    $_SESSION["email"] = $email;
+    // $_SESSION["password"] = $password;
+
+    if (isset($_POST["current_page"])) {
+        $redirectPage = $_POST["current_page"];
+    } else {
+        $redirectPage = "index.php";
+    }
+
+    echo '<script> 
             alert("Account is successfully created"); 
             location.href = "../' . $redirectPage . '"; 
         </script>';
-    } else {
-        echo '<script> 
-        alert("Account is failed to creat"); 
-        location.href = "../index.php"; 
-        </script>';
-    }
 }
 
 if (isset($_POST["Sign-In"])) {
@@ -73,7 +70,10 @@ if (isset($_POST["Sign-In"])) {
 
             if (isset($_POST["current_page"])) {
                 $redirectPage = $_POST["current_page"];
-                header("Location: ../' . $redirectPage . '");
+                if ($redirectPage === "view-cart-list.php") {
+                    $redirectPage = "#checkout-anchor";
+                }
+                header("Location: ../" . $redirectPage);
                 exit;
             }
             header("Location: ../login.php");

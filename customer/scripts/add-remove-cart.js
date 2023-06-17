@@ -1,112 +1,92 @@
-document.addEventListener("DOMContentLoaded", function () {
-  let addToCartForms = document.querySelectorAll(".cart-form");
+$(document).ready(function () {
+  let addToCartForms = $(".cart-form");
 
-  addToCartForms.forEach(function (form) {
-    form.addEventListener("submit", function (e) {
+  addToCartForms.each(function () {
+    $(this).submit(function (e) {
       e.preventDefault();
 
-      let formData = new FormData(form);
+      let formData = new FormData($(this)[0]);
 
-      fetch("./controller/cart_session_controller.php", {
+      $.ajax({
+        url: "./controller/cart_session_controller.php",
         method: "POST",
-        body: formData,
-      })
-        .then((response) => response.json())
-        .then((data) => {
+        data: formData,
+        processData: false,
+        contentType: false,
+        dataType: "json",
+        success: function (data) {
           console.log(data.out_of_stock);
           if (data.out_of_stock) {
-            let quantityOverlay = document.getElementById(
-              "quantity-limit-overlay"
-            );
-            let outOfStockBox = document.getElementById("out-of-stock-box");
-            let instockInfo = outOfStockBox.querySelector("span");
-
-            quantityOverlay.style.display = "block";
-            outOfStockBox.style.display = "block";
-            instockInfo.innerText = data.message;
+            $("#quantity-limit-overlay").css("display", "block");
+            $("#out-of-stock-box").css("display", "block");
+            $("#out-of-stock-box span").text(data.message);
           } else if (!data.exceed_quantity) {
-            document.getElementById("popup-info-box").style.display = "block";
-            // Hiding the popup box after a certain period (1.5 seconds)
+            $("#popup-info-box").css("display", "block");
             setTimeout(function () {
-              document.getElementById("popup-info-box").style.display = "none";
+              $("#popup-info-box").css("display", "none");
             }, 800);
             setTimeout(function () {
               location.reload();
             }, 1000);
           } else {
-            let quantityOverlay = document.getElementById(
-              "quantity-limit-overlay"
-            );
-            let quantityAlertBox = document.getElementById(
-              "quantity-limit-alert-box"
-            );
-            quantityOverlay.style.display = "block";
-            quantityAlertBox.style.display = "block";
+            $("#quantity-limit-overlay").css("display", "block");
+            $("#quantity-limit-alert-box").css("display", "block");
           }
-        })
-        .catch((error) => {
+        },
+        error: function (error) {
           console.log(error);
-        });
+        },
+      });
     });
   });
-});
 
-// Get all product remove buttons
-let removeButtons = document.querySelectorAll(".product-remove-btn");
+  let removeButtons = $(".product-remove-btn");
 
-removeButtons.forEach(function (button) {
-  button.addEventListener("click", function (event) {
-    event.preventDefault();
+  removeButtons.each(function () {
+    $(this).click(function (event) {
+      event.preventDefault();
 
-    let productId = button.dataset.productId;
-    let listItem = button.closest(".card-list-items");
+      let productId = $(this).data("productId");
+      let listItem = $(this).closest(".card-list-items");
 
-    // Applying the animation
-    listItem.classList.add("removing");
-    setTimeout(function () {
-      listItem.remove();
-      listItem.style.display = "none";
-      // Need to be the same duration with transition duration in CSS (Adjustable)
-    }, 2000);
+      listItem.addClass("removing");
+      setTimeout(function () {
+        listItem.remove();
+        listItem.css("display", "none");
+      }, 2000);
 
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "./controller/cart_controller.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      $.ajax({
+        url: "./controller/cart_controller.php",
+        method: "POST",
+        data: "remove_product_id=" + encodeURIComponent(productId),
+        success: function () {
+          let cartList = $("#card-list-ul");
+          let emptyCartItems = cartList.find(
+            ".card-list-items:not(.removing)"
+          );
 
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-        let cartList = document.getElementById("card-list-ul");
-        let emptyCartItems = cartList.querySelector(
-          ".card-list-items:not(.removing)"
-        );
+          if (emptyCartItems.length === 0) {
+            let emptyCartItem = $("<li>").addClass("card-list-items");
+            let emptyCartBox = $("<div>").addClass("card-list-box");
+            let emptyCartEmoji = $("<i>")
+              .addClass("fa-regular fa-face-sad-cry")
+              .attr("id", "cry-emoji");
+            let emptyCartDescription = $("<div>").addClass(
+              "card-list-box-description1"
+            );
+            let emptyCartHeading = $("<h3>")
+              .css("text-align", "center")
+              .text("Your order cart is now empty");
 
-        if (!emptyCartItems) {
-          // Cart is empty, add the empty cart message
-          let emptyCartItem = document.createElement("li");
-          let emptyCartBox = document.createElement("div");
-          let emptyCartEmoji = document.createElement("i");
-          let emptyCartDescription = document.createElement("div");
-          let emptyCartHeading = document.createElement("h3");
+            emptyCartDescription.append(emptyCartHeading);
+            emptyCartBox.append(emptyCartEmoji);
+            emptyCartBox.append(emptyCartDescription);
+            emptyCartItem.append(emptyCartBox);
 
-          emptyCartItem.classList.add("card-list-items");
-          emptyCartBox.classList.add("card-list-box");
-          emptyCartEmoji.classList.add("fa-regular", "fa-face-sad-cry");
-          emptyCartEmoji.id = "cry-emoji";
-          emptyCartDescription.classList.add("card-list-box-description1");
-          emptyCartHeading.style.textAlign = "center";
-          emptyCartHeading.textContent = "You order cart is now empty";
-
-          emptyCartDescription.appendChild(emptyCartHeading);
-          emptyCartBox.appendChild(emptyCartEmoji);
-          emptyCartBox.appendChild(emptyCartDescription);
-          emptyCartItem.appendChild(emptyCartBox);
-
-          cartList.appendChild(emptyCartItem);
-        }
-      }
-    };
-
-    console.log("remove product " + productId);
-    xhr.send("remove_product_id=" + encodeURIComponent(productId));
+            cartList.append(emptyCartItem);
+          }
+        },
+      });
+    });
   });
 });

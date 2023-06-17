@@ -19,7 +19,9 @@ CREATE TABLE customer (
     name VARCHAR(255),
     password VARCHAR(255),
     phone INT(5),
-    email VARCHAR(255)
+    email VARCHAR(255),
+    address VARCHAR(255),
+    created_date VARCHAR(255)
 );
 CREATE TABLE admin (
     id INT(2) NOT NULL PRIMARY KEY AUTO_INCREMENT,

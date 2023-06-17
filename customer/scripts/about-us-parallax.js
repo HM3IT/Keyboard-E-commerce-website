@@ -1,59 +1,38 @@
-const title = document.getElementById("title");
-const sky = document.getElementsByClassName("parallax-bg-sky")[0];
-const cloudLeft1 = document.getElementsByClassName(
-  "parallax-bg-cloud-left1"
-)[0];
-const cloudLeft2 = document.getElementsByClassName(
-  "parallax-bg-cloud-left2"
-)[0];
-const cloudLeft3 = document.getElementsByClassName(
-  "parallax-bg-cloud-left3"
-)[0];
-const cloudLeft4 = document.getElementsByClassName(
-  "parallax-bg-cloud-left4"
-)[0];
-const cloudTop = document.getElementsByClassName("parallax-bg-cloud-top")[0];
-const cloudRight1 = document.getElementsByClassName(
-  "parallax-bg-cloud-right1"
-)[0];
-const cloudRight2 = document.getElementsByClassName(
-  "parallax-bg-cloud-right2"
-)[0];
+const title = $("#title");
+const sky = $(".parallax-bg-sky").eq(0);
+const cloudLeft1 = $(".parallax-bg-cloud-left1").eq(0);
+const cloudLeft2 = $(".parallax-bg-cloud-left2").eq(0);
+const cloudLeft3 = $(".parallax-bg-cloud-left3").eq(0);
+const cloudLeft4 = $(".parallax-bg-cloud-left4").eq(0);
+const cloudTop = $(".parallax-bg-cloud-top").eq(0);
+const cloudRight1 = $(".parallax-bg-cloud-right1").eq(0);
+const cloudRight2 = $(".parallax-bg-cloud-right2").eq(0);
 
-const mountainLeft1 = document.getElementsByClassName(
-  "parallax-bg-mountain-left1"
-)[0];
-const mountainLeft2 = document.getElementsByClassName(
-  "parallax-bg-mountain-left2"
-)[0];
-const mountainRight = document.getElementsByClassName(
-  "parallax-bg-mountain-right1"
-)[0];
-const mountainBothSide = document.getElementsByClassName(
-  "parallax-bg-mountain-both-side"
-)[0];
+const mountainLeft1 = $(".parallax-bg-mountain-left1").eq(0);
+const mountainLeft2 = $(".parallax-bg-mountain-left2").eq(0);
+const mountainRight = $(".parallax-bg-mountain-right1").eq(0);
+const mountainBothSide = $(".parallax-bg-mountain-both-side").eq(0);
 
-const meadow = document.getElementsByClassName("parallax-bg-meadow")[0];
-// const girl = document.getElementsByClassName("parallax-bg-girl")[0];
+const meadow = $(".parallax-bg-meadow").eq(0);
 
-let fontSizeStr = window.getComputedStyle(title).fontSize;
+let fontSizeStr = title.css("font-size");
 let fontSize = parseInt(fontSizeStr, 10);
 let prevScroll = 0;
 let textValue = fontSize;
 
-window.addEventListener("scroll", () => {
-  let value = window.scrollY;
+$(window).scroll(() => {
+  let value = $(window).scrollTop();
 
   let smoothValue = value * 0.325;
 
-  title.style.marginTop = value * 2.5 + "px";
-  cloudTop.style.left = smoothValue * 2.5 + "px";
-  cloudLeft1.style.left = smoothValue * 2.5 + "px";
-  cloudLeft2.style.left = smoothValue * 2.5 + "px";
-  cloudLeft3.style.left = smoothValue * 2.5 + "px";
-  cloudLeft4.style.left = smoothValue * 2.5 + "px";
-  cloudRight1.style.left = smoothValue * 2.5 + "px";
-  cloudRight2.style.left = smoothValue * 2.5 + "px";
+  title.css("margin-top", value * 2.5 + "px");
+  cloudTop.css("left", smoothValue * 2.5 + "px");
+  cloudLeft1.css("left", smoothValue * 2.5 + "px");
+  cloudLeft2.css("left", smoothValue * 2.5 + "px");
+  cloudLeft3.css("left", smoothValue * 2.5 + "px");
+  cloudLeft4.css("left", smoothValue * 2.5 + "px");
+  cloudRight1.css("left", smoothValue * 2.5 + "px");
+  cloudRight2.css("left", smoothValue * 2.5 + "px");
 
   // Calculate new scale and translate values
   let scaleValue = 1 + value * 0.001;
@@ -62,38 +41,48 @@ window.addEventListener("scroll", () => {
   // Increase font size when scrolling down
   if (value > prevScroll) {
     let textValue = fontSize + value * 0.33;
-    title.style.fontSize = textValue + "px";
-    if (title.style.fontSize > "330px") {
-      title.style.fontSize = "1px";
+    title.css("font-size", textValue + "px");
+    if (parseInt(title.css("font-size")) > 330) {
+      title.css("font-size", "1px");
     }
   }
   // when scrolling up
   else {
-    title.style.fontSize = fontSize + "px";
+    title.css("font-size", fontSize + "px");
   }
 
   prevScroll = value;
   // Update transform property
-  mountainBothSide.style.transform = `translateZ(${translateZValue}px) scale(${scaleValue})`;
-  mountainLeft1.style.transform = `translateZ(${translateZValue}px) scale(${scaleValue})`;
-  mountainLeft2.style.transform = `translateZ(${translateZValue}px) scale(${scaleValue})`;
-  mountainRight.style.transform = `translateZ(${translateZValue}px) scale(${scaleValue})`;
-  meadow.style.transform = `translateZ(${translateZValue}px) scale(${scaleValue})`;
+  mountainBothSide.css({
+    transform: `translateZ(${translateZValue}px) scale(${scaleValue})`,
+  });
+  mountainLeft1.css({
+    transform: `translateZ(${translateZValue}px) scale(${scaleValue})`,
+  });
+  mountainLeft2.css({
+    transform: `translateZ(${translateZValue}px) scale(${scaleValue})`,
+  });
+  mountainRight.css({
+    transform: `translateZ(${translateZValue}px) scale(${scaleValue})`,
+  });
+  meadow.css({
+    transform: `translateZ(${translateZValue}px) scale(${scaleValue})`,
+  });
 
-  //  girl.style.marginTop = value * 2.5 + "px";
 });
 
-// text scroll fade in animation 
-
-const observer= new IntersectionObserver((entries)=>{
-entries.forEach((entry)=>{
-    if(entry.isIntersecting){
-        entry.target.classList.add('show');
-    }else{
-        entry.target.classList.remove('show');
+// text scroll fade in animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      $(entry.target).addClass("show");
+    } else {
+      $(entry.target).removeClass("show");
     }
-})
+  });
 });
 
-const hiddenElements = document.querySelectorAll('.hidden');
-hiddenElements.forEach((element)=>observer.observe(element));
+const hiddenElements = $(".hidden");
+hiddenElements.each((index, element) => {
+  observer.observe(element);
+});

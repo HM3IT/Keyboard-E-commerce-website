@@ -149,13 +149,14 @@ if (!isset($_SESSION)) {
 
   <button onclick="window.print();" id="print-btn">Print the invoice section</button>
 
-  <?php 
-  require COMPONENTS_PATH . 'footer.html'; 
+  <?php
+  require COMPONENTS_PATH . 'footer.html';
   foreach ($_SESSION["cart"] as $key => $value) {
     // Remove the product from the session
     unset($_SESSION["cart"][$key]);
   }
   ?>
+  <script src="scripts/navbar.js"> </script>
   <script>
     document
       .getElementById("check-out-noti-form-btn")
@@ -164,8 +165,6 @@ if (!isset($_SESSION)) {
         document.getElementById("checkout-noti-form").style.display = "none";
       });
   </script>
-  <script src="scripts/navbar.js"> </script>
-  <script src="scripts/footer.js"></script>
-</body>
 
+</body>
 </html>

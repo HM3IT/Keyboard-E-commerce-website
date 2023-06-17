@@ -81,7 +81,6 @@ if (!isset($_REQUEST["collection-type"]) && !isset($_REQUEST["brand"])) {
     <script src="scripts/navbar.js"> </script>
     <script src="scripts/search-bar.js"></script>
     <script src="scripts/redirect.js"> </script>
-    <script src="scripts/footer.js"></script>
     <script src="scripts/star-scale-rating.js"> </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="scripts/swiper.js"> </script>

@@ -42,7 +42,13 @@
   border-radius: 10px;
 }
 
+#all-category-table .remove-btn:hover{
+  color: black ;
+}
 
+.no-pointer {
+  cursor: initial !important;
+}
 /* overlay & popup category update form  */
 #overlay{
    display: none;
