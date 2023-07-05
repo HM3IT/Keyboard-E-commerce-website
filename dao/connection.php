@@ -8,10 +8,7 @@ try {
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
 } catch (Exception $e) {
-    echo  "
-    <style>
-     alert('Connection fail');
-    </style>";
+    echo 'Connection failed';
     exit;
 }
 ?>
