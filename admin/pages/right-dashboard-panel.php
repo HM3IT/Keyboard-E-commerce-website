@@ -74,14 +74,18 @@
                         $time_elapsed = $current_time - $received_time;
 
                         if ($time_elapsed < 60) {
-                            $elapsed_time = $time_elapsed . " minute" . ($time_elapsed > 1 ? "s" : "") . " ago";
+                            $elapsed_time = $time_elapsed . " " . ($time_elapsed > 1 ? "s" : "") . " ago";
                         } elseif ($time_elapsed >= 60 && $time_elapsed < 3600) {
                             $elapsed_minutes = floor($time_elapsed / 60);
                             $elapsed_time = $elapsed_minutes . " minute" . ($elapsed_minutes > 1 ? "s" : "") . " ago";
-                        } else {
+                        } elseif ($time_elapsed >= 3600 && $time_elapsed < 86400) {
                             $elapsed_hours = floor($time_elapsed / 3600);
                             $elapsed_time = $elapsed_hours . " hour" . ($elapsed_hours > 1 ? "s" : "") . " ago";
+                        } elseif ($time_elapsed >= 86400) {
+                            $elapsed_days = floor($time_elapsed / 86400);
+                            $elapsed_time = $elapsed_days . " day" . ($elapsed_days > 1 ? "s" : "") . " ago";
                         }
+
                         ?>
                         <p><b><?php echo  $row['name'] ?></b> has received the order.</p>
                         <small class="text-muted"><?php echo  $elapsed_time ?></small>
@@ -99,38 +103,51 @@
     <!-- END of RECENT UPDATES section  -->
 
     <?php
-    // Assuming you have established a database connection using PDO
-
-    // Get today's date
     $today = date('Y-m-d');
-
-    // Get yesterday's date
     $yesterday = date('Y-m-d', strtotime('-1 day'));
-
+    
+    // Set the time component to 00:00:00 for today and yesterday
+    $todayStart = $today . ' 00:00:00';
+    $todayEnd = $today . ' 23:59:59';
+    $yesterdayStart = $yesterday . ' 00:00:00';
+    $yesterdayEnd = $yesterday . ' 23:59:59';
+    
     // Query to retrieve today's total revenue
-    $todayQuery = "SELECT SUM(total_price) AS today_revenue FROM orders WHERE order_date = :today";
+    $todayQuery = "SELECT SUM(total_price) AS today_revenue FROM orders WHERE order_date >= :today_start AND order_date <= :today_end";
     $todayStatement = $connection->prepare($todayQuery);
-    $todayStatement->bindParam(':today', $today);
+    $todayStatement->bindParam(':today_start', $todayStart);
+    $todayStatement->bindParam(':today_end', $todayEnd);
     $todayStatement->execute();
     $todayData = $todayStatement->fetch(PDO::FETCH_ASSOC);
     $todayRevenue = $todayData['today_revenue'];
-
+    
+    if (empty($todayRevenue)) {
+        $todayRevenue = 0;
+    }
+    
     // Query to retrieve yesterday's total revenue
-    $yesterdayQuery = "SELECT SUM(total_price) AS yesterday_revenue FROM orders WHERE order_date = :yesterday";
+    $yesterdayQuery = "SELECT SUM(total_price) AS yesterday_revenue FROM orders WHERE order_date >= :yesterday_start AND order_date <= :yesterday_end";
     $yesterdayStatement = $connection->prepare($yesterdayQuery);
-    $yesterdayStatement->bindParam(':yesterday', $yesterday);
+    $yesterdayStatement->bindParam(':yesterday_start', $yesterdayStart);
+    $yesterdayStatement->bindParam(':yesterday_end', $yesterdayEnd);
     $yesterdayStatement->execute();
     $yesterdayData = $yesterdayStatement->fetch(PDO::FETCH_ASSOC);
     $yesterdayRevenue = $yesterdayData['yesterday_revenue'];
+    
+    if (empty($yesterdayRevenue)) {
+        $yesterdayRevenue = 0;
+    }
 
     // Calculate the percentage difference
     $revenueDifference = $todayRevenue - $yesterdayRevenue;
-    $revenuePercentage = ($revenueDifference / $yesterdayRevenue) * 100;
-
+    $revenuePercentage = 0;
+    if ($yesterdayRevenue > 0) {
+        $revenuePercentage = ($revenueDifference / $yesterdayRevenue) * 100;
+    } 
     ?>
 
     <section id="sales-analytics">
-        <h2>Sales Analytics</h2>
+        <h2>Performance</h2>
 
         <!-- START of the item-online card  -->
         <div class="item-card online-card">
@@ -142,46 +159,49 @@
                     <h3>ONLINE ORDERS</h3>
                     <small class="text-muted">Last 24 Hours</small>
                 </div>
-                <h5 class="success"><?php echo ($revenueDifference >= 0) ? '+' : '-'; ?><?php echo number_format(abs($revenuePercentage), 2); ?>%</h5>
+                <h5 class="<?php echo ($revenueDifference >= 0) ? 'success' : 'danger'; ?>">
+                <?php 
+                 echo ($revenueDifference >= 0) ? '+' : '-'; 
+                 echo number_format(abs($revenuePercentage), 2); ?>%</h5>
 
                 <h3><?php echo $todayRevenue; ?> ks</h3>
             </div>
         </div>
         <!-- END of the item-online card  -->
-    
+
         <?php
-// Get the current date and yesterday's date
-$currentDate = date('Y-m-d');
-$yesterdayDate = date('Y-m-d', strtotime('-1 day'));
+        // Get the current date and yesterday's date
+        $currentDate = date('Y-m-d');
+        $yesterdayDate = date('Y-m-d', strtotime('-1 day'));
 
-// Query to fetch today's new customers
-$todayQuery = "SELECT COUNT(*) AS today_new_customers FROM customer WHERE DATE(FROM_UNIXTIME(created_date)) = :currentDate";
+        // Query to fetch today's new customers
+        $todayQuery = "SELECT COUNT(*) AS today_new_customers FROM customer WHERE DATE(FROM_UNIXTIME(created_date)) = :currentDate";
 
-// Query to fetch yesterday's new customers
-$yesterdayQuery = "SELECT COUNT(*) AS yesterday_new_customers FROM customer WHERE DATE(FROM_UNIXTIME(created_date)) = :yesterdayDate";
+        // Query to fetch yesterday's new customers
+        $yesterdayQuery = "SELECT COUNT(*) AS yesterday_new_customers FROM customer WHERE DATE(FROM_UNIXTIME(created_date)) = :yesterdayDate";
 
-$todayStatement = $connection->prepare($todayQuery);
-$todayStatement->bindValue(':currentDate', $currentDate);
-$todayStatement->execute();
-$todayResult = $todayStatement->fetch(PDO::FETCH_ASSOC);
-$todayNewCustomers = $todayResult['today_new_customers'];
+        $todayStatement = $connection->prepare($todayQuery);
+        $todayStatement->bindValue(':currentDate', $currentDate);
+        $todayStatement->execute();
+        $todayResult = $todayStatement->fetch(PDO::FETCH_ASSOC);
+        $todayNewCustomers = $todayResult['today_new_customers'];
 
-$yesterdayStatement = $connection->prepare($yesterdayQuery);
-$yesterdayStatement->bindValue(':yesterdayDate', $yesterdayDate);
-$yesterdayStatement->execute();
-$yesterdayResult = $yesterdayStatement->fetch(PDO::FETCH_ASSOC);
-$yesterdayNewCustomers = $yesterdayResult['yesterday_new_customers'];
+        $yesterdayStatement = $connection->prepare($yesterdayQuery);
+        $yesterdayStatement->bindValue(':yesterdayDate', $yesterdayDate);
+        $yesterdayStatement->execute();
+        $yesterdayResult = $yesterdayStatement->fetch(PDO::FETCH_ASSOC);
+        $yesterdayNewCustomers = $yesterdayResult['yesterday_new_customers'];
 
-// Calculate the difference and percentage change
-$customerDifference = $todayNewCustomers - $yesterdayNewCustomers;
-$customerPercentage = 0;
+        // Calculate the difference and percentage change
+        $customerDifference = $todayNewCustomers - $yesterdayNewCustomers;
+        $customerPercentage = 0;
 
-if ($yesterdayNewCustomers != 0) {
-    $customerPercentage = ($customerDifference / $yesterdayNewCustomers) * 100;
-}
-?>
+        if ($yesterdayNewCustomers > 0) {
+            $customerPercentage = ($customerDifference / $yesterdayNewCustomers) * 100;
+        }
+        ?>
 
-  <!-- START of the new customer card  -->
+        <!-- START of the new customer card  -->
         <div class="item-card new-customer-card">
             <div class="icon">
                 <i class="fa-solid fa-user"></i>
@@ -192,7 +212,9 @@ if ($yesterdayNewCustomers != 0) {
                     <small class="text-muted">Last 24 Hours</small>
                 </div>
                 <h5 class="<?php echo ($customerDifference >= 0) ? 'success' : 'danger'; ?>">
-                    <?php echo ($customerDifference >= 0) ? '+' : '-'; ?><?php echo number_format(abs($customerPercentage), 2); ?>%
+                    <?php
+                    echo ($customerDifference >= 0) ? '+' : '-'; 
+                    echo number_format(abs($customerPercentage), 2); ?>%
                 </h5>
                 <h3><?php echo $todayNewCustomers; ?> customers</h3>
             </div>

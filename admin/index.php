@@ -19,7 +19,7 @@ if (empty($_SESSION["status"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <?php require "./base_link_script.php";  ?>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="./css/mid-dashboard-panel.css" />
     <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet" />
 </head>
@@ -33,7 +33,7 @@ if (empty($_SESSION["status"])) {
         ?>
     </div>
 </body>
-
+<script src="./scripts/performance_card.js"></script>
 <script src="./scripts/sidebar.js"></script>
 <script src="./scripts/theme-togggler.js"></script>
 

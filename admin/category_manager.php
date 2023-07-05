@@ -33,7 +33,7 @@ if (empty($_SESSION["status"])) {
         $get_all_product_sql = "SELECT * FROM category";
         ?>
         <section id="category-tbl-section" class="table-container-wrap">
-            <h2>Products from inventory</h2>
+            <h2>Product categories</h2>
             <table id="all-category-table">
                 <tr>
                     <th>No.</th>

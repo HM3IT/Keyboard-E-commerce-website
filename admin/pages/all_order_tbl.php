@@ -11,12 +11,12 @@ $row_count = $all_product_dataset->rowCount();
         <table id='empTable' class="all-product-table display dataTable">
             <thead>
                 <th>Order ID</th>
-                <th>Customer</th>
+                <th class="tbl-col-hide">Customer</th>
                 <th>Order Date</th>
-
                 <th class="address">Shipping Address</th>
                 <th>Total Price (Ks)</th>
-                <th>Approval Status</th>
+                <th>Payment</th>
+                <th>Approval</th>
                 <th>Delivery Status</th>
                 <th>Action</th>
             </thead>
@@ -37,14 +37,21 @@ $row_count = $all_product_dataset->rowCount();
 </div>
 
 <script>
-        $(document).ready(function() {
-        $("#empTable").DataTable({
+    $(document).ready(function() {
+        let windowWidth = $(window).width();
+        $(window).resize(function() {
+            windowWidth = $(window).width();
+        });
+      let ord_tbl =  $("#empTable").DataTable({
             processing: true,
             serverSide: true,
+            scrollY: '400px',
+            scrollCollapse: true,
             serverMethod: "post",
             ajax: {
-                url: "./controller/table_controller.php",
+                url: "./controller/order_tbl_controller.php",
             },
+            // order data
             columns: [{
                     data: "order_id"
                 },
@@ -61,6 +68,9 @@ $row_count = $all_product_dataset->rowCount();
                     data: "total_price"
                 },
                 {
+                    data: "payment"
+                },
+                {
                     data: "order_approval"
                 },
                 {
@@ -71,6 +81,11 @@ $row_count = $all_product_dataset->rowCount();
                 }
             ],
         });
+        if (windowWidth <= 780) {
+            // Hide the "order_approval" column
+            ord_tbl.column(1).visible(false);
+        }
+
     });
 
     function updateOrderStatus(event, orderId) {
@@ -98,6 +113,7 @@ $row_count = $all_product_dataset->rowCount();
                 if (xhr.status === 200) {
                     console.log("Success");
                     location.reload();
+
                 }
             };
             xhr.send(JSON.stringify(payload));

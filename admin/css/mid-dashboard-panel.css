@@ -19,12 +19,14 @@ main {
 /* 2. Date */
 main .date {
   display: inline-block;
-  background-color: var(--color-light);
+  background-color: transparent;
   border-radius: var(--border-radius-1);
   margin-top: 1rem;
   padding: 0.5rem 1.6rem;
 }
-
+::-webkit-calendar-picker-indicator {
+  filter: invert(var(--web-kit-dark));
+}
 main .date input[type="date"] {
   background-color: transparent;
   color: var(--color-dark);
@@ -60,10 +62,10 @@ main .insights .card {
 .insights .sales-card i {
   background-color: var(--card-sale-bg-color);
 }
-.insights .expenses-card i {
+.insights .order-card i {
   background-color: var(--card-expense-bg-color);
 }
-.insights .income-card i {
+.insights .montly-sales-card i {
   background-color: var(--card-income-bg-color);
 }
 /* 3.2 Middle text  */
@@ -110,23 +112,13 @@ main .insights .sales-card svg circle {
   stroke-dashoffset: -30;
   stroke-dasharray: 200;
 }
-main .insights .expenses-card svg circle {
+main .insights .order-card svg circle {
   stroke-dashoffset: 20;
-  stroke-dasharray: 80;
+  stroke-dasharray:200;
 }
-main .insights .income-card svg circle {
+main .insights .montly-sales-card svg circle {
   stroke-dashoffset: 35;
   stroke-dasharray: 110;
-}
-main .insights .progress .number {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 /* 3.4 date info （Card footer) */
 main .insights small {
@@ -199,7 +191,7 @@ main .recent-order a {
 }
 
 /* For smaller tablet and mobile phones */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 780px) {
   main {
     margin-top: 8 rem;
     padding: 0 1rem;

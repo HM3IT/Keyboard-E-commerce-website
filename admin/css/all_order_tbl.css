@@ -13,8 +13,8 @@
 .all-product-table {
   width: 100%;
   padding: var(--card-padding);
-  background: var(--color-white);
-  border-radius: var(--card-border-radius);
+  /* background: var(--color-white); */
+  /* border-radius: var(--card-border-radius); */
   text-align: center;
   box-shadow: var(--box-shadow);
   transition: all 0.3s ease;
@@ -28,16 +28,14 @@
   width: 85px;
   height: 100px;
 }
-/* .all-product-table tbody tr:last-child td {
-    border: none;
-  } */
+ 
 .all-product-table .view-btn,
 .all-product-table .update-status-btn {
-  padding: 10px 15px;
+  padding: 10px 5px;
   border-radius: 10px;
   color: var(--color-dark);
   background-color: transparent;
-  width: 120px;
+  width: 99px;
 }
 .all-product-table .view-btn:hover {
   color: var(--color-white);

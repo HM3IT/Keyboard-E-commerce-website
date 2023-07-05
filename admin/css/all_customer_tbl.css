@@ -14,8 +14,8 @@
   .all-customer-table {
     width: 100%;
     padding: var(--card-padding);
-    background: var(--color-white);
-    border-radius: var(--card-border-radius);
+    /* background: var(--color-white);
+    border-radius: var(--card-border-radius); */
     text-align: center;
     box-shadow: var(--box-shadow);
     transition: all 0.3s ease;

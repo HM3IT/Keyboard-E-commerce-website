@@ -36,7 +36,7 @@ $category_dataset = $connection->query($get_categories_sql);
         require "./pages/sidebar.php";
         ?>
         <section class="product-form-section">
-            <h2 class="title warning">Update product information</h2>
+            <h2 class="title warning">Add product Form</h2>
             <form class="product-form" action="controller/product_controller.php" method="post" enctype="multipart/form-data">
                 <div>
                     <input type="hidden" name="id">

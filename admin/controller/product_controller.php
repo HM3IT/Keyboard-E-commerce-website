@@ -76,9 +76,21 @@ if (isset($_POST["update-product-submit"])) {
 
     $connection->query($update_product_img_sql);
 
-    $update_product_sql = "UPDATE product SET name = '$name', description = '$description', added_date ='$today', price ='$price', discount ='$discount', quantity = '$quantity', category_id = '$category_id'  WHERE id = '$id'";
+    $update_product_sql = "UPDATE product SET name = :name, description = :description, added_date = :today, price = :price, discount = :discount, quantity = :quantity, category_id = :category_id WHERE id = :id";
 
-    if ($connection->query($update_product_sql)) {
+    $statement = $connection->prepare($update_product_sql);
+
+    // Bind the values using placeholders
+    $statement->bindParam(':name', $name);
+    $statement->bindParam(':description', $description);
+    $statement->bindParam(':today', $today);
+    $statement->bindParam(':price', $price);
+    $statement->bindParam(':discount', $discount);
+    $statement->bindParam(':quantity', $quantity);
+    $statement->bindParam(':category_id', $category_id);
+    $statement->bindParam(':id', $id);
+
+    if ($statement->execute()) {
         echo '<script> 
         alert("Successfully updated the product"); 
         location.href = "../product_manager.php"; 
@@ -132,23 +144,32 @@ if (isset($_POST["add-product-submit"])) {
 
     $new_product_insert_qry = "INSERT INTO product 
     (name, description, added_date, price, discount, quantity, category_id) 
-    VALUES ('$name', '$description', '$today', '$price', '$discount', '$quantity', '$category_id')";
-    $connection->query($new_product_insert_qry);
+    VALUES (:name, :description, :today, :price, :discount, :quantity, :category_id)";
+
+    $statement = $connection->prepare($new_product_insert_qry);
+
+    // Bind the values using placeholders
+    $statement->bindParam(':name', $name);
+    $statement->bindParam(':description', $description);
+    $statement->bindParam(':today', $today);
+    $statement->bindParam(':price', $price);
+    $statement->bindParam(':discount', $discount);
+    $statement->bindParam(':quantity', $quantity);
+    $statement->bindParam(':category_id', $category_id);
+
+    // Execute the statement
+    $statement->execute();
+
     $newProductId = $connection->lastInsertId();
+
     $values["product_id"] = $newProductId;
 
     // Dynamically preparing the SET clause for the MySQL query
     $columns = implode(", ", array_keys($values));
     $placeholders = "'" . implode("', '", array_values($values)) . "'";
-    // $placeholders = ":" . implode(", :", array_keys($values));
 
     $image_insert_query = "INSERT INTO images ($columns) VALUES ($placeholders)";
 
-    // $statement = $connection->prepare($image_insert_query);
-    // foreach ($values as $column => $value) {
-    //     $statement->bindValue(":$column", $value);
-    // }
-    // $statement->execute();
 
     if ($connection->query($image_insert_query)) {
         echo '<script> 
@@ -200,7 +221,6 @@ function processImageFile($imageFile, $category)
     $target_file = $target_img_dir . basename($image_file_name);
     if (move_uploaded_file($image_file_tmp, $target_file)) {
         // Image file successfully uploaded
-        // Perform further processing or database operations if needed
     } else {
         echo "Target not found";
     }

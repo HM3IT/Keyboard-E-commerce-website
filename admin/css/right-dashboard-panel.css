@@ -21,7 +21,7 @@
 #right-side-panel .top {
   display: flex;
   justify-content: space-around;
-  gap: 2rem;
+  gap: 5px;
   background-color: var(--color-background);
   padding: 10px;
   border-radius: var(--border-radius-2);
@@ -58,7 +58,7 @@
 /*   1.2 Admin Profile*/
 #right-side-panel .top .profile {
   display: flex;
-  gap: 2rem;
+  gap: 10px;
   text-align: right;
 }
 
@@ -257,8 +257,8 @@
   cursor: pointer;
 }
 
-/* For smaller tablet and mobile phones */
-@media screen and (max-width: 768px) {
+/* For tablet  */
+@media screen and (max-width: 780px) {
   #right-side-panel {
     width: 95%;
     margin: 0 auto 4rem;

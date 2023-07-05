@@ -144,8 +144,8 @@ s #sidebar.logout {
     margin-top: 1.8rem;
   }
 }
-/* For smaller tablet and mobile phones */
-@media screen and (max-width: 768px) {
+/* For  tablet */
+@media screen and (max-width: 780px) {
   #sidebar {
     position: fixed;
     left: -100%;

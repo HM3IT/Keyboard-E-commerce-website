@@ -48,7 +48,7 @@ if (isset($_GET["update_product_id"])) {
                     <label for="name">Enter product name</label>
                     <input type="text" name="name" id="name" value="<?php echo $data["name"] ?>" required>
 
-                    <label for="description">Product Specification: </label>
+                    <label for="description">Product description: </label>
                     <textarea name="description" id="description" cols="30" rows="10" required><?php echo $data["description"] ?></textarea>
 
                     <div class="inline-block">
