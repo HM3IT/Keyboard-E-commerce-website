@@ -8,13 +8,15 @@
 .shop-btn:hover {
   background-color: white;
 }
- 
+
+#main-container {
+  background-color: white;
+}
 /* Pagination */
 #pagination {
   display: block;
   text-align: center;
   margin: 0 auto;
-  background-color: #fff;
 }
 
 #pagination a {
@@ -48,4 +50,20 @@
 }
 .next-page:hover {
   transform: translateX(5px);
+}
+
+#sort-select-form {
+  display: block;
+  width: 200px;
+  position: relative;
+  top: 0;
+  left: 10%;
+}
+#sort-select-form label{
+  color: blue;
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-shadow: 
+  0.025rem 0.025rem 0 white,
+  0.1rem 0.1rem 0 orangered;
 }

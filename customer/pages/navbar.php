@@ -25,14 +25,25 @@ if (session_status() == PHP_SESSION_NONE) {
   </nav>
   <nav class="nav-bar nav-bar-right">
     <ul>
+      <li> 
+        <a id="dropdown-btn">Best Deal</a>
+        <ul class="dropdown">
+          <?php
+
+          ?>
+          <li><a href="view-collection.php?collection-type=recent">Recent Arrivals</a></li>
+          <li><a href="view-collection.php?collection-type=trend">Trends Products</a></li>
+          <li><a href="view-collection.php?collection-type=discount">Promotion offers</a></li>
+        </ul>
+      </li>
       <li class="nav-bar-btn view-cart-btn">
         <a href="view-cart-list.php" class="view-cart-icon">
           <i class="fa-solid fa-cart-arrow-down"></i>
         </a>
       </li>
-      <li class="nav-bar-btn">
+      <li class="nav-bar-btn login-btn">
         <?php
-        if (isset($_SESSION["name"])) {
+        if (isset($_SESSION["customer_name"])) {
 
           $current_page = basename($_SERVER['PHP_SELF']);
 

@@ -11,9 +11,8 @@
 #faq-section {
   user-select: none;
   color: white;
-  min-height: 600px;
-  max-height: 900px;
   overflow-y: scroll;
+  padding: 10px;
 }
 #faq-section .title {
   text-align: center;
@@ -59,14 +58,18 @@
 }
 
 .faq-list .question:hover .left-text-highlight {
-  border-left: 10px solid aqua;
-  transition: 0.5s;
-}
-.faq-list .question:hover i {
-  color: orangered;
+  border-left: 10px solid #9747FF;
   transition: 0.5s;
 }
 
+.faq-list .question:hover i {
+  color: #9747FF;
+  transition: 0.5s;
+}
+.faq-list li:hover {
+ 
+  border: 1px solid #9747FF;
+}
 /* 4. Answer style */
 .faq-list .answer {
   padding-left: 65px;

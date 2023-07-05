@@ -4,5 +4,4 @@ let currentInputs = document.querySelectorAll(".current_page");
 
 currentInputs.forEach(function (input) {
   input.value = currentPageName;
-  console.log(currentPageName);
 });

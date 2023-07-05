@@ -14,7 +14,6 @@
   bottom: 5%;
   right: -600px;
   max-width: 480px;
-  /* max-height: 80dvh; */
   background-color: #fefefe;
   transition: 0.5s;
   box-shadow: 0 40px 60px black;
@@ -28,12 +27,13 @@
 }
 .card-list ul {
   max-height: 60dvh;
-  background-color: rgb(237, 223, 223);
+  background-color: rgb(247 247 247);
   overflow: scroll;
 }
 .card-list li {
   width: 100%;
 }
+
 /* 2 cart box styling */
 .card-list-box {
   display: flex;
@@ -182,7 +182,6 @@
   height: 0;
   padding: 0;
   margin-left: 300px;
-  /* display: none; */
 }
 
 #sad-emoji {
@@ -195,4 +194,19 @@
   font-size: 4rem;
   width: 100px;
   margin: 10px 0;
+}
+
+@media screen and (max-width: 580px) {
+.card-list {
+  position: fixed;
+  bottom: 5%;
+  right: -600px;
+  max-width: 400px;
+  background-color: #fefefe;
+  transition: 0.5s;
+  box-shadow: 0 40px 60px black;
+  padding: 5px 10px;
+  border-radius: 25px;
+  z-index: 99;
+}
 }

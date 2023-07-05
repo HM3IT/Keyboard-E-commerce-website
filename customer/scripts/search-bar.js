@@ -21,7 +21,6 @@ itemContainer.insertBefore(nothingLi, items[0]);
 const searchItem = () => {
   debounce(function () {
     const searchBox = document.getElementById("search-item").value.toUpperCase();
-    console.log(searchBox.length);
     if (searchBox.length < 1) {
       items.forEach((item) => {
         nothingLi.style.display = "none";
@@ -34,12 +33,10 @@ const searchItem = () => {
       items.forEach((item) => {
         const itemTitle = item.querySelector(".item-title");
         if (itemTitle) {
-          if (itemTitle.textContent.toUpperCase().includes(searchBox)) {
+
+          if (itemTitle.textContent.toUpperCase().includes(searchBox) ) {
             item.style.display = "block";
             isFound = true;
-            item.addEventListener("click", function () {
-              console.log("hee");
-            });
           } else {
             item.style.display = "none";
           }

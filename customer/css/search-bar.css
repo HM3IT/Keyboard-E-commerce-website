@@ -9,22 +9,19 @@
 
 /* 1. search box+result container styling */
 .product-search-bar-container {
-  width: 480px;
+  max-width: 480px;
   max-height: 580px;
   background-color: white;
   margin: 10px auto;
   padding: 10px;
-  box-shadow: 2px 3px 5px black;
   border-radius: 15px;
   position: relative;
 }
 .product-search-bar-container form {
-  border: 1px solid black;
-  border-radius: 5px;
-  width: 440px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  border: 1px solid black;
 }
 .product-search-bar-container form input {
   border: none;
@@ -44,6 +41,7 @@
   text-decoration: none;
 }
 .product-search-bar-container .matched-item-lists {
+  width: 550px;
   max-height: 420px;
   overflow-y: scroll;
   position: absolute;
@@ -51,7 +49,7 @@
   left: 0;
   background-color: #fff;
   border-radius: 15px;
-  box-shadow: 3px 4px 5px black;
+  box-shadow: 2px 2px 0.5px grey;
   z-index: 99;
 }
 .product-search-bar-container .matched-item-lists li {
@@ -63,9 +61,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: black;
 }
 .product-search-bar-container .matched-item-box:hover {
   cursor: pointer;
+  color: rgb(9, 9, 173);
 }
 /* 3. sesarched item box stylign */
 
@@ -106,7 +106,7 @@
   overflow: scroll;
 }
 .item-price {
-  color: rgb(63, 95, 240);
+  color: rgb(255, 0, 81);
 }
 
 /* 4. found-nothing text styling */

@@ -1,5 +1,6 @@
 <?php
 require "../../dao/connection.php";
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }

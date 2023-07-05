@@ -3,8 +3,9 @@
   <p>Best Collection with Awesome Keycaps & layouts</p>
 
   <div class="product-container">
+
     <?php
-    $item_per_page = 10;
+    $item_per_page = 12;
     $counter = 0;
     foreach ($dataset  as $row) {
       $id = $row["id"];
@@ -66,63 +67,67 @@
           <?php
           }
           ?>
-          <img class="product-image" src="../images/Products/<?php echo $category . '/' . $primary_image ?>" alt="<?php echo  $image ?>" />
+          <div class="flex-box">
+            <img class="product-image" src="../images/Products/<?php echo $category . '/' . $primary_image ?>" alt="<?php echo  $image ?>" />
 
-          <div class="rating-scale">
-            <?php
-            for ($i = 0; $i < $blank_stars; $i++) {
-            ?>
-              <i class="fa-solid fa-star disable-text"></i>
-            <?php
-            }
-            for ($i = 0; $i < $average_rating; $i++) {
-            ?>
-              <i class="fa-solid fa-star warning"></i>
-            <?php
-            }
-            ?>
-          </div>
+            <div class="product-info-div">
+              <div class="rating-scale">
+                <?php
+                for ($i = 0; $i < $blank_stars; $i++) {
+                ?>
+                  <i class="fa-solid fa-star disable-text"></i>
+                <?php
+                }
+                for ($i = 0; $i < $average_rating; $i++) {
+                ?>
+                  <i class="fa-solid fa-star warning"></i>
+                <?php
+                }
+                ?>
+              </div>
 
-          <div class="cart-description">
-            <h3><?php echo $name  ?></h3>
+              <div class="cart-description">
+                <h3 class="item-title"><?php echo $name  ?></h3>
 
-            <div class="rating-star"></div>
+                <div class="rating-star"></div>
 
-            <?php
+                <?php
 
-            $discount =   $row["discount"];
+                $discount =   $row["discount"];
 
-            if ($discount > 0) {
-              // Calculate the discount price
-              $discount_price = $price - ($price * $discount / 100);
+                if ($discount > 0) {
+                  // Calculate the discount price
+                  $discount_price = $price - ($price * $discount / 100);
 
-            ?>
-              <h4 class="price"><span class="actual-price"><?php echo $price   ?> Ks</span>
-                <span class="discount-price"><?php echo   $discount_price ?> Ks</span>
-              </h4>
-            <?php
-            } else {
+                ?>
+                  <h4 class="price"><span class="actual-price"><?php echo $price   ?> Ks</span>
+                    <span class="discount-price"><?php echo   $discount_price ?> Ks</span>
+                  </h4>
+                <?php
+                } else {
 
-            ?>
-              <h4 class="price"><?php echo  $price ?> Ks</span>
-              </h4>
-            <?php
-            }
+                ?>
+                  <h4 class="price"><?php echo  $price ?> Ks</span>
+                  </h4>
+                <?php
+                }
 
-            ?>
+                ?>
 
-          </div>
-          <div class="cart-btn-part">
-            <a href="./product-detail.php?view-product-id=<?php echo $id ?>" class="view-description-link">View Details</a>
-            <?php
-            if ($quantity   > 0) {
-            ?>
-              <button type="submit" name="add_to_cart" class="add-to-cart">
-                <i id="cart-btn" class="fa-solid fa-cart-shopping"></i>
-              </button>
-            <?php
-            }
-            ?>
+              </div>
+              <div class="cart-btn-part">
+                <a href="./product-detail.php?view-product-id=<?php echo $id ?>" class="view-description-link">View Details</a>
+                <?php
+                if ($quantity   > 0) {
+                ?>
+                  <button type="submit" name="add_to_cart" class="add-to-cart">
+                    <i id="cart-btn" class="fa-solid fa-cart-shopping"></i>
+                  </button>
+                <?php
+                }
+                ?>
+              </div>
+            </div>
           </div>
         </form>
       </div>

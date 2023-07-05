@@ -24,47 +24,51 @@
   display: block;
   margin: 1rem auto;
 }
+#mobile-btn {
+  display: none;
+}
 #cart-list-table {
   width: 80%;
-  margin: 50px auto;
+  margin: 0 auto;
   padding: 30px;
   text-align: center;
-  box-shadow: 3px 4px 7px black;
-  transition: all 0.3s ease;
-  border: 1px solid grey;
-  background-color: #fdfdfd;
-  border-radius: 10px;
 }
 
 #cart-list-table:hover {
   box-shadow: none;
 }
-
+#cart-list-table thead {
+  height: 58px;
+  line-height: 50px;
+}
 #cart-list-table tbody td {
   height: 2.8rem;
-  border-bottom: 1px solid var(--color-light);
-  color: var(--color-dark-variant);
+  color: black;
+}
+#cart-list-table tr {
+  box-shadow: 1px 1px 4px rgb(222 218 218);
+  border-radius: 5px;
 }
 
 #cart-list-table .product-tbl-img {
   width: 85px;
   height: 100px;
 }
-/* #cart-list-table tbody tr:last-child td {
-    border: none;
-  } */
 
 #cart-list-table .view-cart-a,
-#cart-list-table .remove-cart-a,
+#cart-list-table .remove-cart-a {
+  padding: 10px 15px;
+  border-radius: 3px;
+  width: 100px;
+}
 #cart-list-table .checkout-btn {
   padding: 10px 15px;
-  border-radius: 10px;
+  height: 15px;
+  width: 90px;
+  font-size: 1rem;
+  line-height: 15px;
 }
-
-/* #cart-list-table .edit-btn{
-      background-color: var(--color-warning);
-  } */
-
+ 
 /* custom style of quantity counter for orderlist.php */
 #cart-list-table .product-quantity-wrapper {
   margin: auto;
@@ -73,7 +77,6 @@
 #cart-list-table .subtotal-col {
   text-align: right;
   width: 100px;
-  padding-right: 2rem;
 }
 
 #empty-cart-noti-form {
@@ -121,5 +124,40 @@
   padding: 10px 20px;
   border-radius: 15px;
 }
-@media screen and (min-width: 920px) {
+.img-col {
+  display: block;
+}
+@media screen and (max-width: 670px) {
+  .hide-col {
+    display: table-column;
+  }
+  #cart-list-table {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+  #cart-list-table .view-cart-a,
+  #cart-list-table .remove-cart-a {
+    display: block;
+    border: none;
+    width: 50px;
+  }
+  #cart-list-table .checkout-btn {
+    font-size: 1rem;
+  }
+
+  #cart-list-table .checkout-btn {
+    height: 15px;
+    font-size: 1rem;
+    line-height: 15px;
+    font-weight: 600;
+  }
+  #hide-order-btn {
+    display: none;
+  }
+  #mobile-btn {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+  }
 }

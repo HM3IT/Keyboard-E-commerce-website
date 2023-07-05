@@ -22,7 +22,7 @@
   display: flex;
   padding: 20px;
   width: clamp(
-    var(--product-box-min-width),
+    500px,
     880px,
     var(--product-box-max-width)
   );
@@ -32,7 +32,7 @@
   border-radius: 15px;
 }
 /* 2. image section styling */
- 
+
 .view-product-section img {
   margin: 0;
   padding: 0;
@@ -40,7 +40,7 @@
 /* 2.1 main image */
 .view-product-section #main-img {
   position: relative;
-  width: 480px;
+  width: 400px;
   height: 400px;
   margin-bottom: 10px;
 }
@@ -59,6 +59,9 @@
   width: 23%;
   height: var(--small-image-group-height);
   object-fit: cover;
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 100px;
 }
 /* 3. view product's description styling    */
 
@@ -83,7 +86,6 @@
   display: inline-block;
 }
 .view-product-box .add-to-cart-btn {
-  /* display: inline-block; */
   padding: 15px 30px;
   background-color: rgb(239, 103, 24);
   border: transparent;
@@ -104,10 +106,10 @@
   color: aliceblue;
   border-radius: 5px;
 }
-.view-product-box .stock-info .out-stock {
+.view-product-box .stock-info.out-stock {
   background-color: rgb(230, 22, 15);
 }
-.view-product-box .stock-info .in-stock {
+.view-product-box .stock-info.in-stock {
   background-color: rgb(34, 245, 34);
 }
 /* 3.5 product detail paragraph */
@@ -135,13 +137,10 @@
     display: flex;
     flex-direction: column;
     width: 80%;
-    margin: 0 auto;
+    justify-content: center;
     border: none;
   }
-  .image-section {
-    margin: 0 auto;
-    height: 600px;
-  }
+
   .view-product-section #main-img {
     height: 70%;
     margin: 10px auto;
@@ -152,7 +151,37 @@
   .view-product-section img {
     object-fit: cover;
   }
-  .small-img-group img {
-    max-width: 100%;
+}
+@media (max-width: 600px) {
+  .view-product-box {
+    margin: 0 auto;
+  }
+  #product-rating {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 550px) {
+  .view-product-section #main-img {
+    width: 320px;
+    height: 300px;
+    margin: 0 auto;
+  }
+  .view-product-section .small-img-group {
+    height: unset;
+  }
+  .view-product-section .small-img-group {
+    display: flex;
+    justify-content: center;
+    height: var(--small-image-group-height);
+    width: 100%;
+    gap: 5px;
+  }
+  .view-product-box {
+    padding: 10px;
+  }
+
+  .all-img-group img {
+    width: 100px;
   }
 }

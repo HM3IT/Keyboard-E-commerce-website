@@ -12,6 +12,7 @@ const mountainLeft1 = $(".parallax-bg-mountain-left1").eq(0);
 const mountainLeft2 = $(".parallax-bg-mountain-left2").eq(0);
 const mountainRight = $(".parallax-bg-mountain-right1").eq(0);
 const mountainBothSide = $(".parallax-bg-mountain-both-side").eq(0);
+const mc = $(".parallax-bg-girl").eq(0);
 
 const meadow = $(".parallax-bg-meadow").eq(0);
 
@@ -33,6 +34,7 @@ $(window).scroll(() => {
   cloudLeft4.css("left", smoothValue * 2.5 + "px");
   cloudRight1.css("left", smoothValue * 2.5 + "px");
   cloudRight2.css("left", smoothValue * 2.5 + "px");
+  mc.css("top", smoothValue * 2.5 + "px");
 
   // Calculate new scale and translate values
   let scaleValue = 1 + value * 0.001;
@@ -40,7 +42,7 @@ $(window).scroll(() => {
 
   // Increase font size when scrolling down
   if (value > prevScroll) {
-    let textValue = fontSize + value * 0.33;
+    let textValue = fontSize + value * 0.2;
     title.css("font-size", textValue + "px");
     if (parseInt(title.css("font-size")) > 330) {
       title.css("font-size", "1px");

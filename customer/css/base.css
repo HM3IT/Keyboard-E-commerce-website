@@ -26,7 +26,6 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: aliceblue;
   user-select: none;
 }
 /* Hide the scrollbar for elements with overflow: scroll */

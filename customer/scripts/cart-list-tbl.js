@@ -19,7 +19,6 @@ $(document).ready(function () {
           );
         },
         success: function (response) {
-          console.log("Response:", response);
           location.reload();
         },
       });

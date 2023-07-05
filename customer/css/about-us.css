@@ -1,6 +1,6 @@
 /* ========= content ========= 
-  //////++++++++++++++////////
-  z -index for images
+//+++++++++++++++++//
+  Values of z -index for images
   ground - 11
   title - 10
   girl - 9
@@ -9,7 +9,7 @@
   moutain left1 and right - 6
   moutain left2 - 5
   cloud - 4
-    //////++++++++++++++////////
+// +++++++++++++++++//
 1. prequisite for about-us page
 2. parallax scroll effect
   2.1 section banner
@@ -144,9 +144,6 @@ body {
   font-size: 1.2rem;
   line-height: 2.2rem;
 }
-#our-team-section {
-  height: 480px;
-}
 
 .hidden {
   opacity: 0;
@@ -189,7 +186,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   width: 60%;
-  height: 55%;
+  height: 65%;
   margin: 10px auto;
   border-radius: 25px;
 }
@@ -218,4 +215,83 @@ body {
 }
 .team-member:nth-child(4) {
   transition-delay: 600ms;
+}
+
+.card-group{
+  display: flex;
+}
+/* For tablet */
+@media screen and (max-width: 1200px) {
+  .card-group{
+    display: flex;
+    flex-direction: column;
+  }
+  .team-member-card{
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 855px) {
+  .parallax-wrapper {
+    height: 70dvh;
+  }
+  #title{
+    font-size: 2.5rem;
+  }
+  #girl{
+    display: none;
+  }
+  .content-section{
+    padding: 5px; 
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .about-title{
+    font-size: 2rem;
+  }
+  .background-info{
+    text-indent: 2rem;
+  }
+  .card-group{
+    display: flex;
+    flex-direction: column;
+  }
+  .team-member-card {
+    width: 210px;
+    height: 200px;
+    background-color: transparent;
+     
+  }
+  .team-member-card-img {
+    width: 180px;
+    height: 165px;
+  }
+  .team-member-card .name{
+    font-size: 1rem;
+    color: white;
+  }
+  .team-member-card .role{
+    font-size: .8rem;
+    color: white;
+  }
+}
+@media screen and (max-width: 480px) {
+  .about-title{
+    font-size: 1.5rem;
+  }
+  .background-info{
+    text-indent: 1rem;
+    font-size: .7rem;
+    line-height: 1.3rem;
+  }
+  .card-group{
+    display: flex;
+    flex-direction: column;
+  }
+  .team-member-card {
+    width: 200px;
+    height: 200px;
+    background-color: transparent;
+  }
 }

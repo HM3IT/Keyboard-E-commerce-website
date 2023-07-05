@@ -31,13 +31,13 @@
   margin: 20px;
   padding: 0 30px;
   height: 300px;
-  width: 570px;
+  width: 240px;
   flex-grow: 0.5;
 }
 #additional-banner .banner-box {
   width: 320px;
   height: 280px;
-  flex: 1 1 90px;
+  flex: 1 1 169px;
   padding: 0 50px;
   margin: 10px 5px 30px 5px;
 }
@@ -74,6 +74,7 @@
   padding-bottom: 15px;
   letter-spacing: 3px;
   color: rgb(255, 0, 140);
+  text-shadow: 0.025rem 0.025rem 0 white, 0.075rem 0.075rem 0 black;
 }
 /* 3.1 Additional banner */
 
@@ -82,12 +83,17 @@
   font-size: 1.5rem;
   font-weight: bolder;
   letter-spacing: 2px;
+  text-shadow: 0.025rem 0.025rem 0 yellow, 0.075rem 0.075rem 0 white;
+  /* 0.05rem 0.05rem 0 blue, */
+  /* 0.1rem 0.1rem 0 black; */
 }
 #additional-banner .banner-box h3 {
-  color: #bd0000;
+  color: #00ff99;
   letter-spacing: 2px;
   font-size: 1.5rem;
-  font-weight: 600;
+  text-shadow: 0.025rem 0.025rem 0 yellow, 0.075rem 0.075rem 0 red,
+    0.1rem 0.1rem 0 black;
+
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 /* 4. shop button */
@@ -120,6 +126,27 @@
     background-position: center;
     border-radius: 10px;
   }
+
+  #additional-banner .banner-box > h2 {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    letter-spacing: 2px;
+  }
+  #additional-banner .banner-box h3 {
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 588px) {
   #primary-banner .banner-box {
+    height: 220px;
+  }
+  #additional-banner .banner-box {
+    height: 130px;
+  }
+
+  #additional-banner .banner-box {
+    padding: 0 15px;
+    margin: 14px;
   }
 }

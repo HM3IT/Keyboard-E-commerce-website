@@ -14,10 +14,6 @@ require "../dao/connection.php";
     <title>Document</title>
     <?php require "./components/base-link.php" ?>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
-    </script>
-
-    <!-- <link rel="stylesheet" href="css/collection-banner.css"> -->
     <link rel="stylesheet" href="css/product-section.css">
     <link rel="stylesheet" href="css/product-slider.css">
     <link rel="stylesheet" href="css/star-scale-rating.css">
@@ -135,11 +131,11 @@ require "../dao/connection.php";
                         $paragraphs = explode("\n", $description);
 
                         // Display each paragraph
-                        echo '<ul style="list-style-type: disc;">';
+                        echo '<ul >';
                         foreach ($paragraphs as $paragraph) {
                             $trimmedParagraph = trim($paragraph);   
                             if (!empty($trimmedParagraph)) {
-                                echo '<li>' . $trimmedParagraph . '</li>';
+                                echo '<li style="list-style-type: disc;">' . $trimmedParagraph . '</li>';
                             }
                         }
                         echo '</ul>';
@@ -168,8 +164,8 @@ require "../dao/connection.php";
     <script src="scripts/star-scale-rating.js"> </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="scripts/swiper.js"> </script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> -->
 </body>
 
 </html>

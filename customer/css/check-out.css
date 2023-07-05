@@ -13,7 +13,7 @@
   letter-spacing: 5px;
 }
 .checkout-form {
-  min-width: 460px;
+  min-width: 320px;
   max-width: 600px;
   margin: 20px auto;
   padding: 30px;
@@ -41,7 +41,7 @@
 .checkout-form input[type="text"],
 .checkout-form input[type="tel"],
 .checkout-form textarea {
-  width: 360px;
+  width: 100%;
   border-radius: 10px;
   outline: none;
   border: 0.3px solid grey;
@@ -134,4 +134,23 @@
   line-height: 50px;
   margin: auto;
   text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+  .checkout-form {
+    min-width: 320px;
+  }
+  .checkout-form label{
+    font-size: 1rem;
+  }
+
+.checkout-form input[type="number"],
+.checkout-form input[type="text"],
+.checkout-form input[type="tel"],
+.checkout-form textarea {
+  max-width: 360px;
+}
+.checkout-form input[type="radio"] {
+  margin-right: 0;
+}
 }

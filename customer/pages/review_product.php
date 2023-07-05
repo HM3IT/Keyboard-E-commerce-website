@@ -65,7 +65,7 @@
         <div class="review review-right">
             <h3>Write a review</h3>
             <?php
-            if (isset($_SESSION['name'])) {
+            if (isset($_SESSION['customer_name'])) {
                 $customer_id = $_SESSION["login_customer_id"];
                 // Checking whether the customer has already reviewed the product
                 $check_qry = "SELECT rating FROM product_review WHERE product_id = $product_id AND customer_id = $customer_id";

@@ -2,7 +2,6 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-
 require "../dao/connection.php";
 ?>
 <!DOCTYPE html>
@@ -12,7 +11,7 @@ require "../dao/connection.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HM3</title>
     <?php require "./components/base-link.php" ?>
 
     <link rel="stylesheet" href="css/hero.css">
@@ -22,7 +21,28 @@ require "../dao/connection.php";
     <link rel="stylesheet" href="css/newsletter.css">
     <link rel="stylesheet" href="css/star-scale-rating.css">
     <link rel="stylesheet" href="css/product-section.css">
+    <link rel="stylesheet" href="css/product-slider.css">
     <link rel="stylesheet" href="css/alert-box.css" />
+    <Style>
+        #product-slider-section{
+            display: none;
+        }
+        @media screen and (max-width: 780px) {
+        .product-container{
+            display: none;
+        }
+       .feature-section{
+        display: none;
+       }
+        #product-slider-section{
+            display: block;
+        }
+        .product-section h2,
+        .product-section p{
+            display: none;
+        }
+    }
+    </Style>
 </head>
 
 <body>
@@ -40,6 +60,7 @@ require "../dao/connection.php";
     $dataset = $connection->query($get_all_product_sql);
 
     require COMPONENTS_PATH . 'product-section.php';
+    require COMPONENTS_PATH . 'product-slider.php';
     require 'components/alert-box.php';
     require COMPONENTS_PATH . 'cart-list.php';
     require COMPONENTS_PATH . 'newsletter.html';

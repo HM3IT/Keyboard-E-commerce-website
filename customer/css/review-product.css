@@ -27,7 +27,7 @@
 }
 /* 1. product-rating div style */
 #product-rating {
-  width: 880px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 20px;
   background-color: rgb(247 247 247);
@@ -107,7 +107,7 @@
   overflow-y: hidden;
 }
 #review_content .customer-reviews {
-  width: 900px;
+  max-width: 900px;
   margin: 20px auto;
   display: flex;
   gap: 1rem;
@@ -261,7 +261,6 @@
 }
 #ask-login-form {
   width: 495px;
-  height: 180px;
 }
 
 #ask-login-form div {

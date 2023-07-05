@@ -40,13 +40,13 @@ if ($featured_keyboard1  < 0 || $featured_keyboard2 < 0) {
     <a href="view-collection.php?collection-type=keycap"></a>
   </div>
   <div class="banner-box banner-box2">
-    <h2>Trands Keyboards COLLECTION</h2>
+    <h2>Trends Keyboards COLLECTION</h2>
     <h3>Spring/Summer 2023</h3>
     <a href="view-collection.php?collection-type=trend"></a>
   </div>
   <div class="banner-box banner-box3">
     <h2>Newly Arrived Keyboards</h2>
-    <h3>Recent Year</h3>
+    <h3>Recent Arrivals</h3>
     <a href="view-collection.php?collection-type=recent"></a>
   </div>
 </section>

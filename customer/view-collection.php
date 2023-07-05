@@ -22,7 +22,6 @@ if (!isset($_REQUEST["collection-type"]) && !isset($_REQUEST["brand"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php require "./components/base-link.php" ?>
-    <!-- <link rel="stylesheet" href="css/shop-page.css"> -->
     <link rel="stylesheet" href="css/search-bar.css" />
     <link rel="stylesheet" href="css/swiper.css">
     <link rel="stylesheet" href="css/product-section.css">
@@ -64,7 +63,7 @@ if (!isset($_REQUEST["collection-type"]) && !isset($_REQUEST["brand"])) {
 
                 $get_keycap_product = "SELECT * FROM product WHERE category_id =  $get_key_cap_id ";
                 $dataset = $connection->query($get_keycap_product);
-            }
+            } 
         }
         if (!isset($dataset) || empty($dataset)) {
             echo "<script>
@@ -81,7 +80,6 @@ if (!isset($_REQUEST["collection-type"]) && !isset($_REQUEST["brand"])) {
     <script src="scripts/navbar.js"> </script>
     <script src="scripts/search-bar.js"></script>
     <script src="scripts/redirect.js"> </script>
-    <script src="scripts/star-scale-rating.js"> </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="scripts/swiper.js"> </script>
 </body>

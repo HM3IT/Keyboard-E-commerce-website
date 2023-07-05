@@ -1,4 +1,12 @@
+
+
+ 
+
 document.addEventListener("DOMContentLoaded", function () {
+  let windowWidth = $(window).width();
+  $(window).resize(function() {
+   windowWidth = $(window).width();
+  });
   // cart-list add remove animation
   const cartListOpenBtn =
     document.getElementsByClassName("card-list-open-btn")[0];
@@ -10,7 +18,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if( cartListOpenBtn != null){
     cartListOpenBtn.addEventListener("click", function () {
-      cartList.style.right = "20px";
+
+
+      if (windowWidth < 480) {
+        cartList.style.right = "0px";
+      } else {
+         
+        cartList.style.right = "20px";
+      }
+      
+
     });
   
     cartListCloseBtn.addEventListener("click", () => {

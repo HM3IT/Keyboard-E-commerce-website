@@ -53,11 +53,11 @@ if (!isset($_SESSION)) {
     <!-- END of invoice-header-block1  -->
     <div class="header-block block2">
       <div>
-        <h2 style="margin:0 0 5px 0;">Customer</h2>
+        <h2>Customer</h2>
         <table id="customer-address-tbl">
           <tr>
             <td>Name</td>
-            <td><?php echo $_SESSION["name"] ?></td>
+            <td><?php echo $_SESSION["customer_name"] ?></td>
           </tr>
           <tr>
             <td>Address</td>
@@ -71,8 +71,8 @@ if (!isset($_SESSION)) {
       </div>
       <div class="company-info">
 
-        <h5>Invoice ID: <span id="invoice-id"> I-2303<span></h5>
-        <table class="business-address-tbl">
+        <h5>Invoice ID: I-<span id="invoice-id"> <?php echo  $_SESSION["recent_order_id"]?><span></h5>
+        <table id="invoice-date">
           <tr>
             <td>Date</td>
             <td>29-May-2023</td>

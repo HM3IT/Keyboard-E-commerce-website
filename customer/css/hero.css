@@ -6,44 +6,37 @@
 
 /* 1. global properties */
 .hero-section-content h4 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 .hero-section-content h5 {
   font-size: 2rem;
 }
 
 .hero-section {
+  height: 55dvh;
   position: relative;
   display: flex;
-  padding: 0 30px;
-  margin: 0;
-  height: 90dvh;
-  background-size: cover;
-  background-position: top 25% right 0;
-  background-color: #fff;
   flex-wrap: wrap-reverse;
   justify-content: center;
   align-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 70px;
+  overflow-y: hidden;
   z-index: 1;
 }
 
 /* hero section content */
 
 .hero-section-content {
-  max-width: 400px;
+  max-width: 380px;
   min-width: 300px;
 }
-.hero-section h4 {
-  margin-bottom: 0;
-}
+ 
 
 .hero-section h5 {
   margin: 0;
 }
 .hero-section p {
-  margin: 0;
   margin-top: 10px;
   color: rgb(209 90 85);
   font-weight: bold;
@@ -69,19 +62,30 @@
   height: 385px;
 }
 
-@media (max-width: 920px) {
-  /* styles for screens 799px wide */
+@media (max-width: 1100px) {
   .hero-section {
-    height: 110dvh;
+    height: unset;
+    gap: 0;
   }
 }
-@media (max-width: 530px) {
-  /* styles for screens 799px wide */
+
+@media (max-width: 780px) {
+  main {
+    margin-top: 8 rem;
+    padding: 0 1rem;
+  }
+  main .recent-order {
+    position: relative;
+    margin: 3rem 0 0 0;
+    width: 100%;
+  }
+  main #recent-order-table {
+    width: 100%;
+    margin: 0;
+  }
   .hero-section {
-    height: 70dvh;
-    align-content: flex-end;
-    align-items: stretch;
-    padding: 0;
+    height: unset;
+    gap: 0;
   }
   .hero-section-img,
   .hero-section-img img {
@@ -89,9 +93,17 @@
     height: 250px;
   }
   .hero-section-content h4 {
-    font-size: 0.75rem;
+    font-size: 1rem;
   }
   .hero-section-content h5 {
-    font-size: 0.5rem;
+    font-size: 0.75rem;
   }
+}
+
+/* For smaller tablet and mobile phones */
+@media screen and (max-width: 480px) {
+  .hero-section-content {
+    max-width: 240px;
+    min-width: 300px;
+}
 }

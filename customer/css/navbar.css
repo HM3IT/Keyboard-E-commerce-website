@@ -27,6 +27,7 @@ nav .logo {
 }
 .nav-bar ul {
   display: flex;
+  align-items: center;
 }
 .nav-bar-btn {
   position: relative;
@@ -88,10 +89,51 @@ nav .logo {
 }
 
 .nav-bar-right .view-cart-icon i {
+  vertical-align: middle;
   font-size: 2.5rem;
 }
-.nav-bar-right li:first-child {
-  padding-top: 10px;
+ 
+.nav-bar-right ul li ul.dropdown {
+  width: 100%;
+  background: white;
+  position: absolute;
+  z-index: 890;
+  display: none;
+}
+.nav-bar-right ul li ul.dropdown {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 180px;
+}
+.nav-bar-right ul li ul.dropdown li {
+  display: block;
+  width: 120px;
+  padding: 20px 30px;
+  box-shadow: 1px 2px 3px black;
+}
+.nav-bar-right ul li:hover ul.dropdown {
+  display: block;
+}
+.nav-bar-right ul li ul.dropdown li a {
+  font-weight: 900;
+  color: black;
+}
+.nav-bar-right ul li ul.dropdown li:hover a {
+  color: var(--action-color);
+}
+
+#dropdown-btn {
+  display: inline-block;
+  height: var(--nav-bar-btn-height);
+  line-height: var(--nav-bar-btn-height);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.2rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: orangered;
+  text-shadow: 
+  0.025rem 0.025rem 0 white,
+  0.1rem 0.1rem 0 yellow;
 }
 @media screen and (min-width: 920px) {
   /* adding animation to the nav-bar buttons */
@@ -124,7 +166,6 @@ nav .logo {
   }
 }
 @media screen and (max-width: 920px) {
-  /* styles for screens 880px wide */
   header {
     width: 90%;
     padding: 0 20px;
@@ -157,4 +198,8 @@ nav .logo {
   .nav-bar-right {
     justify-content: flex-end;
   }
+  #dropdown-btn {
+    display: none;
+  }
 }
+

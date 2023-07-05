@@ -1,7 +1,6 @@
 #web-footer {
   display: flex;
   flex-wrap: wrap;
-  /* height: 350px; */
   background-color: black;
   color: aliceblue;
   justify-content: space-between;
@@ -46,16 +45,12 @@
   padding: 0;
   margin: 0;
 }
-/* footer .webpage-logo{
-  filter: grayscale(100%) contrast(0%);
-} */
-@media (max-width: 1150px) {
-  #web-footer {
-  height: 650px;
-}
-}
-@media (max-width: 620px) {
-  #web-footer {
-  height: 850px;
+
+@media screen and (max-width: 440px) {
+  .contact-us{
+    display: none;
+  }
+  .footer-copyright {
+    line-height: unset;
 }
 }

@@ -55,8 +55,6 @@ if (isset($_POST["create-account-submit"])) {
         );";
         $stmt =   $connection->query($insert_product_sql);
         echo '<script> 
-            alert("Successfully added the product"); 
-            
             location.href = "../product_manager.php"; 
             </script>';
     } else {

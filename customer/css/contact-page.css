@@ -58,6 +58,30 @@
   height: 400px;
 }
 .contact-detail .map iframe {
-  width: 80%;
+  width: 100%;
   height: 100%;
+}
+
+/* For tablet */
+@media screen and (max-width: 1200px) {
+  .contact-detail {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-detail .map {
+    width: 700px;
+    margin: 30px;
+}
+}
+@media screen and (max-width: 780px) {
+  .contact-detail .map {
+    width: 480px;
+    margin: 30px;
+}
+}
+@media screen and (max-width: 490px) {
+  .contact-detail .map {
+    width: unset;
+    margin: 30px;
+}
 }

@@ -11,15 +11,18 @@
   height: 150px;
 }
 .newsletter-text h2 {
+  text-align: center;
   font-weight: 700;
   font-size: 22px;
   letter-spacing: 5px;
+
 }
 .newsletter-text p {
   font-weight: 600;
   font-size: 14px;
   color: #818ea0;
   letter-spacing: 2.5px;
+  padding: 10px;
 }
 .newsletter-text span {
   color: #ffbd27;
@@ -51,6 +54,13 @@
     margin: 20px;
   }
   #newsletter-section {
-    height: 180px;
+    height: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  #newsletter-email {
+    width: 200px;
+    margin: 10px;
   }
 }

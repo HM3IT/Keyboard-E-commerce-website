@@ -1,15 +1,17 @@
 <section class="cart-list-section">
     <h2>My Shopping Cart</h2>
     <table id="cart-list-table">
-        <tr>
-            <th>No.</th>
-            <th>Product</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Subtotal (ks)</th>
-            <th>Action</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th class="hide-col">Product</th>
+                <th>Name</th>
+                <th class="hide-col">Price</th>
+                <th>Quantity</th>
+                <th>Subtotal (ks)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
         <?php
         if (!isset($_SESSION["cart"]) || count($_SESSION["cart"]) <= 0) {
         ?>
@@ -36,11 +38,11 @@
         ?>
             <tr>
                 <td><?php echo  $serial++  ?></td>
-                <td>
+                <td class="hide-col">
                     <img src="../images/Products/<?php echo $value["category"] ?>/<?php echo $value["image"]  ?>" alt="photo" class="product-tbl-img">
                 </td>
                 <td><?php echo $value["name"]  ?></td>
-                <td><?php echo  $price   ?></td>
+                <td class="hide-col"><?php echo  $price   ?></td>
                 <td>
                     <div class="product-quantity-wrapper">
                         <input type="hidden" class="cart-id" data-product-id="<?php echo $value['id']; ?>">
@@ -60,7 +62,7 @@
         <?php
         }
         ?>
-        <tr id="total-cost-row" class="information">္
+        <tr id="total-cost-row" class="information">
             <td colspan="5">Total Cost</td>
             <td><?php
                 $_SESSION["total_cost"] =  $total_cost;
@@ -68,22 +70,32 @@
                 ?></td>
             <td>
                 <?php
-                if (isset($_SESSION['name'])) {
+                if (isset($_SESSION['customer_name'])) {
                 ?>
-                    <a href="#checkout-anchor" class="checkout-btn success-bg">Order Now</a>
+                    <a href="#checkout-anchor" id="hide-order-btn" class="checkout-btn success-bg">Order Now</a>
 
                 <?php
                 } else {
                 ?>
-
-                    <a onclick="askLogin()" class="checkout-btn success-bg">Order Now</a>
-
+                    <a onclick="askLogin()" id="hide-order-btn"  class="checkout-btn success-bg">Order Now</a>
                 <?php
                 }
                 ?>
             </td>
         </tr>
     </table>
+    <?php
+    if (isset($_SESSION['customer_name'])) {
+    ?>
+        <a href="#checkout-anchor" id="mobile-btn" class="checkout-btn success-bg">Order Now</a>
+
+    <?php
+    } else {
+    ?>
+        <a onclick="askLogin()" id="mobile-btn" class="checkout-btn success-bg">Order Now</a>
+    <?php
+    }
+    ?>
 </section>
 <div id="ask-login-overlay"></div>
 <div id="ask-login-form">

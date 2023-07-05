@@ -1,7 +1,6 @@
 <?php
 require "../../dao/connection.php";
 
-
 if (session_status() == PHP_SESSION_NONE) {
     session_set_cookie_params(0);
     session_start();
@@ -9,13 +8,12 @@ if (session_status() == PHP_SESSION_NONE) {
 
 if (isset($_POST["Sign-Up"])) {
     $name = $_POST["name"];
+    $password = $_POST["password"];
+    $encryptedPassword = hash('sha512', $password);
     $email = $_POST["email"];
     $phone = $_POST["phone"];
-    $password = $_POST["password"];
     $address = $_POST["address"];
-    $encryptedPassword = hash('sha512', $password);
     $image_name = 'default-user-img.jpg';
-
     $created_date = time();
 
     // Prepare the statement
@@ -29,14 +27,12 @@ if (isset($_POST["Sign-Up"])) {
     $statement->bindParam(5, $encryptedPassword);
     $statement->bindParam(6, $address);
     $statement->bindParam(7, $created_date);
-
-    // Execute the statement
     $statement->execute();
 
     $lastInsertedId = $connection->lastInsertId();
     $_SESSION["login_customer_id"] = $lastInsertedId;
 
-    $_SESSION["name"] = $name;
+    $_SESSION["customer_name"] = $name;
     $_SESSION["email"] = $email;
     // $_SESSION["password"] = $password;
 
@@ -64,15 +60,12 @@ if (isset($_POST["Sign-In"])) {
 
         if ($data["name"] === $name && $data["password"] === $encryptedPassword) {
             $_SESSION["login_customer_id"] = $data["id"];
-            $_SESSION["name"] = $name;
+            $_SESSION["customer_name"] = $name;
             // $_SESSION["password"] = $password;
             $_SESSION["status-login"] = "valid";
 
             if (isset($_POST["current_page"])) {
-                $redirectPage = $_POST["current_page"];
-                if ($redirectPage === "view-cart-list.php") {
-                    $redirectPage = "#checkout-anchor";
-                }
+                $redirectPage = $_POST["current_page"];   
                 header("Location: ../" . $redirectPage);
                 exit;
             }
@@ -163,10 +156,7 @@ if (isset($_POST["update-customer"])) {
         WHERE id = '$customer_id'";
 
     if ($connection->query($update_customer_sql)) {
-        echo '<script> 
-            alert("Successfully updated your account"); 
-            location.href = "../setting.php"; 
-            </script>';
+        header("Location:../setting.php");
     } else {
         // Update failed
         echo "Error updating account information ";
